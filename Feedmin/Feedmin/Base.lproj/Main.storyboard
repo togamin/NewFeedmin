@@ -10,22 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="xZg-91-fcd">
-            <objects>
-                <viewController id="hfc-yW-ybN" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qEe-3n-qSR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="fed-7S-YH3"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="4Vw-zN-9O5"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tjZ-XL-H3Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="710" y="691"/>
-        </scene>
         <!--Setting-->
         <scene sceneID="Im7-ti-Z6Y">
             <objects>
@@ -205,12 +189,74 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="hfc-yW-ybN" kind="relationship" relationship="rootViewController" id="uIq-KL-3aZ"/>
+                        <segue destination="yg0-Kt-gu8" kind="relationship" relationship="rootViewController" id="LNa-YI-RBR"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oN1-rW-KzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-95.200000000000003" y="691.304347826087"/>
+        </scene>
+        <!--Favorite-->
+        <scene sceneID="oTc-jg-k07">
+            <objects>
+                <tableViewController id="yg0-Kt-gu8" customClass="favTableViewController" customModule="Feedmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fix-T4-2ZS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9wT-ZF-6gP">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9wT-ZF-6gP" id="dsW-CT-izt">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="yg0-Kt-gu8" id="Kc5-pI-wBE"/>
+                            <outlet property="delegate" destination="yg0-Kt-gu8" id="tFi-gl-i7C"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Favorite" id="tzw-js-8xP"/>
+                    <connections>
+                        <outlet property="favTableView" destination="fix-T4-2ZS" id="jeI-Vp-dOn"/>
+                        <segue destination="Ya9-sq-Jft" kind="show" identifier="goToFavWeb" id="vhG-am-Xcu"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IPC-TK-m1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="804" y="691"/>
+        </scene>
+        <!--Fav Article View Controller-->
+        <scene sceneID="ezC-tF-2Gm">
+            <objects>
+                <viewController id="Ya9-sq-Jft" customClass="favArticleViewController" customModule="Feedmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hpG-4R-k4P">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UN9-y1-cY9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="59s-hr-cRz"/>
+                    </view>
+                    <connections>
+                        <outlet property="favWebView" destination="UN9-y1-cY9" id="QsT-Kt-LUI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="saU-Bh-aUn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1544.8" y="689.5052473763119"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aKY-Cj-EZp">

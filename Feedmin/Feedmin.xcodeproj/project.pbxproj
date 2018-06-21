@@ -25,6 +25,8 @@
 		B700E9B720DBC1A60084FFD6 /* animal01.png in Resources */ = {isa = PBXBuildFile; fileRef = B700E9B620DBC1A60084FFD6 /* animal01.png */; };
 		B700E9B920DBD0E40084FFD6 /* articleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700E9B820DBD0E40084FFD6 /* articleViewController.swift */; };
 		B700E9BB20DBD8250084FFD6 /* myTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700E9BA20DBD8250084FFD6 /* myTabViewController.swift */; };
+		B700E9BD20DBDC480084FFD6 /* favTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700E9BC20DBDC480084FFD6 /* favTableViewController.swift */; };
+		B700E9BF20DBE4130084FFD6 /* favArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700E9BE20DBE4130084FFD6 /* favArticleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		B700E9B620DBC1A60084FFD6 /* animal01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal01.png; sourceTree = "<group>"; };
 		B700E9B820DBD0E40084FFD6 /* articleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = articleViewController.swift; sourceTree = "<group>"; };
 		B700E9BA20DBD8250084FFD6 /* myTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myTabViewController.swift; sourceTree = "<group>"; };
+		B700E9BC20DBDC480084FFD6 /* favTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = favTableViewController.swift; sourceTree = "<group>"; };
+		B700E9BE20DBE4130084FFD6 /* favArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = favArticleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 			children = (
 				B700E9B420DBC00E0084FFD6 /* timeLineTableViewController.swift */,
 				B700E98820DB5BBD0084FFD6 /* Main.storyboard */,
+				B700E9BE20DBE4130084FFD6 /* favArticleViewController.swift */,
+				B700E9BC20DBDC480084FFD6 /* favTableViewController.swift */,
 				B700E9BA20DBD8250084FFD6 /* myTabViewController.swift */,
 				B700E9B820DBD0E40084FFD6 /* articleViewController.swift */,
 				B700E9A520DBB3E10084FFD6 /* mainCellView.xib */,
@@ -193,8 +199,10 @@
 				B700E9A420DB87480084FFD6 /* coreData.swift in Sources */,
 				B700E99C20DB62770084FFD6 /* SettingTableTableViewController.swift in Sources */,
 				B700E9A820DBB45A0084FFD6 /* mainCellView.swift in Sources */,
+				B700E9BD20DBDC480084FFD6 /* favTableViewController.swift in Sources */,
 				B700E9BB20DBD8250084FFD6 /* myTabViewController.swift in Sources */,
 				B700E98520DB5BBD0084FFD6 /* AppDelegate.swift in Sources */,
+				B700E9BF20DBE4130084FFD6 /* favArticleViewController.swift in Sources */,
 				B700E98D20DB5BBD0084FFD6 /* Feedmin.xcdatamodeld in Sources */,
 				B700E9B520DBC00E0084FFD6 /* timeLineTableViewController.swift in Sources */,
 			);

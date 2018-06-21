@@ -257,7 +257,7 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
             let url = NSURL(string:thumbImageURL!)
             thumbImageData = NSData(contentsOf: url! as URL)
         }else if str2 == nil{
-            thumbImageData = UIImageJPEGRepresentation(UIImage(named:"default.png")!, 1.0)! as NSData//圧縮率
+            thumbImageData = UIImageJPEGRepresentation(UIImage(named:"default01.png")!, 1.0)! as NSData//圧縮率
         }
         
         //print("画像のURL(getImageURL):\(thumbImageURL!)")

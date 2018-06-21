@@ -304,6 +304,39 @@ func updateFav(articleURL:String,bool:Bool){
     }
 }
 
+//お気に入りの記事のみ取り出し.
+func readFav()->[articleInfo]{
+    var InfoList:[articleInfo] = []
+    //AppDelegateを使う用意をしておく
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    //Entityを操作するためのオブジェクトを作成
+    let viewContext = appDelegate.persistentContainer.viewContext
+    //どのエンティティからdataを取得してくるかの設定
+    let query:NSFetchRequest<ArticleInfo> = ArticleInfo.fetchRequest()
+    let namePredicte = NSPredicate(format: "fav = true")
+    query.predicate = namePredicte
+    //ascendind:true 昇順、false 降順
+    let sortDescripter = NSSortDescriptor(key: "updateDate", ascending: false)
+    query.sortDescriptors = [sortDescripter]
+    //フェッチ件数を15件に制限する。
+    query.fetchLimit = 15
+    do{
+        //絞り込んだデータを一括取得
+        let fetchResults = try! viewContext.fetch(query)
+        for result in fetchResults{
+            InfoList.append(articleInfo(siteID:result.value(forKey:"siteID")! as! Int,articleTitle:result.value(forKey:"articleTitle")! as! String,updateDate:result.value(forKey:"updateDate")! as! Date,articleURL:result.value(forKey:"articleURL")! as! String,thumbImageData:result.value(forKey:"thumbImageData")! as! NSData,fav:result.value(forKey:"fav")! as! Bool))
+        }
+        for info in InfoList{
+            print("[readFav]ID:\(info.siteID!),タイトル:\(info.articleTitle!),お気に入り:\(info.fav!)")
+            //,URL:\(info.articleURL!),画像データ:\(info.thumbImageData!)
+        }
+    }catch{
+        print("error:readFav",error)
+    }
+    return InfoList as [articleInfo]
+}
+
+
 
 
 
