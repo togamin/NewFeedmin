@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="mainCell" id="iN0-l3-epB" customClass="mainCellView" customModule="Feedmin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="250"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default01.png" translatesAutoresizingMaskIntoConstraints="NO" id="57C-MQ-gfC">
+                    <rect key="frame" x="8" y="8" width="304" height="190"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="190" id="bIS-d4-SES"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H0R-U5-dZ3">
+                    <rect key="frame" x="8" y="206" width="247" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="animal01.png" translatesAutoresizingMaskIntoConstraints="NO" id="wWr-at-ZiE">
+                    <rect key="frame" x="222" y="122" width="90" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="TMS-TC-sRg"/>
+                        <constraint firstAttribute="width" constant="90" id="jmo-7q-Pis"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tyl-Ys-42n">
+                    <rect key="frame" x="267" y="8" width="45" height="45"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="lfX-XC-Srd"/>
+                        <constraint firstAttribute="height" constant="45" id="o1s-le-IEu"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="fav01.png"/>
+                    <connections>
+                        <action selector="favButtonA:" destination="iN0-l3-epB" eventType="touchUpInside" id="zZp-J3-5J3"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bvh-im-mzQ">
+                    <rect key="frame" x="8" y="8" width="130" height="23"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.0031218486359209587" green="0.045935083393593319" blue="0.23725015862944165" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="H0R-U5-dZ3" secondAttribute="trailing" constant="65" id="9K1-OD-LNc"/>
+                <constraint firstItem="H0R-U5-dZ3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="CP5-Sh-qDR"/>
+                <constraint firstItem="57C-MQ-gfC" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="GIe-zU-l7R"/>
+                <constraint firstItem="57C-MQ-gfC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="MIm-Vq-C0I"/>
+                <constraint firstItem="H0R-U5-dZ3" firstAttribute="top" secondItem="57C-MQ-gfC" secondAttribute="bottom" constant="8" id="Mgu-hE-74o"/>
+                <constraint firstItem="H0R-U5-dZ3" firstAttribute="top" secondItem="57C-MQ-gfC" secondAttribute="bottom" constant="8" id="XAo-ra-hUv"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wWr-at-ZiE" secondAttribute="trailing" constant="8" id="ZMj-fr-iUz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="H0R-U5-dZ3" secondAttribute="bottom" constant="8" id="ajO-U3-BZd"/>
+                <constraint firstItem="H0R-U5-dZ3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="cBs-4V-zQI"/>
+                <constraint firstItem="Tyl-Ys-42n" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="iEf-fO-2eX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wWr-at-ZiE" secondAttribute="bottom" constant="8" id="jy7-nx-hQZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="57C-MQ-gfC" secondAttribute="trailing" constant="8" id="n1a-6x-mnJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Tyl-Ys-42n" secondAttribute="trailing" constant="8" id="qWV-FD-PXJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="animalImage" destination="wWr-at-ZiE" id="b5I-e6-1FX"/>
+                <outlet property="articleTitle" destination="H0R-U5-dZ3" id="OUe-t3-K9j"/>
+                <outlet property="favButton" destination="Tyl-Ys-42n" id="2CT-30-eio"/>
+                <outlet property="siteTitle" destination="Bvh-im-mzQ" id="nat-pd-e6g"/>
+                <outlet property="thumbView" destination="57C-MQ-gfC" id="D7O-oh-8pf"/>
+            </connections>
+            <point key="canvasLocation" x="33" y="-141"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="animal01.png" width="1024" height="1024"/>
+        <image name="default01.png" width="927" height="692"/>
+        <image name="fav01.png" width="1024" height="1024"/>
+    </resources>
+</document>

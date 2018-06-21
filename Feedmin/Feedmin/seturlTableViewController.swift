@@ -42,8 +42,9 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
         super.viewDidLoad()
         
         //ArticleInfo全削除
-        deleteAllArticleInfo()
-        deleteAllSiteInfo()
+        //deleteAllArticleInfo()
+        //deleteAllSiteInfo()
+        siteInfoList = readSiteInfo()
 
     }
     
@@ -60,6 +61,34 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
         cell.detailTextLabel?.text = siteInfoList[indexPath.row]?.siteURL
         return cell
     }
+    
+    //セルを横にスライドさせた時に呼ばれる
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        print("サイトを削除します")
+        
+        if siteInfoList.count > 1{
+            //削除したURLの記事情報を削除
+            deleteArticleInfo(siteID: indexPath.row)
+            deleteSiteInfo(Index: indexPath.row)
+            
+            //tableから削除
+            siteInfoList.remove(at: indexPath.row)
+            
+            //index.rowより大きいIDを1減らす。
+            for i in indexPath.row + 1..<siteInfoList.count+1{
+                updateSiteInfo(siteID: i)
+                updateArticleInfo(siteID: i)
+            }
+            self.urlTableView.reloadData()
+        }else{
+            let alert = UIAlertController(title: "エラー", message: "登録しているサイトが1つの場合、削除できません。", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {action in print("OK")}))
+            alert.view.layer.cornerRadius = 25 //角丸にする。
+            present(alert,animated: true,completion: {()->Void in print("URL削除時のエラー")})
+        }
+    }
+    
     
     //urlを追加するためのボタン
     @IBAction func addURL(_ sender: UIBarButtonItem) {

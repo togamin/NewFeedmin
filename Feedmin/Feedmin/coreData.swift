@@ -45,6 +45,11 @@ func readArticleInfo()->[articleInfo]{
     let viewContext = appDelegate.persistentContainer.viewContext
     //どのエンティティからdataを取得してくるかの設定
     let query:NSFetchRequest<ArticleInfo> = ArticleInfo.fetchRequest()
+    //ascendind:true 昇順、false 降順
+    let sortDescripter = NSSortDescriptor(key: "updateDate", ascending: false)
+    query.sortDescriptors = [sortDescripter]
+    //フェッチ件数を15件に制限する。
+    query.fetchLimit = 15
     do{
         //データを一括取得
         let fetchResults = try! viewContext.fetch(query)
@@ -82,6 +87,35 @@ func deleteAllArticleInfo(){
         try viewContext.save()
     }catch{
         print("error")
+    }
+}
+
+//指定したIDの記事情報を削除
+func deleteArticleInfo(siteID:Int){
+    //AppDelegateを使う用意をしておく
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    //Entityを操作するためのオブジェクトを作成
+    let viewContext = appDelegate.persistentContainer.viewContext
+    //どのエンティティからdataを取得してくるかの設定
+    let query:NSFetchRequest<ArticleInfo> = ArticleInfo.fetchRequest()
+    //絞り込み検索
+    let namePredicte = NSPredicate(format: "%K = %d","siteID",siteID)
+    query.predicate = namePredicte
+    do{
+        //データを一括取得
+        let featchResults = try! viewContext.fetch(query)
+        //データの取得
+        for result:AnyObject in featchResults{
+            let recode = result as! NSManagedObject
+            viewContext.delete(recode)
+            
+            print("[deleteArticleInfo]siteID:\(result.value(forKey:"siteID")! as! Int),siteTitle:\(result.value(forKey:"articleTitle")! as! String)")
+            
+            //削除した状態を保存
+            try viewContext.save()
+        }
+    }catch{
+        print("error[deleteArticleInfo]")
     }
 }
 
@@ -156,7 +190,119 @@ func deleteAllSiteInfo(){
     }
 }
 
+//指定した行のデータの削除
+func deleteSiteInfo(Index:Int){
+    //AppDelegateを使う用意をしておく
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    //Entityを操作するためのオブジェクトを作成
+    let viewContext = appDelegate.persistentContainer.viewContext
+    //どのエンティティからdataを取得してくるかの設定
+    let query:NSFetchRequest<SiteInfo> = SiteInfo.fetchRequest()
+    do{
+        //データを一括取得
+        let fetchResults = try! viewContext.fetch(query)
+        let deleteInfo = fetchResults[Index]
+        viewContext.delete(deleteInfo)
+        //削除した状態を保存
+        try viewContext.save()
+    }catch{
+        print("error")
+    }
+}
 
+//データの更新.SiteInfoのsiteIDを1低い値に更新する
+func updateSiteInfo(siteID:Int){
+    //AppDelegateを使う用意をしておく
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    //Entityを操作するためのオブジェクトを作成
+    let viewContext = appDelegate.persistentContainer.viewContext
+    //どのエンティティからdataを取得してくるかの設定
+    let query:NSFetchRequest<SiteInfo> = SiteInfo.fetchRequest()
+    
+    //絞り込み検索
+    let namePredicte = NSPredicate(format: "%K = %d","siteID",siteID)
+    query.predicate = namePredicte
+    do{
+        //データを一括取得
+        let featchResults = try! viewContext.fetch(query)
+        
+        //データの取得
+        for result:AnyObject in featchResults{
+            let recode = result as! NSManagedObject
+            //更新したいデータのセット
+            recode.setValue(siteID - 1,forKey:"siteID")
+            do{
+                //レコード(行)の即時保存
+                try viewContext.save()
+            }catch{
+                
+            }
+        }
+    }
+}
+
+//データの更新.ArticleInfoのsiteIDを1低い値に更新する
+func updateArticleInfo(siteID:Int){
+    //AppDelegateを使う用意をしておく
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    //Entityを操作するためのオブジェクトを作成
+    let viewContext = appDelegate.persistentContainer.viewContext
+    //どのエンティティからdataを取得してくるかの設定
+    let query:NSFetchRequest<ArticleInfo> = ArticleInfo.fetchRequest()
+    
+    //絞り込み検索
+    let namePredicte = NSPredicate(format: "%K = %d","siteID",siteID)
+    query.predicate = namePredicte
+    do{
+        //データを一括取得
+        let featchResults = try! viewContext.fetch(query)
+        
+        //データの取得
+        for result:AnyObject in featchResults{
+            
+            let recode = result as! NSManagedObject
+            //更新したいデータのセット
+            recode.setValue(siteID - 1,forKey:"siteID")
+            
+            print("[updateArticleInfo]siteID:\(result.value(forKey:"siteID")! as! Int),siteTitle:\(result.value(forKey:"articleTitle")! as! String)")
+            
+            do{
+                //レコード(行)の即時保存
+                try viewContext.save()
+            }catch{
+                
+            }
+        }
+    }
+}
+
+//お気に入りかどうかの更新
+func updateFav(articleURL:String,bool:Bool){
+    //AppDelegateを使う用意をしておく
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    //Entityを操作するためのオブジェクトを作成
+    let viewContext = appDelegate.persistentContainer.viewContext
+    //どのエンティティからdataを取得してくるかの設定
+    let query:NSFetchRequest<ArticleInfo> = ArticleInfo.fetchRequest()
+    let namePredicte = NSPredicate(format: "articleURL = %@",articleURL)
+    query.predicate = namePredicte
+    do{
+        //絞り込んだデータを一括取得
+        let fetchResults = try! viewContext.fetch(query)
+        for result in fetchResults{
+            result.setValue(bool,forKey:"fav")
+            //変更した記事のタイトルと変更後の状態の表示
+            print("[updateFav]\(result.value(forKey:"articleTitle")! as! String)","\(result.value(forKey:"updateDate")!)")
+            do{
+                //レコード(行)の即時保存
+                try viewContext.save()
+            }catch{
+            }
+        }
+    }catch{
+        print("error:updateFav",error)
+    }
+}
 
 
 
