@@ -14,6 +14,7 @@ class timeLineTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         //site情報読み込み
         siteInfoList = readSiteInfo()
@@ -27,6 +28,8 @@ class timeLineTableViewController: UITableViewController {
         self.timeLineTableView.rowHeight = UITableViewAutomaticDimension//自動的にセルの高さを調節する
         
     }
+
+
     //行数を決める
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -39,10 +42,34 @@ class timeLineTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as! mainCellView
         cell.siteTitle.text = siteInfoList[(articleInfoList[indexPath.row]?.siteID)!]?.siteTitle
         cell.articleTitle.text = articleInfoList[indexPath.row]?.articleTitle
-        cell.thumbView.image = UIImage(data:articleInfoList[indexPath.row]?.thumbImageData! as! Data)
         cell.cellLink = articleInfoList[indexPath.row]?.articleURL
+        cell.thumbView.image = UIImage(data:articleInfoList[indexPath.row]?.thumbImageData! as! Data)
         cell.currentLike = articleInfoList[indexPath.row]?.fav
+        if (articleInfoList[indexPath.row]?.fav)!{
+            cell.favButton.setImage(UIImage(named:"fav01"), for: .normal)
+        }else{
+            cell.favButton.setImage(UIImage(named:"fav02"), for: .normal)
+        }
         return cell
+    }
+    
+    //セルをタップしたら発動する処理
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToWeb",sender:nil)
+    }
+    //画面遷移時に呼び出される
+    override func prepare(for segue:UIStoryboardSegue,sender:Any?){
+        print("画面遷移中")
+        if let indexPath = self.timeLineTableView.indexPathForSelectedRow{
+            let title = articleInfoList[indexPath.row]?.articleTitle
+            let link = articleInfoList[indexPath.row]?.articleURL
+            //遷移先のViewControllerを格納
+            let controller = segue.destination as! articleViewController
+            
+            //遷移先の変数に代入
+            controller.title = title
+            controller.link = link
+        }
     }
 
     

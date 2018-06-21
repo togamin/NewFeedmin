@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  articleViewController.swift
 //  Feedmin
 //
 //  Created by 戸上　祐希 on 2018/06/21.
@@ -7,19 +7,24 @@
 //
 
 import UIKit
+import WebKit
 
-class ViewController: UIViewController {
+class articleViewController: UIViewController {
 
+    @IBOutlet weak var articleWebView: WKWebView!
+    var link:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        if let url = URL(string: self.link){
+            let request = URLRequest(url:url)
+            self.articleWebView.load(request)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-

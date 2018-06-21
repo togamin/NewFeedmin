@@ -22,11 +22,11 @@ class mainCellView:UITableViewCell{
     
     @IBAction func favButtonA(_ sender: UIButton) {
         if currentLike {
-            sender.setImage(UIImage(named:"fav02"), for: .normal)
+            self.favButton.setImage(UIImage(named:"fav02"), for: .normal)
             updateFav(articleURL:cellLink,bool:false)
             self.currentLike = false
         }else{
-            sender.setImage(UIImage(named:"fav01"), for: .normal)
+            self.favButton.setImage(UIImage(named:"fav01"), for: .normal)
             updateFav(articleURL:cellLink,bool:true)
             self.currentLike = true
         }

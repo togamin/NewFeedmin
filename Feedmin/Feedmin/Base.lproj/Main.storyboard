@@ -174,10 +174,10 @@
             </objects>
             <point key="canvasLocation" x="325" y="1450"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--My Tab View Controller-->
         <scene sceneID="IvL-XC-S3E">
             <objects>
-                <tabBarController id="x3i-Ai-MIt" sceneMemberID="viewController">
+                <tabBarController id="x3i-Ai-MIt" customClass="myTabViewController" customModule="Feedmin" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Rdo-Rj-LQ3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -231,7 +231,7 @@
             </objects>
             <point key="canvasLocation" x="-73" y="13"/>
         </scene>
-        <!--Time Line Table View Controller-->
+        <!--TimeLine-->
         <scene sceneID="I5z-BZ-369">
             <objects>
                 <tableViewController id="yjT-GW-poh" customClass="timeLineTableViewController" customModule="Feedmin" customModuleProvider="target" sceneMemberID="viewController">
@@ -254,14 +254,44 @@
                             <outlet property="delegate" destination="yjT-GW-poh" id="RgB-bD-IRj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="kxy-Fk-LOh"/>
+                    <navigationItem key="navigationItem" title="TimeLine" id="kxy-Fk-LOh"/>
                     <connections>
                         <outlet property="timeLineTableView" destination="7Kq-Yt-NiP" id="lIV-Zy-ox8"/>
+                        <segue destination="rcR-pd-4rT" kind="show" identifier="goToWeb" id="uuE-5h-P95"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="buV-y5-O8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="804" y="13"/>
+        </scene>
+        <!--Article View Controller-->
+        <scene sceneID="e1o-qM-Owu">
+            <objects>
+                <viewController id="rcR-pd-4rT" customClass="articleViewController" customModule="Feedmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K1Z-mw-8mr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j7D-AG-x6H">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="JBw-AD-Cwb"/>
+                    </view>
+                    <connections>
+                        <outlet property="articleWebView" destination="j7D-AG-x6H" id="epw-Xw-peH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z45-La-o7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1544.8" y="12.143928035982009"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DuL-hU-I3V">
