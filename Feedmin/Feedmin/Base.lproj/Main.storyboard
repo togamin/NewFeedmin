@@ -300,7 +300,11 @@
                             <outlet property="delegate" destination="yjT-GW-poh" id="RgB-bD-IRj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="TimeLine" id="kxy-Fk-LOh"/>
+                    <navigationItem key="navigationItem" title="TimeLine" id="kxy-Fk-LOh">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="menuIco60.png" id="A0j-83-dtr">
+                            <inset key="imageInsets" minX="0.0" minY="2" maxX="-22" maxY="-7"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="timeLineTableView" destination="7Kq-Yt-NiP" id="lIV-Zy-ox8"/>
                         <segue destination="rcR-pd-4rT" kind="show" identifier="goToWeb" id="uuE-5h-P95"/>
@@ -359,4 +363,7 @@
             <point key="canvasLocation" x="-1311" y="1451"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="menuIco60.png" width="60" height="60"/>
+    </resources>
 </document>

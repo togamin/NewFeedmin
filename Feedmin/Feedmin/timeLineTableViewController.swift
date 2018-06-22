@@ -8,11 +8,13 @@
 
 import UIKit
 
-class timeLineTableViewController: UITableViewController,XMLParserDelegate {
+class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIViewControllerTransitioningDelegate {
 
     @IBOutlet var timeLineTableView: UITableView!
     var siteInfoList:[siteInfo]!
     var articleInfoList:[articleInfo]!
+    
+    
     
     //RSS解析用
     var parser:XMLParser!//parser:構文解析
@@ -30,7 +32,7 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
         //site情報読み込み
         self.siteInfoList = readSiteInfo()
         //記事情報読み込み
