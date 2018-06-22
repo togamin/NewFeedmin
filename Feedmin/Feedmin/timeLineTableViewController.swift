@@ -14,7 +14,8 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
     var siteInfoList:[siteInfo]!
     var articleInfoList:[articleInfo]!
     
-    
+    //trueの記事のサイトを格納
+    var siteTrueIDList:[Int] = []
     
     //RSS解析用
     var parser:XMLParser!//parser:構文解析
@@ -34,7 +35,6 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
         
         //site情報読み込み.siteBoolがtrueのものだけ
         self.siteInfoList = getTrueSiteInfo()
-        var siteTrueIDList:[Int] = []
         for i in self.siteInfoList{
             siteTrueIDList.append(i.siteID)
         }
@@ -74,8 +74,13 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
             print("再読み込み")
             //新着記事を取得し、CoreDataに代入.
             self.rssUpdate()
+            //site情報読み込み.siteBoolがtrueのものだけ
+            self.siteInfoList = getTrueSiteInfo()
+            for i in self.siteInfoList{
+                self.siteTrueIDList.append(i.siteID)
+            }
             //記事再読み込み
-            self.articleInfoList = readArticleInfo()
+            self.articleInfoList = selectReadArticle(siteIDList:self.siteTrueIDList)
             //テーブルを再読み込みする。
             self.timeLineTableView.reloadData()
             //読込中の表示を消す。
@@ -95,7 +100,9 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as! mainCellView
 
-        cell.siteTitle.text = self.siteInfoList[(self.articleInfoList[indexPath.row].siteID!)].siteTitle!
+        cell.siteTitle.text = readSelectSiteInfo(siteID: self.articleInfoList[indexPath.row].siteID!)
+        
+        
         cell.articleTitle.text = self.articleInfoList[indexPath.row].articleTitle
         cell.cellLink = self.articleInfoList[indexPath.row].articleURL
         cell.thumbView.image = UIImage(data:self.articleInfoList[indexPath.row].thumbImageData! as! Data)

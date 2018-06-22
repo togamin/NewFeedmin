@@ -327,6 +327,29 @@ func updateSiteInfo(siteID:Int){
         }
     }
 }
+//指定したIDのsiteのタイトルを抜き出す
+func readSelectSiteInfo(siteID:Int)->String{
+    var siteTitle:String!
+    //AppDelegateを使う用意をしておく
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    //Entityを操作するためのオブジェクトを作成
+    let viewContext = appDelegate.persistentContainer.viewContext
+    //どのエンティティからdataを取得してくるかの設定
+    let query:NSFetchRequest<SiteInfo> = SiteInfo.fetchRequest()
+    //絞り込み検索
+    let namePredicte = NSPredicate(format: "%K = %d","siteID",siteID)
+    query.predicate = namePredicte
+    do{
+        //データを一括取得
+        let fetchResults = try! viewContext.fetch(query)
+        for result in fetchResults{
+            siteTitle = result.value(forKey:"siteTitle")! as! String
+        }
+    }catch{
+        print("error:readSelectSiteInfo",error)
+    }
+    return siteTitle as! String
+}
 
 //データの更新.ArticleInfoのsiteIDを1低い値に更新する
 func updateArticleInfo(siteID:Int){
