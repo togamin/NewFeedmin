@@ -32,11 +32,14 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        //site情報読み込み
-        self.siteInfoList = readSiteInfo()
+        //site情報読み込み.siteBoolがtrueのものだけ
+        self.siteInfoList = getTrueSiteInfo()
+        var siteTrueIDList:[Int] = []
+        for i in self.siteInfoList{
+            siteTrueIDList.append(i.siteID)
+        }
         //記事情報読み込み
-        self.articleInfoList = readArticleInfo()
+        self.articleInfoList = selectReadArticle(siteIDList:siteTrueIDList)
         
         //mainCellViewを呼び出し、timeLineTableViewに登録
         let nib = UINib(nibName:"mainCellView",bundle:nil)
@@ -61,6 +64,9 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
         print("リフレッシュコントローラーの設定完了")
         
     }
+    @IBAction func menuBtn(_ sender: UIBarButtonItem) {
+        print("テスト:menuBtn押されました")
+    }
     
     //テーブルビュー引っ張り時の呼び出しメソッド
     @objc func relode(_ sender: UIRefreshControl){
@@ -81,14 +87,15 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
     //行数を決める
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return articleInfoList.count
+        return self.articleInfoList.count
     }
 
     //セルのインスタンス化
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as! mainCellView
-        cell.siteTitle.text = self.siteInfoList[(self.articleInfoList[indexPath.row].siteID!)].siteTitle
+
+        cell.siteTitle.text = self.siteInfoList[(self.articleInfoList[indexPath.row].siteID!)].siteTitle!
         cell.articleTitle.text = self.articleInfoList[indexPath.row].articleTitle
         cell.cellLink = self.articleInfoList[indexPath.row].articleURL
         cell.thumbView.image = UIImage(data:self.articleInfoList[indexPath.row].thumbImageData! as! Data)

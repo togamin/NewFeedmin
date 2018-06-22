@@ -246,6 +246,10 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="heJ-z7-pIW">
+                                <rect key="frame" x="254" y="545" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="59s-hr-cRz"/>
@@ -277,6 +281,37 @@
             </objects>
             <point key="canvasLocation" x="-73" y="13"/>
         </scene>
+        <!--Select Site Table View Controller-->
+        <scene sceneID="88G-mt-u2o">
+            <objects>
+                <tableViewController id="AL7-aT-G8c" customClass="SelectSiteTableViewController" customModule="Feedmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FHr-10-Ghp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectSiteCell" id="I7b-8y-BJP" customClass="selectSiteCell" customModule="Feedmin" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I7b-8y-BJP" id="jho-xN-wBe">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="AL7-aT-G8c" id="8VO-4v-YAm"/>
+                            <outlet property="delegate" destination="AL7-aT-G8c" id="seb-Jz-GBu"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="selectSitecellTableView" destination="FHr-10-Ghp" id="fNp-cs-ti7"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g0Z-Og-kvO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1544.8" y="-654.42278860569718"/>
+        </scene>
         <!--TimeLine-->
         <scene sceneID="I5z-BZ-369">
             <objects>
@@ -304,7 +339,8 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="menuIco60.png" id="A0j-83-dtr">
                             <inset key="imageInsets" minX="0.0" minY="2" maxX="-22" maxY="-7"/>
                             <connections>
-                                <action selector="modalBtn:" destination="yjT-GW-poh" id="r7a-af-Ttq"/>
+                                <action selector="menuBtn:" destination="yjT-GW-poh" id="dYW-4d-cuO"/>
+                                <segue destination="AL7-aT-G8c" kind="show" id="ank-je-aFp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

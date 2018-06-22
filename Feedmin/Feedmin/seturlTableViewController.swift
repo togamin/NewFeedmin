@@ -11,7 +11,7 @@
  ・urlの登録
  ・RSSデータを取得できれば記事情報取得しCoreDataに登録.
  ・取得できなければ、対応していないURLであると通知.
- 
+ ・インジケーター上手く行っていない
  
  */
 
@@ -26,6 +26,8 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
     //TableView
     @IBOutlet var urlTableView: UITableView!
     
+    // インジケータのインスタンス
+    let indicator = UIActivityIndicatorView()
     
     //一時的に保存するための変数
     var tempTitle:String!
@@ -40,8 +42,15 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // インジケータの設定
+        indicator.center = self.urlTableView.center// 表示位置
+        indicator.color = UIColor.green// 色の設定
+        indicator.hidesWhenStopped = true// アニメーション停止と同時に隠す設定
+        self.urlTableView.addSubview(indicator)// 画面に追加
+        self.urlTableView.bringSubview(toFront: indicator)// 最前面に移動
         
-        //ArticleInfo全削除
+        //Info全削除
         //deleteAllArticleInfo()
         //deleteAllSiteInfo()
         siteInfoList = readSiteInfo()
@@ -112,6 +121,7 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
         
         //登録したURLからRSSデータを取得.
         func getInfo(){
+            self.indicator.startAnimating()
             self.tempTitle = alert.textFields![0].text!
             self.tempURL = alert.textFields![1].text!
             //self.tempURL = "https://togamin.com/feed/"
@@ -125,7 +135,7 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
             }else{
                 //サイト情報をCoreDataに保存
-                writeSiteInfo(siteID:siteInfoList.count,siteTitle:self.tempTitle,siteURL:self.tempURL)
+                writeSiteInfo(siteID:siteInfoList.count,siteTitle:self.tempTitle,siteURL:self.tempURL,siteBool: false)
                 for i in 0..<self.items.count{
                     self.items[i].thumbImageData = self.getImageData(code: self.items[i].description)
                     
@@ -136,6 +146,7 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
                 siteInfoList = readSiteInfo()
                 self.urlTableView.reloadData()
             }
+            self.indicator.stopAnimating()
         }
     }
     

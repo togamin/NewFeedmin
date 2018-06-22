@@ -48,8 +48,8 @@ func readArticleInfo()->[articleInfo]{
     //ascendind:true 昇順、false 降順
     let sortDescripter = NSSortDescriptor(key: "updateDate", ascending: false)
     query.sortDescriptors = [sortDescripter]
-    //フェッチ件数を15件に制限する。
-    query.fetchLimit = 15
+    //フェッチ件数を20件に制限する。
+    query.fetchLimit = 20
     do{
         //データを一括取得
         let fetchResults = try! viewContext.fetch(query)
@@ -67,6 +67,91 @@ func readArticleInfo()->[articleInfo]{
     }
     return InfoList as! [articleInfo]
 }
+
+//siteBoolがtrueの記事のサイトIDのみ取得
+func getTrueSiteInfo()->[siteInfo]{
+    var InfoList:[siteInfo] = []
+    //AppDelegateを使う用意をしておく
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    //Entityを操作するためのオブジェクトを作成
+    let viewContext = appDelegate.persistentContainer.viewContext
+    //どのエンティティからdataを取得してくるかの設定
+    let query:NSFetchRequest<SiteInfo> = SiteInfo.fetchRequest()
+    let namePredicte = NSPredicate(format: "siteBool = true")
+    query.predicate = namePredicte
+    do{
+        //データを一括取得
+        let fetchResults = try! viewContext.fetch(query)
+        //データの取得
+        for result:AnyObject in fetchResults{
+            InfoList.append(siteInfo(siteID:result.value(forKey:"siteID")! as! Int,siteTitle:result.value(forKey:"siteTitle")! as! String,siteURL:result.value(forKey:"siteURL")! as! String,siteBool:result.value(forKey:"siteBool")! as! Bool))
+        }
+        for info in InfoList{
+            print("テスト:[getTrueSiteInfo]ID:\(info.siteID!),タイトル:\(info.siteTitle!)")
+        }
+    }catch{
+        print("error:readArticleInfo",error)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    return InfoList
+}
+
+
+//指定したIDのArticleのデータ読み込み
+func selectReadArticle(siteIDList:[Int])->[articleInfo]{
+    var InfoList:[articleInfo] = []
+    //AppDelegateを使う用意をしておく
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    //Entityを操作するためのオブジェクトを作成
+    let viewContext = appDelegate.persistentContainer.viewContext
+    //どのエンティティからdataを取得してくるかの設定
+    let query:NSFetchRequest<ArticleInfo> = ArticleInfo.fetchRequest()
+    var predicteList:[NSPredicate]! = []
+    for i in siteIDList{
+        //絞り込み検索
+        let namePredicte = NSPredicate(format: "%K = %d","siteID",i)
+        predicteList.append(namePredicte)
+    }
+    var predictAll = NSCompoundPredicate.init(orPredicateWithSubpredicates: predicteList)
+    query.predicate = predictAll
+    //ascendind:true 昇順、false 降順
+    let sortDescripter = NSSortDescriptor(key: "updateDate", ascending: false)
+    query.sortDescriptors = [sortDescripter]
+    //フェッチ件数を20件に制限する。
+    query.fetchLimit = 20
+    do{
+        //データを一括取得
+        let fetchResults = try! viewContext.fetch(query)
+        //データの取得
+        for result:AnyObject in fetchResults{
+            InfoList.append(articleInfo(siteID:result.value(forKey:"siteID")! as! Int,articleTitle:result.value(forKey:"articleTitle")! as! String,updateDate:result.value(forKey:"updateDate")! as! Date,articleURL:result.value(forKey:"articleURL")! as! String,thumbImageData:result.value(forKey:"thumbImageData")! as! NSData,fav:result.value(forKey:"fav")! as! Bool))
+        }
+        for info in InfoList{
+            print("テスト:[selectReadArticle]ID:\(info.siteID!),タイトル:\(info.articleTitle!),更新日時:\(info.updateDate!)")
+        }
+    }catch{
+        print("error:selectReadArticle",error)
+    }
+    return InfoList as! [articleInfo]
+}
+
+
+
+
+
+
+
 
 //データ全削除(ArticleInfo)
 func deleteAllArticleInfo(){
@@ -120,7 +205,7 @@ func deleteArticleInfo(siteID:Int){
 }
 
 //SiteInfoへのデータの書き込み
-func writeSiteInfo(siteID:Int,siteTitle:String,siteURL:String){
+func writeSiteInfo(siteID:Int,siteTitle:String,siteURL:String,siteBool:Bool){
     print("SiteInfoのCoreDataへの登録")
     //AppDelegateを使う用意をしておく
     let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -134,6 +219,7 @@ func writeSiteInfo(siteID:Int,siteTitle:String,siteURL:String){
     newRecode.setValue(siteID, forKey: "siteID")
     newRecode.setValue(siteTitle, forKey: "siteTitle")
     newRecode.setValue(siteURL, forKey: "siteURL")
+    newRecode.setValue(siteBool, forKey: "siteBool")
     do{
         //レコード(行)の即時保存
         try viewContext.save()
@@ -157,7 +243,8 @@ func readSiteInfo()->[siteInfo]{
         let fetchResults = try! viewContext.fetch(query)
         //データの取得
         for result:AnyObject in fetchResults{
-            InfoList.append(siteInfo(siteID:result.value(forKey:"siteID")! as! Int,siteTitle:result.value(forKey:"siteTitle")! as! String,siteURL:result.value(forKey:"siteURL")! as! String))
+           
+        InfoList.append(siteInfo(siteID:result.value(forKey:"siteID")! as! Int,siteTitle:result.value(forKey:"siteTitle")! as! String,siteURL:result.value(forKey:"siteURL")! as! String,siteBool:result.value(forKey:"siteBool")! as! Bool))
         }
         for info in InfoList{
             print("[readSiteInfo]ID:\(info.siteID!),タイトル\(info.siteTitle!),URL\(info.siteURL!)")
@@ -360,9 +447,33 @@ func getSameArticle(articleURL:String)->[articleInfo]{
 }
 
 
-
-
-
+//siteInfoのBoolを更新
+func updateSiteBool(siteURL:String,siteBool:Bool){
+    //AppDelegateを使う用意をしておく
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    //Entityを操作するためのオブジェクトを作成
+    let viewContext = appDelegate.persistentContainer.viewContext
+    //どのエンティティからdataを取得してくるかの設定
+    let query:NSFetchRequest<SiteInfo> = SiteInfo.fetchRequest()
+    let namePredicte = NSPredicate(format: "siteURL = %@",siteURL)
+    query.predicate = namePredicte
+    do{
+        //絞り込んだデータを一括取得
+        let fetchResults = try! viewContext.fetch(query)
+        for result in fetchResults{
+            result.setValue(siteBool,forKey:"siteBool")
+            //変更した記事のタイトルと変更後の状態の表示
+            print("[updateSiteBool]\(result.value(forKey:"siteTitle")! as! String)","\(result.value(forKey:"siteBool")!)")
+            do{
+                //レコード(行)の即時保存
+                try viewContext.save()
+            }catch{
+            }
+        }
+    }catch{
+        print("error:updateSiteBool",error)
+    }
+}
 
 
 

@@ -30,6 +30,9 @@
 		B700E9C120DCCD580084FFD6 /* menuIco.png in Resources */ = {isa = PBXBuildFile; fileRef = B700E9C020DCCD570084FFD6 /* menuIco.png */; };
 		B700E9C320DCD6200084FFD6 /* menuIco38.png in Resources */ = {isa = PBXBuildFile; fileRef = B700E9C220DCD61F0084FFD6 /* menuIco38.png */; };
 		B700E9C520DCD7290084FFD6 /* menuIco60.png in Resources */ = {isa = PBXBuildFile; fileRef = B700E9C420DCD7290084FFD6 /* menuIco60.png */; };
+		B700E9C920DD025F0084FFD6 /* SelectSiteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700E9C820DD025F0084FFD6 /* SelectSiteTableViewController.swift */; };
+		B700E9CB20DD1DE60084FFD6 /* selectSiteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B700E9CA20DD1DE60084FFD6 /* selectSiteCell.xib */; };
+		B700E9CD20DD1FA90084FFD6 /* selectSiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700E9CC20DD1FA90084FFD6 /* selectSiteCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +61,9 @@
 		B700E9C020DCCD570084FFD6 /* menuIco.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuIco.png; sourceTree = "<group>"; };
 		B700E9C220DCD61F0084FFD6 /* menuIco38.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuIco38.png; sourceTree = "<group>"; };
 		B700E9C420DCD7290084FFD6 /* menuIco60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuIco60.png; sourceTree = "<group>"; };
+		B700E9C820DD025F0084FFD6 /* SelectSiteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSiteTableViewController.swift; sourceTree = "<group>"; };
+		B700E9CA20DD1DE60084FFD6 /* selectSiteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = selectSiteCell.xib; sourceTree = "<group>"; };
+		B700E9CC20DD1FA90084FFD6 /* selectSiteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectSiteCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,9 @@
 		B700E98320DB5BBD0084FFD6 /* Feedmin */ = {
 			isa = PBXGroup;
 			children = (
+				B700E9CA20DD1DE60084FFD6 /* selectSiteCell.xib */,
+				B700E9CC20DD1FA90084FFD6 /* selectSiteCell.swift */,
+				B700E9C820DD025F0084FFD6 /* SelectSiteTableViewController.swift */,
 				B700E9B420DBC00E0084FFD6 /* timeLineTableViewController.swift */,
 				B700E98820DB5BBD0084FFD6 /* Main.storyboard */,
 				B700E9BE20DBE4130084FFD6 /* favArticleViewController.swift */,
@@ -197,6 +206,7 @@
 				B700E9A620DBB3E10084FFD6 /* mainCellView.xib in Resources */,
 				B700E9C520DCD7290084FFD6 /* menuIco60.png in Resources */,
 				B700E98F20DB5BC70084FFD6 /* Assets.xcassets in Resources */,
+				B700E9CB20DD1DE60084FFD6 /* selectSiteCell.xib in Resources */,
 				B700E98A20DB5BBD0084FFD6 /* Main.storyboard in Resources */,
 				B700E9C120DCCD580084FFD6 /* menuIco.png in Resources */,
 				B700E9AB20DBB4D40084FFD6 /* default01.png in Resources */,
@@ -212,6 +222,7 @@
 			files = (
 				B700E99E20DB6D620084FFD6 /* seturlTableViewController.swift in Sources */,
 				B700E9A020DB6FB00084FFD6 /* InfoItem.swift in Sources */,
+				B700E9CD20DD1FA90084FFD6 /* selectSiteCell.swift in Sources */,
 				B700E9B920DBD0E40084FFD6 /* articleViewController.swift in Sources */,
 				B700E9A420DB87480084FFD6 /* coreData.swift in Sources */,
 				B700E99C20DB62770084FFD6 /* SettingTableTableViewController.swift in Sources */,
@@ -221,6 +232,7 @@
 				B700E98520DB5BBD0084FFD6 /* AppDelegate.swift in Sources */,
 				B700E9BF20DBE4130084FFD6 /* favArticleViewController.swift in Sources */,
 				B700E98D20DB5BBD0084FFD6 /* Feedmin.xcdatamodeld in Sources */,
+				B700E9C920DD025F0084FFD6 /* SelectSiteTableViewController.swift in Sources */,
 				B700E9B520DBC00E0084FFD6 /* timeLineTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

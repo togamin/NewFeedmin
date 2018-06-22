@@ -30,11 +30,13 @@ struct siteInfo{
     var siteID:Int!
     var siteTitle:String!
     var siteURL:String!
+    var siteBool:Bool!
     
-    init(siteID: Int, siteTitle: String,siteURL:String) {
+    init(siteID: Int, siteTitle: String,siteURL:String,siteBool:Bool) {
         self.siteID = siteID
         self.siteTitle = siteTitle
         self.siteURL = siteURL
+        self.siteBool = siteBool
     }
 }
 //CoreDataからの記事情報を格納するための構造体
