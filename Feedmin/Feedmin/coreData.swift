@@ -336,6 +336,30 @@ func readFav()->[articleInfo]{
     return InfoList as [articleInfo]
 }
 
+//一致するURLの記事を取得
+func getSameArticle(articleURL:String)->[articleInfo]{
+    var InfoList:[articleInfo] = []
+    //AppDelegateを使う用意をしておく
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    //Entityを操作するためのオブジェクトを作成
+    let viewContext = appDelegate.persistentContainer.viewContext
+    //どのエンティティからdataを取得してくるかの設定
+    let query:NSFetchRequest<ArticleInfo> = ArticleInfo.fetchRequest()
+    let namePredicte = NSPredicate(format: "articleURL = %@",articleURL)
+    query.predicate = namePredicte
+    do{
+        //絞り込んだデータを一括取得
+        let fetchResults = try! viewContext.fetch(query)
+        for result in fetchResults{
+            InfoList.append(articleInfo(siteID:result.value(forKey:"siteID")! as! Int,articleTitle:result.value(forKey:"articleTitle")! as! String,updateDate:result.value(forKey:"updateDate")! as! Date,articleURL:result.value(forKey:"articleURL")! as! String,thumbImageData:result.value(forKey:"thumbImageData")! as! NSData,fav:result.value(forKey:"fav")! as! Bool))
+        }
+    }catch{
+        print("error:getSameArticle",error)
+    }
+    return InfoList as [articleInfo]
+}
+
+
 
 
 
