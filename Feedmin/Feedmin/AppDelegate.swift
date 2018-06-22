@@ -18,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // このアプリで通知（Local Notification）を使用する許可を
+        // ユーザーに求めるためのコード
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(types: [UIUserNotificationType.sound,UIUserNotificationType.alert,UIUserNotificationType.badge], categories: nil))
+        
         //ナビゲーションの背景色変更
         UINavigationBar.appearance().barTintColor = UIColor(red: 0, green: 0.02, blue: 0.06, alpha: 0.9)
         //ナビゲーションタイトル色変更
