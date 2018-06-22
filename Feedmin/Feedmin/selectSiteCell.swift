@@ -20,8 +20,10 @@ class selectSiteCell:UITableViewCell{
     @IBAction func siteBoolA(_ sender: UISwitch) {
         if sender.isOn{
             updateSiteBool(siteURL:siteURL,siteBool:true)
+            print("テスト:trueに変更しました")
         }else{
             updateSiteBool(siteURL:siteURL,siteBool:false)
+            print("テスト:falseに変更しました")
         }
     }
 }

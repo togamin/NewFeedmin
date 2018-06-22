@@ -76,6 +76,7 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
             self.rssUpdate()
             //site情報読み込み.siteBoolがtrueのものだけ
             self.siteInfoList = getTrueSiteInfo()
+            self.siteTrueIDList = []
             for i in self.siteInfoList{
                 self.siteTrueIDList.append(i.siteID)
             }
