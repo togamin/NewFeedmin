@@ -55,3 +55,19 @@ struct articleInfo{
         self.fav = fav
     }
 }
+
+//通知に関する関数
+func notification(title:String,message:String){
+    // ローカル通知の設定
+    let notification : UILocalNotification = UILocalNotification()
+    // タイトル
+    notification.alertTitle = title
+    // 通知メッセージ
+    notification.alertBody = message
+    // Timezoneの設定
+    notification.timeZone = TimeZone.current
+    // 5秒後に通知を設定
+    notification.fireDate = Date(timeIntervalSinceNow: 5)
+    // Notificationを表示する
+    UIApplication.shared.scheduleLocalNotification(notification)
+}

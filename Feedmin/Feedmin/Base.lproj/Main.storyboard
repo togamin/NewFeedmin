@@ -303,6 +303,9 @@
                     <navigationItem key="navigationItem" title="TimeLine" id="kxy-Fk-LOh">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="menuIco60.png" id="A0j-83-dtr">
                             <inset key="imageInsets" minX="0.0" minY="2" maxX="-22" maxY="-7"/>
+                            <connections>
+                                <action selector="modalBtn:" destination="yjT-GW-poh" id="r7a-af-Ttq"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

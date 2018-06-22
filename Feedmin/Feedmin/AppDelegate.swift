@@ -10,10 +10,22 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,XMLParserDelegate {
 
     var window: UIWindow?
-
+    var siteInfoList:[siteInfo]!
+    var articleInfoList:[articleInfo]!
+    
+    //RSS解析用
+    var parser:XMLParser!//parser:構文解析
+    var items:[Item] = []//複数の記事を格納するための配列
+    var item:Item?
+    var currentString = ""
+    //trueになった後のタグは解析しない
+    var endFunc:Bool = false
+    
+    //マルチスレッド用
+    let queue:DispatchQueue = DispatchQueue(label: "com.togamin.queue")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -30,8 +42,154 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //ナビゲーションアイテムの色を変更
         UINavigationBar.appearance().tintColor = .white
         
+        application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        
         return true
     }
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        //バックグラウンドで実行する処理
+        notification(title:"テスト",message:"テスト")
+        self.backGroundFetchRssUpdate()
+        
+        //適切なものを渡します → 新規データ: .newData 失敗: .failed データなし: .noData
+        completionHandler(.newData)
+    }
+//バックグラウンドで定期的に呼び出す関数.RSSデータを解析し、更新記事があれば通知.--------------
+    func backGroundFetchRssUpdate(){
+        self.siteInfoList = readSiteInfo()
+        self.articleInfoList = readArticleInfo()
+        for siteInfo in siteInfoList{
+            startDownload(siteURL:siteInfo.siteURL)
+            for newArticleInfo in self.items{
+                notification(title:siteInfo.siteTitle,message:newArticleInfo.title)
+                newArticleInfo.thumbImageData = self.getImageData(code: newArticleInfo.description)
+                writeArticleInfo(siteID:siteInfo.siteID,articleTitle:newArticleInfo.title,updateDate:newArticleInfo.pubDate!,articleURL:newArticleInfo.link,thumbImageData:newArticleInfo.thumbImageData,fav:false)
+            }
+            self.endFunc = false
+        }
+    }
+    func startDownload(siteURL:String){
+        print("テスト:バックグラウンドフェッチ\(siteURL)の更新開始")
+        //古いデータと記事が重複しないように、空にする
+        self.items = []
+        //URLがあれば解析.
+        if let url = URL(
+            string: siteURL){
+            if let parser = XMLParser(contentsOf:url){//XMLparserのインスタンス作成。
+                self.parser = parser
+                self.parser.delegate = self
+                self.parser.parse()
+            }
+        }
+    }
+    
+    //開始タグが見つかるたびに毎回呼び出される関数
+    func parser(_ parser: XMLParser,didStartElement elementName:String,namespaceURI:String?,qualifiedName qName:String?,attributes attributeDict:[String:String]) {
+        if self.endFunc == false{
+            self.currentString = ""
+            //print(elementName)//タグすべてプリント
+            if elementName == "item"{
+                self.item = Item()//タグ名がitemのときのみ、記事を入れる箱を作成
+            }
+        }
+    }
+    
+    //タグで囲まれた内容が見つかるたびに呼び出されるメソッド。
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        if self.endFunc == false{
+            self.currentString = string
+        }
+    }
+    
+    //終了タグが見つかるたびに呼び出されるメソッド。
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        if self.endFunc == false{
+            switch elementName {
+            case "title":
+                self.item?.title = currentString
+            case "link":
+                self.item?.link = currentString
+                if getSameArticle(articleURL: currentString).count != 0{
+                    self.endFunc = true
+                }
+            case "pubDate":
+                self.item?.pubDate = self.pubDate(pubDate: currentString)
+            case "description":
+                self.item?.description = currentString
+            case "item": self.items.append(self.item!)
+            default :break
+            }
+        }
+    }
+    
+    //pubDataの情報を扱いやすいデータに変換.
+    //[Sun, 17 Jun 2018 12:00:22 +0000]を
+    //[2018-06-17 12:00:22 +0000]に変換.
+    func pubDate(pubDate:String)->Date?{
+        //print("pubDate0:\(pubDate)")
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale?
+        dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss ZZZZ"
+        let getDate = dateFormatter.date(from: pubDate)
+        //print("pubDate1:\(getDate!)")
+        return getDate
+    }
+    
+    //textから<img>タグのURLを抜きだし、画像をNSDataとして出力.
+    func getImageData(code:String)->NSData!{
+        
+        var result:UIImage!
+        var thumbImageURL:String!
+        var thumbImageData:NSData!
+        
+        let pattern1 = "<img(.*)/>"
+        let pattern2 = "src=\"(.*?)\""
+        //(.*)の部分を抜き出す.
+        
+        let str1:String = code
+        //print(str1)
+        
+        let regex1 = try! NSRegularExpression(pattern: pattern1, options: .caseInsensitive)
+        let regex2 = try! NSRegularExpression(pattern: pattern2, options: .caseInsensitive)
+        
+        //NSRegularExpression:挟まれた文字を抜き出す。
+        //caseInsensitive:多文字と小文字を区別しない。
+        //try!:エラーが発生した場合にクラッシュする。
+        
+        let matches1 = regex1.matches(in: str1, options: [], range: NSMakeRange(0, str1.characters.count))
+        
+        var str2:String!
+        
+        matches1.forEach { (match) -> () in
+            str2 = (str1 as NSString).substring(with: match.range(at: 1))
+        }
+        //str2には[<img]~[/>]までの文字が入る.なければ[nil]
+        //print("str2:\(str2)")
+        
+        if str2 != nil{
+            //imgタグの中のURLの部分のみを取得
+            let matches2 = regex2.matches(in: str2!, options: [], range: NSMakeRange(0, str2.characters.count))
+            
+            matches2.forEach { (match) -> () in
+                thumbImageURL = (str2 as NSString).substring(with: match.range(at: 1))
+            }
+            let url = NSURL(string:thumbImageURL!)
+            thumbImageData = NSData(contentsOf: url! as URL)
+        }else if str2 == nil{
+            thumbImageData = UIImageJPEGRepresentation(UIImage(named:"default01.png")!, 1.0)! as NSData//圧縮率
+        }
+        
+        //print("画像のURL(getImageURL):\(thumbImageURL!)")
+        return thumbImageData
+    }
+    
+    //解析後myTableViewをリロードする.
+    func parserDidEndDocument(_ parser: XMLParser){
+        print("テスト:RSS解析後のバックグランド更新完了")
+    }
+    
+    
+//-------------------------------------------------------------------------------
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
