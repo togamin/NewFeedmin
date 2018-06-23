@@ -229,7 +229,7 @@
             </objects>
             <point key="canvasLocation" x="804" y="691"/>
         </scene>
-        <!--Fav Article View Controller-->
+        <!--Title-->
         <scene sceneID="ezC-tF-2Gm">
             <objects>
                 <viewController id="Ya9-sq-Jft" customClass="favArticleViewController" customModule="Feedmin" customModuleProvider="target" sceneMemberID="viewController">
@@ -246,14 +246,17 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="heJ-z7-pIW">
-                                <rect key="frame" x="254" y="545" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="59s-hr-cRz"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="S8S-8o-AII">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="3IH-Q8-a5n">
+                            <connections>
+                                <action selector="favArticleShare:" destination="Ya9-sq-Jft" id="A21-fs-2ie"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="favWebView" destination="UN9-y1-cY9" id="QsT-Kt-LUI"/>
                     </connections>
@@ -353,7 +356,7 @@
             </objects>
             <point key="canvasLocation" x="804" y="13"/>
         </scene>
-        <!--Article View Controller-->
+        <!--Title-->
         <scene sceneID="e1o-qM-Owu">
             <objects>
                 <viewController id="rcR-pd-4rT" customClass="articleViewController" customModule="Feedmin" customModuleProvider="target" sceneMemberID="viewController">
@@ -374,6 +377,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="JBw-AD-Cwb"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="Y5V-aY-IgO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="UsW-1H-VYE">
+                            <connections>
+                                <action selector="articleShare:" destination="rcR-pd-4rT" id="hQq-iU-S7D"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="articleWebView" destination="j7D-AG-x6H" id="epw-Xw-peH"/>
                     </connections>

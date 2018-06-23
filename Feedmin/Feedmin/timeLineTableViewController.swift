@@ -89,7 +89,6 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
         }
     }
 
-
     //行数を決める
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

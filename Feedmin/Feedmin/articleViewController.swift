@@ -23,6 +23,12 @@ class articleViewController: UIViewController {
         
     }
 
+    @IBAction func articleShare(_ sender: UIBarButtonItem) {
+        let controller = UIActivityViewController(activityItems: [URL(string:self.link)], applicationActivities:nil)
+        self.present(controller, animated: true,completion:nil)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
