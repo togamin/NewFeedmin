@@ -246,6 +246,10 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Qqu-UF-NNg">
+                                <rect key="frame" x="0.0" y="64" width="375" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="59s-hr-cRz"/>
@@ -258,6 +262,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="favProgressView" destination="Qqu-UF-NNg" id="58Q-Tk-HYQ"/>
                         <outlet property="favWebView" destination="UN9-y1-cY9" id="QsT-Kt-LUI"/>
                     </connections>
                 </viewController>
@@ -373,6 +378,10 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kVM-ET-tMc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="JBw-AD-Cwb"/>
@@ -386,6 +395,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="articleWebView" destination="j7D-AG-x6H" id="epw-Xw-peH"/>
+                        <outlet property="progressView" destination="kVM-ET-tMc" id="6Tg-QT-NOB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z45-La-o7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
