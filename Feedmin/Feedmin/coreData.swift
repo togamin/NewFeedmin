@@ -48,8 +48,8 @@ func readArticleInfo()->[articleInfo]{
     //ascendind:true 昇順、false 降順
     let sortDescripter = NSSortDescriptor(key: "updateDate", ascending: false)
     query.sortDescriptors = [sortDescripter]
-    //フェッチ件数を20件に制限する。
-    query.fetchLimit = 20
+    //フェッチ件数を[articleNum]件に制限する。
+    query.fetchLimit = articleNum
     do{
         //データを一括取得
         let fetchResults = try! viewContext.fetch(query)
@@ -128,8 +128,8 @@ func selectReadArticle(siteIDList:[Int])->[articleInfo]{
     //ascendind:true 昇順、false 降順
     let sortDescripter = NSSortDescriptor(key: "updateDate", ascending: false)
     query.sortDescriptors = [sortDescripter]
-    //フェッチ件数を20件に制限する。
-    query.fetchLimit = 20
+    //フェッチ件数を[articleNum]件に制限する。
+    query.fetchLimit = articleNum
     do{
         //データを一括取得
         let fetchResults = try! viewContext.fetch(query)

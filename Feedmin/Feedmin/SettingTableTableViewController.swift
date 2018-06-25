@@ -30,7 +30,7 @@ class SettingTableTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: // 「設定」のセルの数
-            return 2
+            return 3
         case 1: // 「通知」のセルの数
             return 1
         case 2: // 「その他」のセルの数
