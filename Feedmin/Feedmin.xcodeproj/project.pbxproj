@@ -33,6 +33,13 @@
 		B700E9C920DD025F0084FFD6 /* SelectSiteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700E9C820DD025F0084FFD6 /* SelectSiteTableViewController.swift */; };
 		B700E9CB20DD1DE60084FFD6 /* selectSiteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B700E9CA20DD1DE60084FFD6 /* selectSiteCell.xib */; };
 		B700E9CD20DD1FA90084FFD6 /* selectSiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700E9CC20DD1FA90084FFD6 /* selectSiteCell.swift */; };
+		B7486B8520E0BC0800B9E27D /* animalCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7486B8420E0BC0800B9E27D /* animalCollectionViewController.swift */; };
+		B7486B8720E0BDF700B9E27D /* animal02.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486B8620E0BDF700B9E27D /* animal02.png */; };
+		B7486B8B20E0D46D00B9E27D /* animal03.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486B8A20E0D46D00B9E27D /* animal03.png */; };
+		B7486B8D20E0D4C900B9E27D /* animal04.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486B8C20E0D4C900B9E27D /* animal04.png */; };
+		B7486B8F20E0D56500B9E27D /* animal05.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486B8E20E0D56500B9E27D /* animal05.png */; };
+		B7486B9120E0D65000B9E27D /* animal06.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486B9020E0D65000B9E27D /* animal06.png */; };
+		B7486B9320E0D6D900B9E27D /* animal07.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486B9220E0D6D900B9E27D /* animal07.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +71,13 @@
 		B700E9C820DD025F0084FFD6 /* SelectSiteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSiteTableViewController.swift; sourceTree = "<group>"; };
 		B700E9CA20DD1DE60084FFD6 /* selectSiteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = selectSiteCell.xib; sourceTree = "<group>"; };
 		B700E9CC20DD1FA90084FFD6 /* selectSiteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectSiteCell.swift; sourceTree = "<group>"; };
+		B7486B8420E0BC0800B9E27D /* animalCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = animalCollectionViewController.swift; sourceTree = "<group>"; };
+		B7486B8620E0BDF700B9E27D /* animal02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal02.png; sourceTree = "<group>"; };
+		B7486B8A20E0D46D00B9E27D /* animal03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal03.png; sourceTree = "<group>"; };
+		B7486B8C20E0D4C900B9E27D /* animal04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal04.png; sourceTree = "<group>"; };
+		B7486B8E20E0D56500B9E27D /* animal05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal05.png; sourceTree = "<group>"; };
+		B7486B9020E0D65000B9E27D /* animal06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal06.png; sourceTree = "<group>"; };
+		B7486B9220E0D6D900B9E27D /* animal07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal07.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +111,7 @@
 		B700E98320DB5BBD0084FFD6 /* Feedmin */ = {
 			isa = PBXGroup;
 			children = (
+				B7486B8420E0BC0800B9E27D /* animalCollectionViewController.swift */,
 				B700E9CA20DD1DE60084FFD6 /* selectSiteCell.xib */,
 				B700E9CC20DD1FA90084FFD6 /* selectSiteCell.swift */,
 				B700E9C820DD025F0084FFD6 /* SelectSiteTableViewController.swift */,
@@ -131,6 +146,12 @@
 				B700E9AE20DBBB750084FFD6 /* fav02.png */,
 				B700E9AA20DBB4D40084FFD6 /* default01.png */,
 				B700E9B620DBC1A60084FFD6 /* animal01.png */,
+				B7486B8620E0BDF700B9E27D /* animal02.png */,
+				B7486B8A20E0D46D00B9E27D /* animal03.png */,
+				B7486B8C20E0D4C900B9E27D /* animal04.png */,
+				B7486B8E20E0D56500B9E27D /* animal05.png */,
+				B7486B9020E0D65000B9E27D /* animal06.png */,
+				B7486B9220E0D6D900B9E27D /* animal07.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -201,14 +222,20 @@
 				B700E99220DB5BC70084FFD6 /* LaunchScreen.storyboard in Resources */,
 				B700E9B120DBBB7D0084FFD6 /* fav01.png in Resources */,
 				B700E9B720DBC1A60084FFD6 /* animal01.png in Resources */,
+				B7486B8D20E0D4C900B9E27D /* animal04.png in Resources */,
 				B700E9C320DCD6200084FFD6 /* menuIco38.png in Resources */,
 				B700E9AF20DBBB750084FFD6 /* fav02.png in Resources */,
+				B7486B9320E0D6D900B9E27D /* animal07.png in Resources */,
+				B7486B8F20E0D56500B9E27D /* animal05.png in Resources */,
 				B700E9A620DBB3E10084FFD6 /* mainCellView.xib in Resources */,
+				B7486B8B20E0D46D00B9E27D /* animal03.png in Resources */,
 				B700E9C520DCD7290084FFD6 /* menuIco60.png in Resources */,
 				B700E98F20DB5BC70084FFD6 /* Assets.xcassets in Resources */,
 				B700E9CB20DD1DE60084FFD6 /* selectSiteCell.xib in Resources */,
 				B700E98A20DB5BBD0084FFD6 /* Main.storyboard in Resources */,
+				B7486B8720E0BDF700B9E27D /* animal02.png in Resources */,
 				B700E9C120DCCD580084FFD6 /* menuIco.png in Resources */,
+				B7486B9120E0D65000B9E27D /* animal06.png in Resources */,
 				B700E9AB20DBB4D40084FFD6 /* default01.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,6 +254,7 @@
 				B700E9A420DB87480084FFD6 /* coreData.swift in Sources */,
 				B700E99C20DB62770084FFD6 /* SettingTableTableViewController.swift in Sources */,
 				B700E9A820DBB45A0084FFD6 /* mainCellView.swift in Sources */,
+				B7486B8520E0BC0800B9E27D /* animalCollectionViewController.swift in Sources */,
 				B700E9BD20DBDC480084FFD6 /* favTableViewController.swift in Sources */,
 				B700E9BB20DBD8250084FFD6 /* myTabViewController.swift in Sources */,
 				B700E98520DB5BBD0084FFD6 /* AppDelegate.swift in Sources */,

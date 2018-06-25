@@ -26,9 +26,9 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
     //TableView
     @IBOutlet var urlTableView: UITableView!
     
-    // インジケータのインスタンス
-    let indicator = UIActivityIndicatorView()
-    
+    //インジケータ
+    var indicator: UIActivityIndicatorView!
+
     //一時的に保存するための変数
     var tempTitle:String!
     var tempURL:String!
@@ -43,12 +43,17 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // インジケータの設定
-        indicator.center = self.urlTableView.center// 表示位置
-        indicator.color = UIColor.green// 色の設定
-        indicator.hidesWhenStopped = true// アニメーション停止と同時に隠す設定
-        self.urlTableView.addSubview(indicator)// 画面に追加
-        self.urlTableView.bringSubview(toFront: indicator)// 最前面に移動
+        // インジケータの設定.表示されない.
+        self.indicator = UIActivityIndicatorView()
+        self.indicator.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        self.indicator.center = self.urlTableView.center// 表示位置
+        self.indicator.color = UIColor.green// 色の設定
+        self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.indicator.hidesWhenStopped = true// アニメーション停止と同時に隠す設定
+        urlTableView.addSubview(self.indicator)// 画面に追加
+        urlTableView.bringSubview(toFront: self.indicator)// 最前面に移動
+        //self.indicator.stopAnimating()//self.indicator.startAnimating()
+        
         
         //Info全削除
         //deleteAllArticleInfo()
@@ -135,7 +140,7 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
             }else{
                 //サイト情報をCoreDataに保存
-                writeSiteInfo(siteID:siteInfoList.count,siteTitle:self.tempTitle,siteURL:self.tempURL,siteBool: false)
+                writeSiteInfo(siteID:siteInfoList.count,siteTitle:self.tempTitle,siteURL:self.tempURL,siteBool: true)
                 for i in 0..<self.items.count{
                     self.items[i].thumbImageData = self.getImageData(code: self.items[i].description)
                     

@@ -18,6 +18,7 @@ class mainCellView:UITableViewCell{
     var cellLink:String!
     
     @IBOutlet weak var animalImage: UIImageView!
+    
     var currentLike:Bool!
     
     @IBAction func favButtonA(_ sender: UIButton) {

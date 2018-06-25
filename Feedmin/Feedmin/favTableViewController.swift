@@ -73,6 +73,7 @@ class favTableViewController: UITableViewController {
         }else{
             cell.favButton.setImage(UIImage(named:"fav02"), for: .normal)
         }
+        cell.animalImage.image = animalList[animalNum]
 
         return cell
     }

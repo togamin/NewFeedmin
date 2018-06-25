@@ -112,6 +112,9 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
         }else{
             cell.favButton.setImage(UIImage(named:"fav02"), for: .normal)
         }
+        print(animalNum)
+        print(animalList[animalNum])
+        cell.animalImage.image = animalList[animalNum]
         return cell
     }
     
