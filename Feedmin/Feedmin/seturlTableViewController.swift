@@ -215,6 +215,14 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
             self.item?.link = currentString
         case "pubDate":
             self.item?.pubDate = self.pubDate(pubDate: currentString)
+        case "dc:date":
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale?
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            let getDate = dateFormatter.date(from: currentString)
+            self.item?.pubDate = getDate
+            
         case "description":
             self.item?.description = currentString
         case "item": self.items.append(self.item!)

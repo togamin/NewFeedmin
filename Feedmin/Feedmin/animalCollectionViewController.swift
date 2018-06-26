@@ -34,6 +34,7 @@ class animalCollectionViewController: UICollectionViewController {
     //データを返すメソッド
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! animalViewCell
+        cell.layer.cornerRadius = 15
         cell.animalImageView.image = animalList[indexPath.row]
         if animalNum == indexPath.row{
             cell.backgroundColor = UIColor(red: 0, green: 0.02, blue: 0.5, alpha: 0.4)

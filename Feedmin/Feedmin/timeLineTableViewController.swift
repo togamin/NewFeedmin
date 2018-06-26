@@ -161,6 +161,7 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
                 
                 newArticleInfo.thumbImageData = self.getImageData(code: newArticleInfo.description)
                 
+               print(newArticleInfo.pubDate)
                 writeArticleInfo(siteID:siteInfo.siteID,articleTitle:newArticleInfo.title,updateDate:newArticleInfo.pubDate!,articleURL:newArticleInfo.link,thumbImageData:newArticleInfo.thumbImageData,fav:false)
             }
             self.endFunc = false
@@ -214,6 +215,12 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
                 }
             case "pubDate":
                 self.item?.pubDate = self.pubDate(pubDate: currentString)
+            case "dc:date":
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale?
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                let getDate = dateFormatter.date(from: currentString)
+                self.item?.pubDate = getDate
             case "description":
                 self.item?.description = currentString
             case "item": self.items.append(self.item!)
