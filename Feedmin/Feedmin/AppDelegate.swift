@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMLParserDelegate {
             startDownload(siteURL:siteInfo.siteURL)
             for newArticleInfo in self.items{
                 notification(title:siteInfo.siteTitle,message:newArticleInfo.title)
-                newArticleInfo.thumbImageData = self.getImageData(code: newArticleInfo.description)
+                newArticleInfo.thumbImageData = getImageData(code: newArticleInfo.description)
                 writeArticleInfo(siteID:siteInfo.siteID,articleTitle:newArticleInfo.title,updateDate:newArticleInfo.pubDate!,articleURL:newArticleInfo.link,thumbImageData:newArticleInfo.thumbImageData,fav:false)
             }
             self.endFunc = false
@@ -113,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMLParserDelegate {
                     self.endFunc = true
                 }
             case "pubDate":
-                self.item?.pubDate = self.pubDate(pubDate: currentString)
+                self.item?.pubDate = pubDate(pubDate: currentString)
             case "dc:date":
                 let dateFormatter = DateFormatter()
                 dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale?
@@ -127,68 +127,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMLParserDelegate {
             }
         }
     }
-    
-    //pubDataの情報を扱いやすいデータに変換.
-    //[Sun, 17 Jun 2018 12:00:22 +0000]を
-    //[2018-06-17 12:00:22 +0000]に変換.
-    func pubDate(pubDate:String)->Date?{
-        //print("pubDate0:\(pubDate)")
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale?
-        dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss ZZZZ"
-        let getDate = dateFormatter.date(from: pubDate)
-        //print("pubDate1:\(getDate!)")
-        return getDate
-    }
-    
-    //textから<img>タグのURLを抜きだし、画像をNSDataとして出力.
-    func getImageData(code:String)->NSData!{
-        
-        var result:UIImage!
-        var thumbImageURL:String!
-        var thumbImageData:NSData!
-        
-        let pattern1 = "<img(.*)/>"
-        let pattern2 = "src=\"(.*?)\""
-        //(.*)の部分を抜き出す.
-        
-        let str1:String = code
-        //print(str1)
-        
-        let regex1 = try! NSRegularExpression(pattern: pattern1, options: .caseInsensitive)
-        let regex2 = try! NSRegularExpression(pattern: pattern2, options: .caseInsensitive)
-        
-        //NSRegularExpression:挟まれた文字を抜き出す。
-        //caseInsensitive:多文字と小文字を区別しない。
-        //try!:エラーが発生した場合にクラッシュする。
-        
-        let matches1 = regex1.matches(in: str1, options: [], range: NSMakeRange(0, str1.characters.count))
-        
-        var str2:String!
-        
-        matches1.forEach { (match) -> () in
-            str2 = (str1 as NSString).substring(with: match.range(at: 1))
-        }
-        //str2には[<img]~[/>]までの文字が入る.なければ[nil]
-        //print("str2:\(str2)")
-        
-        if str2 != nil{
-            //imgタグの中のURLの部分のみを取得
-            let matches2 = regex2.matches(in: str2!, options: [], range: NSMakeRange(0, str2.characters.count))
-            
-            matches2.forEach { (match) -> () in
-                thumbImageURL = (str2 as NSString).substring(with: match.range(at: 1))
-            }
-            let url = NSURL(string:thumbImageURL!)
-            thumbImageData = NSData(contentsOf: url! as URL)
-        }else if str2 == nil{
-            thumbImageData = UIImageJPEGRepresentation(UIImage(named:"default01.png")!, 1.0)! as NSData//圧縮率
-        }
-        
-        //print("画像のURL(getImageURL):\(thumbImageURL!)")
-        return thumbImageData
-    }
-    
     //解析後myTableViewをリロードする.
     func parserDidEndDocument(_ parser: XMLParser){
         print("テスト:RSS解析後のバックグランド更新完了")
