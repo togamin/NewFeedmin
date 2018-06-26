@@ -40,10 +40,12 @@
                         <action selector="favButtonA:" destination="iN0-l3-epB" eventType="touchUpInside" id="zZp-J3-5J3"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bvh-im-mzQ">
-                    <rect key="frame" x="8" y="8" width="130" height="23"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bvh-im-mzQ">
+                    <rect key="frame" x="8" y="8" width="128" height="18"/>
                     <color key="backgroundColor" red="0.0031218486359209587" green="0.045935083393593319" blue="0.23725015862944165" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="108" id="7Dw-io-Av3"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -57,6 +59,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Bvh-im-mzQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="0Nt-8C-z7N"/>
                 <constraint firstItem="wWr-at-ZiE" firstAttribute="leading" secondItem="H0R-U5-dZ3" secondAttribute="trailing" constant="-10" id="3g4-c3-Ocp"/>
                 <constraint firstItem="H0R-U5-dZ3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="CP5-Sh-qDR"/>
                 <constraint firstItem="57C-MQ-gfC" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="GIe-zU-l7R"/>
@@ -70,6 +73,7 @@
                 <constraint firstItem="Tyl-Ys-42n" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="iEf-fO-2eX"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="57C-MQ-gfC" secondAttribute="trailing" constant="8" id="n1a-6x-mnJ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Tyl-Ys-42n" secondAttribute="trailing" constant="8" id="qWV-FD-PXJ"/>
+                <constraint firstItem="Bvh-im-mzQ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="xrv-PU-1PX"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

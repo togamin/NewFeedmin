@@ -47,7 +47,7 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
         self.indicator = UIActivityIndicatorView()
         self.indicator.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         self.indicator.center = self.urlTableView.center// 表示位置
-        self.indicator.color = UIColor.green// 色の設定
+        //self.indicator.color = UIColor.green// 色の設定
         self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         self.indicator.hidesWhenStopped = true// アニメーション停止と同時に隠す設定
         urlTableView.addSubview(self.indicator)// 画面に追加
@@ -123,7 +123,8 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
         alert.view.layer.cornerRadius = 25 //角丸にする。
         
         present(alert,animated: true,completion: {()->Void in print("表示されたよん")})//completionは動作完了時に発動。
-        
+    
+    
         //登録したURLからRSSデータを取得.
         func getInfo(){
             self.indicator.startAnimating()
@@ -138,6 +139,7 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
                 //alertを作る
                 let alert = UIAlertController(title: "対応していないURLです.", message:nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+                present(alert,animated: true,completion: {()->Void in print("表示されたよん")})//completionは動作完了時に発動。
             }else{
                 //サイト情報をCoreDataに保存
                 writeSiteInfo(siteID:siteInfoList.count,siteTitle:self.tempTitle,siteURL:self.tempURL,siteBool: true)
@@ -180,6 +182,12 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
                 self.parser.delegate = self
                 self.parser.parse()
             }
+        }else{
+            print("テストテスト2")
+            //alertを作る
+            let alert = UIAlertController(title: "対応していないURLです.", message:nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+            present(alert,animated: true,completion: {()->Void in print("表示されたよん")})//completionは動作完了時に発動。
         }
     }
     
