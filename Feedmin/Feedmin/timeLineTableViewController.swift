@@ -33,6 +33,16 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //UserDefaultについて
+        var myDefault = UserDefaults.standard
+        if myDefault.object(forKey: "animalNum") != nil {
+            animalNum = myDefault.object(forKey: "animalNum") as! Int
+        }
+        if myDefault.object(forKey: "articleNum") != nil {
+            articleNum = myDefault.object(forKey: "articleNum") as! Int
+        }
+        
+        
         //site情報読み込み.siteBoolがtrueのものだけ
         self.siteInfoList = getTrueSiteInfo()
         for i in self.siteInfoList{

@@ -44,6 +44,11 @@ class animalCollectionViewController: UICollectionViewController {
     }
     // アイテムタッチ時の処理（UICollectionViewDelegate が必要）
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        var myDefault = UserDefaults.standard
+        // UserDefaultにデータを書き込む
+        myDefault.set(indexPath.row, forKey: "animalNum")
+        
         animalNum = indexPath.row
         collectionView.reloadData()
     }

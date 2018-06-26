@@ -37,6 +37,9 @@ class articleNumTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at:indexPath)
 
+        // UserDefaultに反映
+        var myDefault = UserDefaults.standard
+        myDefault.set((indexPath.row+1)*10, forKey: "articleNum")
         articleNum = (indexPath.row+1)*10
         print(articleNum)
         
