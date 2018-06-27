@@ -43,9 +43,12 @@ class SelectSiteTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "selectSiteCell", for: indexPath) as! selectSiteCell
         self.readArticleInfo = readRead(siteID:indexPath.row)
         readCount = self.readArticleInfo.count
-        print("テストreadCount:\(readCount)")
         
+        //未読記事数表示とそのデザイン
         cell.readNum.text = String(readCount)
+        cell.readNum.layer.cornerRadius = 5
+        cell.readNum.clipsToBounds = true
+        
         cell.siteTitleLabel.text = self.siteInfoList[indexPath.row].siteTitle
         cell.siteBool.isOn = self.siteInfoList[indexPath.row].siteBool
         cell.siteURL = self.siteInfoList[indexPath.row].siteURL
