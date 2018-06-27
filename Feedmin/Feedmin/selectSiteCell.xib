@@ -28,19 +28,31 @@
                         <action selector="siteBoolA:" destination="iN0-l3-epB" eventType="valueChanged" id="G7j-L2-ScQ"/>
                     </connections>
                 </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EoQ-U5-YXB">
+                    <rect key="frame" x="230.5" y="15" width="10.5" height="20"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="LEM-aW-X8L" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="KBq-iX-l0v"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0ra-Yt-ms7" secondAttribute="trailing" constant="10" id="M8a-GG-a3s"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="EoQ-U5-YXB" secondAttribute="bottom" constant="16" id="MGB-k9-0FN"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0ra-Yt-ms7" secondAttribute="bottom" constant="10" id="NG5-EC-adA"/>
                 <constraint firstItem="LEM-aW-X8L" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="NNC-ZQ-bxk"/>
+                <constraint firstItem="0ra-Yt-ms7" firstAttribute="leading" secondItem="EoQ-U5-YXB" secondAttribute="trailing" constant="20" id="gXI-AE-so1"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="LEM-aW-X8L" secondAttribute="bottom" constant="10" id="h4C-95-IW7"/>
+                <constraint firstItem="EoQ-U5-YXB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="15" id="pqH-3b-RK3"/>
                 <constraint firstItem="0ra-Yt-ms7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="xId-pb-XcX"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="readNum" destination="EoQ-U5-YXB" id="4ka-F9-6OV"/>
                 <outlet property="siteBool" destination="0ra-Yt-ms7" id="4z4-qt-Wxe"/>
                 <outlet property="siteTitleLabel" destination="LEM-aW-X8L" id="KXY-jN-2fh"/>
             </connections>

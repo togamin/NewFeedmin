@@ -23,6 +23,7 @@ class Item {
     var thumbImageData:NSData!
     var thumbImage:UIImage!
     var fav:Bool = false
+    var read:Bool = false
 }
 
 //CoreDataからサイト情報を格納するための構造体
@@ -47,14 +48,16 @@ struct articleInfo{
     var articleURL:String!
     var thumbImageData:NSData!
     var fav:Bool!
+    var read:Bool!
     
-    init(siteID: Int, articleTitle: String,updateDate:Date,articleURL: String,thumbImageData: NSData,fav: Bool) {
+    init(siteID: Int, articleTitle: String,updateDate:Date,articleURL: String,thumbImageData: NSData,fav: Bool,read:Bool) {
         self.siteID = siteID
         self.articleTitle = articleTitle
         self.updateDate = updateDate
         self.articleURL = articleURL
         self.thumbImageData = thumbImageData
         self.fav = fav
+        self.read = read
     }
 }
 

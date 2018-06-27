@@ -11,6 +11,8 @@ import UIKit
 class SelectSiteTableViewController: UITableViewController {
 
     var siteInfoList:[siteInfo]!
+    var readArticleInfo:[articleInfo]!
+    var readCount:Int! = 0
     
     @IBOutlet var selectSitecellTableView: UITableView!
     
@@ -39,6 +41,11 @@ class SelectSiteTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "selectSiteCell", for: indexPath) as! selectSiteCell
+        self.readArticleInfo = readRead(siteID:indexPath.row)
+        readCount = self.readArticleInfo.count
+        print("テストreadCount:\(readCount)")
+        
+        cell.readNum.text = String(readCount)
         cell.siteTitleLabel.text = self.siteInfoList[indexPath.row].siteTitle
         cell.siteBool.isOn = self.siteInfoList[indexPath.row].siteBool
         cell.siteURL = self.siteInfoList[indexPath.row].siteURL

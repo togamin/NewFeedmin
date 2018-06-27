@@ -33,6 +33,10 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Info全削除
+        //deleteAllArticleInfo()
+        //deleteAllSiteInfo()
+        
         //UserDefaultについて
         var myDefault = UserDefaults.standard
         if myDefault.object(forKey: "animalNum") != nil {
@@ -122,14 +126,18 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
         }else{
             cell.favButton.setImage(UIImage(named:"fav02"), for: .normal)
         }
-        print(animalNum)
-        print(animalList[animalNum])
         cell.animalImage.image = animalList[animalNum]
+        if self.articleInfoList[indexPath.row].read{
+            cell.backgroundColor = UIColor.white
+        }else{
+            cell.backgroundColor = UIColor(red: 1, green: 0.6, blue: 0.0, alpha: 0.3)
+        }
         return cell
     }
     
     //セルをタップしたら発動する処理
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        updateRead(articleURL:self.articleInfoList[indexPath.row].articleURL,bool:true)
         performSegue(withIdentifier: "goToWeb",sender:nil)
     }
     //画面遷移時に呼び出される
@@ -162,7 +170,7 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
                 newArticleInfo.thumbImageData = getImageData(code: newArticleInfo.description)
                 
                print(newArticleInfo.pubDate)
-                writeArticleInfo(siteID:siteInfo.siteID,articleTitle:newArticleInfo.title,updateDate:newArticleInfo.pubDate!,articleURL:newArticleInfo.link,thumbImageData:newArticleInfo.thumbImageData,fav:false)
+                writeArticleInfo(siteID:siteInfo.siteID,articleTitle:newArticleInfo.title,updateDate:newArticleInfo.pubDate!,articleURL:newArticleInfo.link,thumbImageData:newArticleInfo.thumbImageData,fav:false,read:false)
             }
             self.endFunc = false
         }

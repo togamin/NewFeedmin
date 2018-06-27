@@ -15,6 +15,8 @@ class selectSiteCell:UITableViewCell{
     @IBOutlet weak var siteBool: UISwitch!
     @IBOutlet weak var siteTitleLabel: UILabel!
     
+    @IBOutlet weak var readNum: UILabel!
+    
     var siteURL:String!
     
     @IBAction func siteBoolA(_ sender: UISwitch) {

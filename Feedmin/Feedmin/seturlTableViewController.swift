@@ -148,7 +148,7 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
                     
                     //CoreDataに記事情報を保存
                     
-                    writeArticleInfo(siteID:siteInfoList.count,articleTitle:self.items[i].title,updateDate:self.items[i].pubDate!,articleURL:self.items[i].link,thumbImageData:self.items[i].thumbImageData,fav:false)
+                    writeArticleInfo(siteID:siteInfoList.count,articleTitle:self.items[i].title,updateDate:self.items[i].pubDate!,articleURL:self.items[i].link,thumbImageData:self.items[i].thumbImageData,fav:false,read:false)
                 }
                 siteInfoList = readSiteInfo()
                 self.urlTableView.reloadData()

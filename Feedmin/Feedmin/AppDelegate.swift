@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMLParserDelegate {
             for newArticleInfo in self.items{
                 notification(title:siteInfo.siteTitle,message:newArticleInfo.title)
                 newArticleInfo.thumbImageData = getImageData(code: newArticleInfo.description)
-                writeArticleInfo(siteID:siteInfo.siteID,articleTitle:newArticleInfo.title,updateDate:newArticleInfo.pubDate!,articleURL:newArticleInfo.link,thumbImageData:newArticleInfo.thumbImageData,fav:false)
+                writeArticleInfo(siteID:siteInfo.siteID,articleTitle:newArticleInfo.title,updateDate:newArticleInfo.pubDate!,articleURL:newArticleInfo.link,thumbImageData:newArticleInfo.thumbImageData,fav:false,read:false)
             }
             self.endFunc = false
         }
