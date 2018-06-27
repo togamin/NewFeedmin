@@ -14,6 +14,9 @@ class favTableViewController: UITableViewController {
     var siteInfoList:[siteInfo]!
     var articleInfoList:[articleInfo]!
     
+    //マルチスレッド用
+    let queue:DispatchQueue = DispatchQueue(label: "com.togamin.queue")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //site情報読み込み
@@ -26,6 +29,8 @@ class favTableViewController: UITableViewController {
         self.favTableView.register(nib, forCellReuseIdentifier: "mainCell")
         self.favTableView.estimatedRowHeight = 250
         self.favTableView.rowHeight = UITableViewAutomaticDimension//自動的にセルの高さを調節する
+        
+        
         
         //リフレッシュコントローラー作成
         print("リフレッシュコントローラー作成")
@@ -53,6 +58,15 @@ class favTableViewController: UITableViewController {
         refreshControl?.endRefreshing()
     }
     
+    func tableReload(){
+        queue.async {() -> Void in
+            //記事再読み込み
+            self.articleInfoList = readFav()
+            //テーブルを再読み込みする。
+            self.favTableView.reloadData()
+        }
+    }
+    
     //行数を決める
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -74,6 +88,11 @@ class favTableViewController: UITableViewController {
             cell.favButton.setImage(UIImage(named:"fav02"), for: .normal)
         }
         cell.animalImage.image = animalList[animalNum]
+        if self.articleInfoList[indexPath.row].read{
+            cell.backgroundColor = UIColor.white
+        }else{
+            cell.backgroundColor = UIColor(red: 1, green: 0.6, blue: 0.0, alpha: 0.3)
+        }
 
         return cell
     }
@@ -92,6 +111,8 @@ class favTableViewController: UITableViewController {
     
     //セルをタップしたら発動する処理
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        updateRead(articleURL:self.articleInfoList[indexPath.row].articleURL,bool:true)
+        self.tableReload()
         performSegue(withIdentifier: "goToFavWeb",sender:nil)
     }
     //画面遷移時に呼び出される
