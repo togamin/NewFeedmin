@@ -19,8 +19,6 @@
 		B700E9A620DBB3E10084FFD6 /* mainCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B700E9A520DBB3E10084FFD6 /* mainCellView.xib */; };
 		B700E9A820DBB45A0084FFD6 /* mainCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700E9A720DBB45A0084FFD6 /* mainCellView.swift */; };
 		B700E9AB20DBB4D40084FFD6 /* default01.png in Resources */ = {isa = PBXBuildFile; fileRef = B700E9AA20DBB4D40084FFD6 /* default01.png */; };
-		B700E9AF20DBBB750084FFD6 /* fav02.png in Resources */ = {isa = PBXBuildFile; fileRef = B700E9AE20DBBB750084FFD6 /* fav02.png */; };
-		B700E9B120DBBB7D0084FFD6 /* fav01.png in Resources */ = {isa = PBXBuildFile; fileRef = B700E9B020DBBB7C0084FFD6 /* fav01.png */; };
 		B700E9B520DBC00E0084FFD6 /* timeLineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700E9B420DBC00E0084FFD6 /* timeLineTableViewController.swift */; };
 		B700E9B720DBC1A60084FFD6 /* animal01.png in Resources */ = {isa = PBXBuildFile; fileRef = B700E9B620DBC1A60084FFD6 /* animal01.png */; };
 		B700E9B920DBD0E40084FFD6 /* articleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700E9B820DBD0E40084FFD6 /* articleViewController.swift */; };
@@ -68,6 +66,8 @@
 		B7486BCD20E13DFD00B9E27D /* animal25.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486BBB20E13DFC00B9E27D /* animal25.png */; };
 		B7486BCE20E13DFD00B9E27D /* animal27.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486BBC20E13DFC00B9E27D /* animal27.png */; };
 		B7486BCF20E13DFD00B9E27D /* animal31.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486BBD20E13DFD00B9E27D /* animal31.png */; };
+		B7486BD220E378C700B9E27D /* fav02.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486BD020E378C600B9E27D /* fav02.png */; };
+		B7486BD320E378C700B9E27D /* fav01.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486BD120E378C600B9E27D /* fav01.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,8 +85,6 @@
 		B700E9A520DBB3E10084FFD6 /* mainCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = mainCellView.xib; sourceTree = "<group>"; };
 		B700E9A720DBB45A0084FFD6 /* mainCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainCellView.swift; sourceTree = "<group>"; };
 		B700E9AA20DBB4D40084FFD6 /* default01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default01.png; sourceTree = "<group>"; };
-		B700E9AE20DBBB750084FFD6 /* fav02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fav02.png; sourceTree = "<group>"; };
-		B700E9B020DBBB7C0084FFD6 /* fav01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fav01.png; sourceTree = "<group>"; };
 		B700E9B420DBC00E0084FFD6 /* timeLineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timeLineTableViewController.swift; sourceTree = "<group>"; };
 		B700E9B620DBC1A60084FFD6 /* animal01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal01.png; sourceTree = "<group>"; };
 		B700E9B820DBD0E40084FFD6 /* articleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = articleViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +132,8 @@
 		B7486BBB20E13DFC00B9E27D /* animal25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal25.png; sourceTree = "<group>"; };
 		B7486BBC20E13DFC00B9E27D /* animal27.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal27.png; sourceTree = "<group>"; };
 		B7486BBD20E13DFD00B9E27D /* animal31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal31.png; sourceTree = "<group>"; };
+		B7486BD020E378C600B9E27D /* fav02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fav02.png; sourceTree = "<group>"; };
+		B7486BD120E378C600B9E27D /* fav01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fav01.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,11 +196,11 @@
 		B700E9A920DBB4D40084FFD6 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B7486BD020E378C600B9E27D /* fav02.png */,
+				B7486BD120E378C600B9E27D /* fav01.png */,
 				B700E9C020DCCD570084FFD6 /* menuIco.png */,
 				B700E9C220DCD61F0084FFD6 /* menuIco38.png */,
 				B700E9C420DCD7290084FFD6 /* menuIco60.png */,
-				B700E9B020DBBB7C0084FFD6 /* fav01.png */,
-				B700E9AE20DBBB750084FFD6 /* fav02.png */,
 				B700E9AA20DBB4D40084FFD6 /* default01.png */,
 				B700E9B620DBC1A60084FFD6 /* animal01.png */,
 				B7486B9620E12E2600B9E27D /* animal02.png */,
@@ -304,7 +304,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B700E99220DB5BC70084FFD6 /* LaunchScreen.storyboard in Resources */,
-				B700E9B120DBBB7D0084FFD6 /* fav01.png in Resources */,
 				B700E9B720DBC1A60084FFD6 /* animal01.png in Resources */,
 				B7486BCA20E13DFD00B9E27D /* animal20.png in Resources */,
 				B7486B8D20E0D4C900B9E27D /* animal04.png in Resources */,
@@ -313,7 +312,6 @@
 				B7486BCB20E13DFD00B9E27D /* animal18.png in Resources */,
 				B7486BC620E13DFD00B9E27D /* animal32.png in Resources */,
 				B7486BCC20E13DFD00B9E27D /* animal33.png in Resources */,
-				B700E9AF20DBBB750084FFD6 /* fav02.png in Resources */,
 				B7486B9320E0D6D900B9E27D /* animal07.png in Resources */,
 				B7486BBF20E13DFD00B9E27D /* animal19.png in Resources */,
 				B7486B8F20E0D56500B9E27D /* animal05.png in Resources */,
@@ -326,6 +324,7 @@
 				B7486BA620E1347100B9E27D /* animal16.png in Resources */,
 				B7486BC420E13DFD00B9E27D /* animal17.png in Resources */,
 				B7486BC820E13DFD00B9E27D /* animal29.png in Resources */,
+				B7486BD320E378C700B9E27D /* fav01.png in Resources */,
 				B700E98F20DB5BC70084FFD6 /* Assets.xcassets in Resources */,
 				B7486BAA20E1347100B9E27D /* animal14.png in Resources */,
 				B700E9CB20DD1DE60084FFD6 /* selectSiteCell.xib in Resources */,
@@ -347,6 +346,7 @@
 				B7486B9B20E1307400B9E27D /* animal09.png in Resources */,
 				B7486BC320E13DFD00B9E27D /* animal24.png in Resources */,
 				B7486B9920E12F6800B9E27D /* animal08.png in Resources */,
+				B7486BD220E378C700B9E27D /* fav02.png in Resources */,
 				B7486BAB20E1347100B9E27D /* animal15.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
