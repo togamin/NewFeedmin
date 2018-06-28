@@ -48,6 +48,12 @@ class favTableViewController: UITableViewController {
         
     }
     
+    //画面が表示されるたびに呼ばれる
+    override func viewWillAppear(_ animated: Bool) {
+        self.articleInfoList = readFav()
+        self.favTableView.reloadData()
+    }
+    
     //テーブルビュー引っ張り時の呼び出しメソッド
     @objc func relode(_ sender: UIRefreshControl){
         print("再読み込み")
@@ -58,14 +64,6 @@ class favTableViewController: UITableViewController {
         refreshControl?.endRefreshing()
     }
     
-    func tableReload(){
-        queue.async {() -> Void in
-            //記事再読み込み
-            self.articleInfoList = readFav()
-            //テーブルを再読み込みする。
-            self.favTableView.reloadData()
-        }
-    }
     
     //行数を決める
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,7 +110,6 @@ class favTableViewController: UITableViewController {
     //セルをタップしたら発動する処理
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         updateRead(articleURL:self.articleInfoList[indexPath.row].articleURL,bool:true)
-        self.tableReload()
         performSegue(withIdentifier: "goToFavWeb",sender:nil)
     }
     //画面遷移時に呼び出される

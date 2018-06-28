@@ -117,14 +117,6 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
             self.refreshControl?.endRefreshing()
         }
     }
-    func tableReload(){
-        queue.async {() -> Void in
-        //記事再読み込み
-        self.articleInfoList = selectReadArticle(siteIDList:self.siteTrueIDList)
-        //テーブルを再読み込みする。
-        self.timeLineTableView.reloadData()
-        }
-    }
 
     //行数を決める
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -161,7 +153,6 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
     //セルをタップしたら発動する処理
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         updateRead(articleURL:self.articleInfoList[indexPath.row].articleURL,bool:true)
-            self.tableReload()
         performSegue(withIdentifier: "goToWeb",sender:nil)
     }
     //画面遷移時に呼び出される
