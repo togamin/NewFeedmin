@@ -40,6 +40,7 @@ class SelectSiteTableViewController: UITableViewController {
         return self.siteInfoList.count
     }
     
+    //インスタンスの作成
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "selectSiteCell", for: indexPath) as! selectSiteCell
         self.readArticleInfo = readRead(siteID:indexPath.row)
@@ -55,5 +56,14 @@ class SelectSiteTableViewController: UITableViewController {
         cell.siteURL = self.siteInfoList[indexPath.row].siteURL
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let makeAllRead: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "全て既読") { (action, index) -> Void in
+            allRead(siteID: indexPath.row,bool: true)
+            self.selectSitecellTableView.reloadData()
+        }
+        makeAllRead.backgroundColor = UIColor(red: 0, green: 0.08, blue: 0.24, alpha: 0.4)
+        return [makeAllRead]
     }
 }

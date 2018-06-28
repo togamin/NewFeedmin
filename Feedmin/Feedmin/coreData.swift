@@ -489,7 +489,7 @@ func updateSiteBool(siteURL:String,siteBool:Bool){
     }
 }
 
-//お気に入りかどうかの更新
+//既読かどうかの更新
 func updateRead(articleURL:String,bool:Bool){
     //AppDelegateを使う用意をしておく
     let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -549,5 +549,32 @@ func readRead(siteID:Int)->[articleInfo]{
     return InfoList as [articleInfo]
 }
 
+//指定したsiteIDの記事を全て既読に
+func allRead(siteID:Int,bool:Bool){
+    //AppDelegateを使う用意をしておく
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    //Entityを操作するためのオブジェクトを作成
+    let viewContext = appDelegate.persistentContainer.viewContext
+    //どのエンティティからdataを取得してくるかの設定
+    let query:NSFetchRequest<ArticleInfo> = ArticleInfo.fetchRequest()
+    let namePredicte = NSPredicate(format: "(siteID = %d) AND (read = false)",siteID)
+    query.predicate = namePredicte
+    do{
+        //絞り込んだデータを一括取得
+        let fetchResults = try! viewContext.fetch(query)
+        for result in fetchResults{
+            result.setValue(bool,forKey:"read")
+            //変更した記事のタイトルと変更後の状態の表示
+            print("[allRead]\(result.value(forKey:"articleTitle")! as! String)","\(result.value(forKey:"updateDate")!)")
+            do{
+                //レコード(行)の即時保存
+                try viewContext.save()
+            }catch{
+            }
+        }
+    }catch{
+        print("error:allRead",error)
+    }
+}
 
 
