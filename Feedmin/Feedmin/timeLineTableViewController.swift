@@ -78,6 +78,21 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
         print("リフレッシュコントローラーの設定完了")
         
     }
+    
+    //画面が表示されるたびに呼ばれる
+    override func viewWillAppear(_ animated: Bool) {
+        //site情報読み込み.siteBoolがtrueのものだけ
+        self.siteInfoList = getTrueSiteInfo()
+        self.siteTrueIDList = []
+        for i in self.siteInfoList{
+            self.siteTrueIDList.append(i.siteID)
+        }
+        //記事再読み込み
+        self.articleInfoList = selectReadArticle(siteIDList:self.siteTrueIDList)
+        //テーブルを再読み込みする。
+        self.timeLineTableView.reloadData()
+    }
+    
     @IBAction func menuBtn(_ sender: UIBarButtonItem) {
         print("テスト:menuBtn押されました")
     }
