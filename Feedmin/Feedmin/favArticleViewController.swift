@@ -26,7 +26,6 @@ class favArticleViewController: UIViewController {
             let request = URLRequest(url:url)
             self.favWebView.load(request)
         }
-        
     }
     
     @IBAction func favArticleShare(_ sender: UIBarButtonItem) {

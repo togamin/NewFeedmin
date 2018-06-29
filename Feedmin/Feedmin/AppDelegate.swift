@@ -48,9 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMLParserDelegate {
     }
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         //バックグラウンドで実行する処理
-        notification(title:"テスト1",message:"テスト1")
+        //notification(title:"テスト1",message:"テスト1")
         self.backGroundFetchRssUpdate()
-        notification(title:"テスト2",message:"テスト2")
+        //notification(title:"テスト2",message:"テスト2")
         //適切なものを渡します → 新規データ: .newData 失敗: .failed データなし: .noData
         completionHandler(.newData)
     }
