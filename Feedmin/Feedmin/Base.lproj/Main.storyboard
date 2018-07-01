@@ -184,7 +184,7 @@
             </objects>
             <point key="canvasLocation" x="-532.5" y="2818.3098591549297"/>
         </scene>
-        <!--Feedmin Table View Controller-->
+        <!--Feedmin-->
         <scene sceneID="cRX-gM-Gf2">
             <objects>
                 <tableViewController id="pv7-pn-fnC" customClass="FeedminTableViewController" customModule="Feedmin" customModuleProvider="target" sceneMemberID="viewController">
@@ -244,6 +244,7 @@
                             <outlet property="delegate" destination="pv7-pn-fnC" id="ZZL-Z8-P9N"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Feedmin" id="ICK-zS-0WN"/>
                     <connections>
                         <outlet property="FeedminTableView" destination="VM9-XO-dg3" id="h8D-2C-Rvr"/>
                     </connections>
@@ -284,7 +285,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qdH-Pm-Hhl"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Feedmin" id="yMO-q7-jrq">
+                    <navigationItem key="navigationItem" title="Title" id="yMO-q7-jrq">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="action" id="yFS-9U-ygf">
                             <connections>
                                 <action selector="FeedminShare:" destination="hHq-RE-wvx" id="2vO-Bc-yib"/>
