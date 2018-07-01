@@ -105,6 +105,8 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
     
     
     //urlを追加するためのボタン
+    //FeedlyAPIを利用するにあたって変更.ボタンを押すと別のテーブルViewに遷移。セルが押されたら、以下動作させるようにする。
+    /*
     @IBAction func addURL(_ sender: UIBarButtonItem) {
         
         //alertを作る
@@ -228,7 +230,7 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
         case "item": self.items.append(self.item!)
         default :break
             }
-        }
+        }*/
 
     
     
