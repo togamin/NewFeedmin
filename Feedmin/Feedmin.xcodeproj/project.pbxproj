@@ -32,6 +32,7 @@
 		B700E9CB20DD1DE60084FFD6 /* selectSiteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B700E9CA20DD1DE60084FFD6 /* selectSiteCell.xib */; };
 		B700E9CD20DD1FA90084FFD6 /* selectSiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700E9CC20DD1FA90084FFD6 /* selectSiteCell.swift */; };
 		B74343CE20E8C45B0037A13F /* getRssFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74343CD20E8C45A0037A13F /* getRssFeedViewController.swift */; };
+		B74343D020E8FF0B0037A13F /* togaminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74343CF20E8FF0B0037A13F /* togaminViewController.swift */; };
 		B7486B8520E0BC0800B9E27D /* animalCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7486B8420E0BC0800B9E27D /* animalCollectionViewController.swift */; };
 		B7486B8B20E0D46D00B9E27D /* animal03.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486B8A20E0D46D00B9E27D /* animal03.png */; };
 		B7486B8D20E0D4C900B9E27D /* animal04.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486B8C20E0D4C900B9E27D /* animal04.png */; };
@@ -122,6 +123,7 @@
 		B700E9CA20DD1DE60084FFD6 /* selectSiteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = selectSiteCell.xib; sourceTree = "<group>"; };
 		B700E9CC20DD1FA90084FFD6 /* selectSiteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectSiteCell.swift; sourceTree = "<group>"; };
 		B74343CD20E8C45A0037A13F /* getRssFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getRssFeedViewController.swift; sourceTree = "<group>"; };
+		B74343CF20E8FF0B0037A13F /* togaminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = togaminViewController.swift; sourceTree = "<group>"; };
 		B7486B8420E0BC0800B9E27D /* animalCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = animalCollectionViewController.swift; sourceTree = "<group>"; };
 		B7486B8A20E0D46D00B9E27D /* animal03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal03.png; sourceTree = "<group>"; };
 		B7486B8C20E0D4C900B9E27D /* animal04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal04.png; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				B700E9CC20DD1FA90084FFD6 /* selectSiteCell.swift */,
 				B700E9C820DD025F0084FFD6 /* SelectSiteTableViewController.swift */,
 				B700E98820DB5BBD0084FFD6 /* Main.storyboard */,
+				B74343CF20E8FF0B0037A13F /* togaminViewController.swift */,
 				B700E9BE20DBE4130084FFD6 /* favArticleViewController.swift */,
 				B700E9BC20DBDC480084FFD6 /* favTableViewController.swift */,
 				B700E9BA20DBD8250084FFD6 /* myTabViewController.swift */,
@@ -460,6 +463,7 @@
 				B700E9A420DB87480084FFD6 /* coreData.swift in Sources */,
 				B700E99C20DB62770084FFD6 /* SettingTableTableViewController.swift in Sources */,
 				B700E9A820DBB45A0084FFD6 /* mainCellView.swift in Sources */,
+				B74343D020E8FF0B0037A13F /* togaminViewController.swift in Sources */,
 				B7486B8520E0BC0800B9E27D /* animalCollectionViewController.swift in Sources */,
 				B700E9BD20DBDC480084FFD6 /* favTableViewController.swift in Sources */,
 				B700E9BB20DBD8250084FFD6 /* myTabViewController.swift in Sources */,
