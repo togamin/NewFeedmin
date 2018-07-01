@@ -26,40 +26,19 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
     //TableView
     @IBOutlet var urlTableView: UITableView!
     
-    //インジケータ
-    var indicator: UIActivityIndicatorView!
-
-    //一時的に保存するための変数
-    var tempTitle:String!
-    var tempURL:String!
-    
-    //RSS解析用
-    var parser:XMLParser!//parser:構文解析
-    var items:[Item] = []//複数の記事を格納するための配列
-    var item:Item?
-    var currentString = ""
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // インジケータの設定.表示されない.
-        self.indicator = UIActivityIndicatorView()
-        self.indicator.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
-        self.indicator.center = self.urlTableView.center// 表示位置
-        //self.indicator.color = UIColor.green// 色の設定
-        self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        self.indicator.hidesWhenStopped = true// アニメーション停止と同時に隠す設定
-        urlTableView.addSubview(self.indicator)// 画面に追加
-        urlTableView.bringSubview(toFront: self.indicator)// 最前面に移動
-        //self.indicator.stopAnimating()//self.indicator.startAnimating()
-        
-        
         //Info全削除
         //deleteAllArticleInfo()
         //deleteAllSiteInfo()
         siteInfoList = readSiteInfo()
 
+    }
+    //画面が表示されるたびに呼ばれる
+    override func viewWillAppear(_ animated: Bool) {
+        siteInfoList = readSiteInfo()
+        self.urlTableView.reloadData()
     }
     
     //行数を決める

@@ -16,17 +16,33 @@ struct searchResult {
 }
 
 import UIKit
+import CoreData
 
-class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate{
+class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate,XMLParserDelegate{
     
 
     var searchResultList:[searchResult] = []
     @IBOutlet weak var rssResultTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    //インジケーター
+    var indicator: UIActivityIndicatorView!
+    
+    //RSS解析用
+    var parser:XMLParser!//parser:構文解析
+    var items:[Item] = []//複数の記事を格納するための配列
+    var item:Item?
+    var currentString = ""
+    
+    //一時的に保存するための変数
+    var tempTitle:String!
+    var tempURL:String!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
         //tableView
         self.rssResultTableView.delegate = self
         self.rssResultTableView.dataSource = self
@@ -34,6 +50,19 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         //SearchBar
         self.searchBar.delegate = self
         self.searchBar.placeholder = "Keyword,URL,Feedを入力してください"
+        
+        // インジケータの設定.表示されない.
+        self.indicator = UIActivityIndicatorView()
+        self.indicator.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        self.indicator.center = self.rssResultTableView.center// 表示位置
+        //self.indicator.color = UIColor.green// 色の設定
+        self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.indicator.hidesWhenStopped = true// アニメーション停止と同時に隠す設定
+        self.rssResultTableView.addSubview(self.indicator)// 画面に追加
+        self.rssResultTableView.bringSubview(toFront: self.indicator)// 最前面に移動
+        //self.indicator.stopAnimating()//self.indicator.startAnimating()
+        
+        
     }
     //Searchボタンが押された時に呼ばれる
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -83,6 +112,31 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         //登録したURLからRSSデータを取得.
         func getInfo(){
             print("URL取得します")
+            self.indicator.startAnimating()
+            self.tempTitle = alert.textFields![0].text!
+            self.tempURL = alert.textFields![1].text!
+            //self.tempURL = "https://togamin.com/feed/"
+            self.startDownload(siteURL: self.tempURL)
+            
+            //itemsに何も入っていなければAlert
+            //機能していないなぜ
+            if items.count == 0{
+                //alertを作る
+                let alert = UIAlertController(title: "対応していないURLです.", message:nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+                present(alert,animated: true,completion: {()->Void in print("表示されたよん")})//completionは動作完了時に発動。
+            }else{
+                //サイト情報をCoreDataに保存
+                writeSiteInfo(siteID:siteInfoList.count,siteTitle:self.tempTitle,siteURL:self.tempURL,siteBool: true)
+                for i in 0..<self.items.count{
+                    self.items[i].thumbImageData = getImageData(code: self.items[i].description)
+                    
+                    //CoreDataに記事情報を保存
+                    
+                    writeArticleInfo(siteID:siteInfoList.count,articleTitle:self.items[i].title,updateDate:self.items[i].pubDate!,articleURL:self.items[i].link,thumbImageData:self.items[i].thumbImageData,fav:false,read:false)
+                }
+            }
+            self.indicator.stopAnimating()
         }
     }
     
@@ -118,6 +172,72 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         }
         task.resume()
     }
+    
+    /*RSS解析---------------------------------------------------*/
+    //RSSを取得し解析する.
+    //取得できなかった場合、「対応していないURLです」と返す(未).
+    //この関数をグローバル関数にしたい.更新する場合にも呼び出したい(未).
+    func startDownload(siteURL:String){
+        print("テスト:\(siteURL)のダウンロード開始")
+        //古いデータと記事が重複しないように、空にする
+        self.items = []
+        
+        //URLがあれば解析.
+        if let url = URL(
+            string: siteURL){
+            if let parser = XMLParser(contentsOf:url){//XMLparserのインスタンス作成。
+                self.parser = parser
+                self.parser.delegate = self
+                self.parser.parse()
+            }
+        }else{
+            print("テストテスト2")
+            //alertを作る
+            let alert = UIAlertController(title: "対応していないURLです.", message:nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+            present(alert,animated: true,completion: {()->Void in print("表示されたよん")})//completionは動作完了時に発動。
+        }
+    }
+    
+    //開始タグが見つかるたびに毎回呼び出される関数
+    func parser(_ parser: XMLParser,didStartElement elementName:String,namespaceURI:String?,qualifiedName qName:String?,attributes attributeDict:[String:String]) {
+        
+        self.currentString = ""
+        //print(elementName)//タグすべてプリント
+        if elementName == "item"{
+            self.item = Item()//タグ名がitemのときのみ、記事を入れる箱を作成
+        }
+    }
+    
+    //タグで囲まれた内容が見つかるたびに呼び出されるメソッド。
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
+        self.currentString = string
+    }
+    
+    //終了タグが見つかるたびに呼び出されるメソッド。
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        switch elementName {
+        case "title":
+            self.item?.title = currentString
+        case "link":
+            self.item?.link = currentString
+        case "pubDate":
+            self.item?.pubDate = pubDate(pubDate: currentString)
+        case "dc:date":
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale?
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            let getDate = dateFormatter.date(from: currentString)
+            self.item?.pubDate = getDate
+            
+        case "description":
+            self.item?.description = currentString
+        case "item": self.items.append(self.item!)
+        default :break
+        }
+    }
+    /*RSS解析---------------------------------------------------*/
     
     
     
