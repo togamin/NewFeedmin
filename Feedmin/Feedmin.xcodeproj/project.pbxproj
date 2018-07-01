@@ -33,6 +33,12 @@
 		B700E9CD20DD1FA90084FFD6 /* selectSiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700E9CC20DD1FA90084FFD6 /* selectSiteCell.swift */; };
 		B74343CE20E8C45B0037A13F /* getRssFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74343CD20E8C45A0037A13F /* getRssFeedViewController.swift */; };
 		B74343D020E8FF0B0037A13F /* togaminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74343CF20E8FF0B0037A13F /* togaminViewController.swift */; };
+		B74343D220E908410037A13F /* FeedminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74343D120E908410037A13F /* FeedminTableViewController.swift */; };
+		B74343D420E910860037A13F /* FeedminCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B74343D320E910860037A13F /* FeedminCell.xib */; };
+		B74343D820E911410037A13F /* feedmin01.png in Resources */ = {isa = PBXBuildFile; fileRef = B74343D520E911400037A13F /* feedmin01.png */; };
+		B74343D920E911410037A13F /* feedmin03.png in Resources */ = {isa = PBXBuildFile; fileRef = B74343D620E911400037A13F /* feedmin03.png */; };
+		B74343DA20E911410037A13F /* feedmin02.png in Resources */ = {isa = PBXBuildFile; fileRef = B74343D720E911400037A13F /* feedmin02.png */; };
+		B74343DC20E919FC0037A13F /* FeedminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74343DB20E919FC0037A13F /* FeedminViewController.swift */; };
 		B7486B8520E0BC0800B9E27D /* animalCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7486B8420E0BC0800B9E27D /* animalCollectionViewController.swift */; };
 		B7486B8B20E0D46D00B9E27D /* animal03.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486B8A20E0D46D00B9E27D /* animal03.png */; };
 		B7486B8D20E0D4C900B9E27D /* animal04.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486B8C20E0D4C900B9E27D /* animal04.png */; };
@@ -124,6 +130,12 @@
 		B700E9CC20DD1FA90084FFD6 /* selectSiteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectSiteCell.swift; sourceTree = "<group>"; };
 		B74343CD20E8C45A0037A13F /* getRssFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getRssFeedViewController.swift; sourceTree = "<group>"; };
 		B74343CF20E8FF0B0037A13F /* togaminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = togaminViewController.swift; sourceTree = "<group>"; };
+		B74343D120E908410037A13F /* FeedminTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedminTableViewController.swift; sourceTree = "<group>"; };
+		B74343D320E910860037A13F /* FeedminCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedminCell.xib; sourceTree = "<group>"; };
+		B74343D520E911400037A13F /* feedmin01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feedmin01.png; sourceTree = "<group>"; };
+		B74343D620E911400037A13F /* feedmin03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feedmin03.png; sourceTree = "<group>"; };
+		B74343D720E911400037A13F /* feedmin02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feedmin02.png; sourceTree = "<group>"; };
+		B74343DB20E919FC0037A13F /* FeedminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedminViewController.swift; sourceTree = "<group>"; };
 		B7486B8420E0BC0800B9E27D /* animalCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = animalCollectionViewController.swift; sourceTree = "<group>"; };
 		B7486B8A20E0D46D00B9E27D /* animal03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal03.png; sourceTree = "<group>"; };
 		B7486B8C20E0D4C900B9E27D /* animal04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal04.png; sourceTree = "<group>"; };
@@ -226,12 +238,15 @@
 				B700E9CC20DD1FA90084FFD6 /* selectSiteCell.swift */,
 				B700E9C820DD025F0084FFD6 /* SelectSiteTableViewController.swift */,
 				B700E98820DB5BBD0084FFD6 /* Main.storyboard */,
+				B74343DB20E919FC0037A13F /* FeedminViewController.swift */,
 				B74343CF20E8FF0B0037A13F /* togaminViewController.swift */,
 				B700E9BE20DBE4130084FFD6 /* favArticleViewController.swift */,
 				B700E9BC20DBDC480084FFD6 /* favTableViewController.swift */,
 				B700E9BA20DBD8250084FFD6 /* myTabViewController.swift */,
 				B700E9B820DBD0E40084FFD6 /* articleViewController.swift */,
 				B700E9A520DBB3E10084FFD6 /* mainCellView.xib */,
+				B74343D320E910860037A13F /* FeedminCell.xib */,
+				B74343D120E908410037A13F /* FeedminTableViewController.swift */,
 				B700E9A720DBB45A0084FFD6 /* mainCellView.swift */,
 				B700E99D20DB6D620084FFD6 /* seturlTableViewController.swift */,
 				B700E99F20DB6FB00084FFD6 /* InfoItem.swift */,
@@ -249,6 +264,9 @@
 		B700E9A920DBB4D40084FFD6 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B74343D520E911400037A13F /* feedmin01.png */,
+				B74343D720E911400037A13F /* feedmin02.png */,
+				B74343D620E911400037A13F /* feedmin03.png */,
 				B7486BD520E3E93E00B9E27D /* animal35.png */,
 				B7486BD420E3E93D00B9E27D /* animal36.png */,
 				B7486BD920E3E93F00B9E27D /* animal37.png */,
@@ -396,6 +414,7 @@
 				B7486B8F20E0D56500B9E27D /* animal05.png in Resources */,
 				B700E9A620DBB3E10084FFD6 /* mainCellView.xib in Resources */,
 				B7486BE520E3ED4B00B9E27D /* animal44.png in Resources */,
+				B74343D820E911410037A13F /* feedmin01.png in Resources */,
 				B7486BE720E3ED4B00B9E27D /* animal42.png in Resources */,
 				B7486C1320E4E34E00B9E27D /* animal50.png in Resources */,
 				B7486BC920E13DFD00B9E27D /* animal30.png in Resources */,
@@ -410,12 +429,15 @@
 				B7486BDE20E3E93F00B9E27D /* animal38.png in Resources */,
 				B7486BA620E1347100B9E27D /* animal16.png in Resources */,
 				B7486BC420E13DFD00B9E27D /* animal17.png in Resources */,
+				B74343D420E910860037A13F /* FeedminCell.xib in Resources */,
 				B7486BC820E13DFD00B9E27D /* animal29.png in Resources */,
 				B7486BD320E378C700B9E27D /* fav01.png in Resources */,
 				B700E98F20DB5BC70084FFD6 /* Assets.xcassets in Resources */,
+				B74343D920E911410037A13F /* feedmin03.png in Resources */,
 				B7486BE820E3ED4B00B9E27D /* animal43.png in Resources */,
 				B7486BAA20E1347100B9E27D /* animal14.png in Resources */,
 				B700E9CB20DD1DE60084FFD6 /* selectSiteCell.xib in Resources */,
+				B74343DA20E911410037A13F /* feedmin02.png in Resources */,
 				B7486BCE20E13DFD00B9E27D /* animal27.png in Resources */,
 				B7486BDA20E3E93F00B9E27D /* animal36.png in Resources */,
 				B7486BC020E13DFD00B9E27D /* animal23.png in Resources */,
@@ -455,6 +477,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B74343DC20E919FC0037A13F /* FeedminViewController.swift in Sources */,
+				B74343D220E908410037A13F /* FeedminTableViewController.swift in Sources */,
 				B700E99E20DB6D620084FFD6 /* seturlTableViewController.swift in Sources */,
 				B7486B9520E0F82700B9E27D /* articleNumTableViewController.swift in Sources */,
 				B700E9A020DB6FB00084FFD6 /* InfoItem.swift in Sources */,

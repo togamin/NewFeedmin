@@ -158,6 +158,9 @@
                                                 <constraint firstItem="AeH-BF-r4g" firstAttribute="leading" secondItem="okl-h9-zcH" secondAttribute="leading" constant="15" id="uVW-47-2t9"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="pv7-pn-fnC" kind="show" id="gDG-V3-5EB"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wYd-Ob-jgx">
                                         <rect key="frame" x="0.0" y="431.5" width="320" height="44"/>
@@ -180,6 +183,122 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXa-B7-FL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-532.5" y="2818.3098591549297"/>
+        </scene>
+        <!--Feedmin Table View Controller-->
+        <scene sceneID="cRX-gM-Gf2">
+            <objects>
+                <tableViewController id="pv7-pn-fnC" customClass="FeedminTableViewController" customModule="Feedmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="VM9-XO-dg3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Feedminとは?" id="3D2-hT-0hm">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedminCell" id="dbS-8U-mjB">
+                                        <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dbS-8U-mjB" id="wVg-ti-jJP">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="hHq-RE-wvx" kind="show" identifier="goFeedminWeb0" id="szU-ys-HB5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Feedminの使い方" id="bll-dY-CYy">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedminCell" id="IJe-e9-v6u">
+                                        <rect key="frame" x="0.0" y="155.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IJe-e9-v6u" id="kcU-Wq-SxQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="hHq-RE-wvx" kind="show" identifier="goFeedminWeb1" id="uyS-g3-NCE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="アイキャッチ画像の表示方法" id="F28-GY-piO">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedminCell" id="UyC-Hx-jhy">
+                                        <rect key="frame" x="0.0" y="255.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UyC-Hx-jhy" id="FnB-PG-kTZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="hHq-RE-wvx" kind="show" identifier="goFeedminWeb2" id="HN1-xS-5Yl"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="pv7-pn-fnC" id="5vt-MQ-Qs9"/>
+                            <outlet property="delegate" destination="pv7-pn-fnC" id="ZZL-Z8-P9N"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="FeedminTableView" destination="VM9-XO-dg3" id="h8D-2C-Rvr"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qsa-nj-wFk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2351.25" y="3655.9859154929577"/>
+        </scene>
+        <!--Feedmin-->
+        <scene sceneID="ggW-YT-9f1">
+            <objects>
+                <viewController title="Feedmin" id="hHq-RE-wvx" customClass="FeedminViewController" customModule="Feedmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XBZ-0k-lzq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3b-p8-1rg">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xXb-Fi-7nf">
+                                <rect key="frame" x="0.0" y="64" width="320" height="2"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="P3b-p8-1rg" firstAttribute="top" secondItem="XBZ-0k-lzq" secondAttribute="top" id="1t5-ly-h0j"/>
+                            <constraint firstItem="P3b-p8-1rg" firstAttribute="trailing" secondItem="xXb-Fi-7nf" secondAttribute="trailing" id="4dW-sE-8n9"/>
+                            <constraint firstItem="P3b-p8-1rg" firstAttribute="leading" secondItem="xXb-Fi-7nf" secondAttribute="leading" id="5DN-eD-6tH"/>
+                            <constraint firstAttribute="trailing" secondItem="P3b-p8-1rg" secondAttribute="trailing" id="SMV-Mx-XR8"/>
+                            <constraint firstItem="P3b-p8-1rg" firstAttribute="leading" secondItem="XBZ-0k-lzq" secondAttribute="leading" id="SaW-nA-0B5"/>
+                            <constraint firstAttribute="bottom" secondItem="P3b-p8-1rg" secondAttribute="bottom" id="thL-C8-2cg"/>
+                            <constraint firstItem="xXb-Fi-7nf" firstAttribute="top" secondItem="qdH-Pm-Hhl" secondAttribute="top" id="zGK-PX-NS9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qdH-Pm-Hhl"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Feedmin" id="yMO-q7-jrq">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="action" id="yFS-9U-ygf">
+                            <connections>
+                                <action selector="FeedminShare:" destination="hHq-RE-wvx" id="2vO-Bc-yib"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="FeedminWebView" destination="P3b-p8-1rg" id="zFT-i2-aJq"/>
+                        <outlet property="progressBar" destination="xXb-Fi-7nf" id="iEb-ew-QeM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gE8-je-gzF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3135" y="3655.9859154929577"/>
         </scene>
         <!--とがみんブログ-->
         <scene sceneID="624-OM-uiU">
@@ -232,7 +351,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OcY-ZA-PnH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2887.5" y="3114.0845070422533"/>
+            <point key="canvasLocation" x="2771" y="2928"/>
         </scene>
         <!--登録サイト一覧-->
         <scene sceneID="epi-vh-tOb">
@@ -287,7 +406,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DoJ-pk-ucM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1545" y="1350"/>
+            <point key="canvasLocation" x="428" y="1483"/>
         </scene>
         <!--サイト登録-->
         <scene sceneID="Fzt-v9-6Mx">
@@ -373,7 +492,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2386.875" y="1350"/>
+            <point key="canvasLocation" x="1311" y="1482"/>
         </scene>
         <!--Animal Collection View Controller-->
         <scene sceneID="YeJ-zN-72s">
@@ -416,7 +535,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LqC-dk-gPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3118" y="1732"/>
+            <point key="canvasLocation" x="2111" y="1786"/>
         </scene>
         <!--Article Num Table View Controller-->
         <scene sceneID="oBA-tF-VM3">
@@ -444,7 +563,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qdn-vH-dB8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2888" y="2414"/>
+            <point key="canvasLocation" x="2773" y="2243"/>
         </scene>
         <!--My Tab View Controller-->
         <scene sceneID="IvL-XC-S3E">
@@ -727,4 +846,7 @@
     <resources>
         <image name="menuIco60.png" width="60" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="uyS-g3-NCE"/>
+    </inferredMetricsTieBreakers>
 </document>
