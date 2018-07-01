@@ -100,14 +100,18 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         let request = URLRequest(url: url as URL)
         
         
-        
         let task = URLSession.shared.dataTask(with: request) {
             (data:Data?,response:URLResponse?,error:Error?) in
             let json = try! JSON(data: data!)
             //print("テスト[json]:\(json)")
             
             for i in 0..<json["results"].count{
-                self.searchResultList.append(searchResult(title:json["results"][i]["title"].stringValue,feedID:json["results"][i]["feedId"].stringValue))
+               
+                //json["results"][i]["feedId"].stringValueの結果の最初の部分「feed/」を省く処理を入れる
+                var feedIDnew:String = json["results"][i]["feedId"].stringValue
+                feedIDnew = feedIDnew.replacingOccurrences(of:"feed/", with:"")
+                
+                self.searchResultList.append(searchResult(title:json["results"][i]["title"].stringValue,feedID:feedIDnew))
             }
             //print("テスト[rssInfoList]:\(self.searchResultList)")
             self.rssResultTableView.reloadData()
