@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMLParserDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        
         // このアプリで通知（Local Notification）を使用する許可を
         // ユーザーに求めるためのコード
         
@@ -49,7 +50,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMLParserDelegate {
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         //バックグラウンドで実行する処理
         //notification(title:"テスト1",message:"テスト1")
-        self.backGroundFetchRssUpdate()
+        var myDefault = UserDefaults.standard
+        var notify:Bool = myDefault.object(forKey: "notificationSwitch")! as! Bool
+        if notify == nil || true{
+            self.backGroundFetchRssUpdate()
+        }
         //notification(title:"テスト2",message:"テスト2")
         //適切なものを渡します → 新規データ: .newData 失敗: .failed データなし: .noData
         completionHandler(.newData)

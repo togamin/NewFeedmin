@@ -106,6 +106,29 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="krJ-gZ-9vn" id="hXz-El-m6n">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z3b-uF-bUE">
+                                                    <rect key="frame" x="256" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="notificationSwitch:" destination="KBP-wo-BwY" eventType="valueChanged" id="YM9-JO-Okf"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通知 ON/OFF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQb-jE-BNW">
+                                                    <rect key="frame" x="15" y="15" width="226" height="13.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Z3b-uF-bUE" firstAttribute="top" secondItem="hXz-El-m6n" secondAttribute="top" constant="6" id="3DE-JU-PIM"/>
+                                                <constraint firstItem="Z3b-uF-bUE" firstAttribute="leading" secondItem="NQb-jE-BNW" secondAttribute="trailing" constant="15" id="Jqr-eX-ySA"/>
+                                                <constraint firstItem="NQb-jE-BNW" firstAttribute="top" secondItem="hXz-El-m6n" secondAttribute="top" constant="15" id="She-eA-azo"/>
+                                                <constraint firstAttribute="bottom" secondItem="Z3b-uF-bUE" secondAttribute="bottom" constant="6.5" id="Xmj-2x-Yv6"/>
+                                                <constraint firstAttribute="trailing" secondItem="Z3b-uF-bUE" secondAttribute="trailing" constant="15" id="aQl-Yh-qP0"/>
+                                                <constraint firstItem="NQb-jE-BNW" firstAttribute="leading" secondItem="hXz-El-m6n" secondAttribute="leading" constant="15" id="cAK-dX-jKi"/>
+                                                <constraint firstAttribute="bottom" secondItem="NQb-jE-BNW" secondAttribute="bottom" constant="15" id="ghD-j9-bli"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -179,6 +202,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Setting" id="4z9-dD-4xV"/>
+                    <connections>
+                        <outlet property="notificationSwitch" destination="Z3b-uF-bUE" id="lNb-Os-gv8"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXa-B7-FL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

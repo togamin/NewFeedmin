@@ -10,15 +10,32 @@ import UIKit
 
 class SettingTableTableViewController: UITableViewController {
 
+    @IBOutlet weak var notificationSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        var myDefault = UserDefaults.standard
+        if myDefault.object(forKey: "notificationSwitch") != nil {
+            notificationSwitch.isOn = myDefault.object(forKey: "notificationSwitch") as! Bool
+        }else if notificationSwitch.isOn == nil{
+            myDefault.set(true, forKey: "notificationSwitch")
+            notificationSwitch.isOn = myDefault.object(forKey: "notificationSwitch") as! Bool
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func notificationSwitch(_ sender: UISwitch) {
+        var myDefault = UserDefaults.standard
+        // UserDefaultにデータを書き込む
+        myDefault.set(notificationSwitch.isOn, forKey: "notificationSwitch")
+    }
+    
 
 
     //セクションの数
