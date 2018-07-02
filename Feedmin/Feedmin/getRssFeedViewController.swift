@@ -32,6 +32,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     var items:[Item] = []//複数の記事を格納するための配列
     var item:Item?
     var currentString = ""
+    var tagName:String! = ""
     
     //一時的に保存するための変数
     var tempTitle:String!
@@ -206,16 +207,23 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     func parser(_ parser: XMLParser,didStartElement elementName:String,namespaceURI:String?,qualifiedName qName:String?,attributes attributeDict:[String:String]) {
         
         self.currentString = ""
+        self.tagName = elementName
         //print(elementName)//タグすべてプリント
         if elementName == "item" || elementName == "entry"{
-            print(elementName)
             self.item = Item()//タグ名がitemのときのみ、記事を入れる箱を作成
         }
     }
     
+    
     //タグで囲まれた内容が見つかるたびに呼び出されるメソッド。
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        self.currentString = string
+        
+        if self.tagName == "title"{
+            self.currentString += string
+        }else {
+            self.currentString = string
+        }
+        print("テストstring:\(string)")
     }
     
     //終了タグが見つかるたびに呼び出されるメソッド。
@@ -223,6 +231,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         switch elementName {
         case "title":
             self.item?.title = currentString
+            print("テストtitle:\(self.item?.title)")
         case "link":
             self.item?.link = currentString
         case "pubDate":

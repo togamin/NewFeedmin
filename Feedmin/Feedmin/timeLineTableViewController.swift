@@ -22,6 +22,7 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
     var items:[Item] = []//複数の記事を格納するための配列
     var item:Item?
     var currentString = ""
+    var tagName:String! = ""
     
     //trueになった後のタグは解析しない
     var endFunc:Bool = false
@@ -221,7 +222,11 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
     //タグで囲まれた内容が見つかるたびに呼び出されるメソッド。
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         if self.endFunc == false{
-            self.currentString = string
+            if self.tagName == "title"{
+                self.currentString += string
+            }else {
+                self.currentString = string
+            }
         }
     }
     
