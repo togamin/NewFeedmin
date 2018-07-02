@@ -52,16 +52,36 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         self.searchBar.delegate = self
         self.searchBar.placeholder = "Keyword,URL,Feedを入力してください"
         
+        
         // インジケータの設定.表示されない.
+        //インジケーターを載せるView
+        var indicatorView:UIView = UIView()
+        indicatorView.frame = CGRect(x: (self.view.bounds.width-70)/2, y: (self.view.bounds.height-70)/2, width: 70, height: 70)
+        self.view.addSubview(indicatorView)
+        indicatorView.backgroundColor = UIColor(red: 0, green: 0.02, blue: 0.06, alpha: 0.3)
+        indicatorView.layer.cornerRadius = 15
+        
+        
         self.indicator = UIActivityIndicatorView()
-        self.indicator.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
-        self.indicator.center = self.rssResultTableView.center// 表示位置
-        //self.indicator.color = UIColor.green// 色の設定
-        self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        self.indicator.hidesWhenStopped = true// アニメーション停止と同時に隠す設定
-        self.rssResultTableView.addSubview(self.indicator)// 画面に追加
-        self.rssResultTableView.bringSubview(toFront: self.indicator)// 最前面に移動
+        self.indicator.center = indicatorView.center// 表示位置
+        self.indicator.color = UIColor.green// 色の設定
+        //self.indicator.hidesWhenStopped = true// アニメーション停止と同時に隠す設定
+        indicatorView.addSubview(self.indicator)// 画面に追加
+        indicatorView.bringSubview(toFront: self.indicator)// 最前面に移動
         //self.indicator.stopAnimating()//self.indicator.startAnimating()
+        
+        // アニメーション開始
+        print("アニメーション開始")
+        self.indicator.startAnimating()
+        
+        // 3秒後にアニメーションを停止させる
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+            self.indicator.stopAnimating()
+            print("アニメーション終了")
+        })
+        
+        
+        
         
         
     }
@@ -195,7 +215,6 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
                 self.parser.parse()
             }
         }else{
-            print("テストテスト2")
             //alertを作る
             let alert = UIAlertController(title: "対応していないURLです.", message:nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
@@ -223,7 +242,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         }else {
             self.currentString = string
         }
-        print("テストstring:\(string)")
+        //print("テストstring:\(string)")
     }
     
     //終了タグが見つかるたびに呼び出されるメソッド。
@@ -231,7 +250,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         switch elementName {
         case "title":
             self.item?.title = currentString
-            print("テストtitle:\(self.item?.title)")
+            //print("テストtitle:\(self.item?.title)")
         case "link":
             self.item?.link = currentString
         case "pubDate":
@@ -243,11 +262,11 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
             let getDate = dateFormatter.date(from: currentString)
             self.item?.pubDate = getDate
-            print(self.item?.pubDate)
+            //print(self.item?.pubDate)
             
         case "description","summary":
             self.item?.description = currentString
-            print(self.item?.description)
+            //print(self.item?.description)
         case "item","entry": self.items.append(self.item!)
         default :break
         }

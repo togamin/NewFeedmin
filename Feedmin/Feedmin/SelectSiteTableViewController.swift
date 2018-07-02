@@ -59,6 +59,8 @@ class SelectSiteTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        
         let makeAllRead: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "全て既読") { (action, index) -> Void in
             allRead(siteID: indexPath.row,bool: true)
             self.selectSitecellTableView.reloadData()
