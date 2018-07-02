@@ -39,6 +39,7 @@
 		B74343D920E911410037A13F /* feedmin03.png in Resources */ = {isa = PBXBuildFile; fileRef = B74343D620E911400037A13F /* feedmin03.png */; };
 		B74343DA20E911410037A13F /* feedmin02.png in Resources */ = {isa = PBXBuildFile; fileRef = B74343D720E911400037A13F /* feedmin02.png */; };
 		B74343DC20E919FC0037A13F /* FeedminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74343DB20E919FC0037A13F /* FeedminViewController.swift */; };
+		B74343DE20EA03D70037A13F /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = B74343DD20EA03D60037A13F /* setting.png */; };
 		B7486B8520E0BC0800B9E27D /* animalCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7486B8420E0BC0800B9E27D /* animalCollectionViewController.swift */; };
 		B7486B8B20E0D46D00B9E27D /* animal03.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486B8A20E0D46D00B9E27D /* animal03.png */; };
 		B7486B8D20E0D4C900B9E27D /* animal04.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486B8C20E0D4C900B9E27D /* animal04.png */; };
@@ -136,6 +137,7 @@
 		B74343D620E911400037A13F /* feedmin03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feedmin03.png; sourceTree = "<group>"; };
 		B74343D720E911400037A13F /* feedmin02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feedmin02.png; sourceTree = "<group>"; };
 		B74343DB20E919FC0037A13F /* FeedminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedminViewController.swift; sourceTree = "<group>"; };
+		B74343DD20EA03D60037A13F /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 		B7486B8420E0BC0800B9E27D /* animalCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = animalCollectionViewController.swift; sourceTree = "<group>"; };
 		B7486B8A20E0D46D00B9E27D /* animal03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal03.png; sourceTree = "<group>"; };
 		B7486B8C20E0D4C900B9E27D /* animal04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal04.png; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 		B700E9A920DBB4D40084FFD6 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				B74343DD20EA03D60037A13F /* setting.png */,
 				B74343D520E911400037A13F /* feedmin01.png */,
 				B74343D720E911400037A13F /* feedmin02.png */,
 				B74343D620E911400037A13F /* feedmin03.png */,
@@ -464,6 +467,7 @@
 				B7486B9B20E1307400B9E27D /* animal09.png in Resources */,
 				B7486BC320E13DFD00B9E27D /* animal24.png in Resources */,
 				B7486B9920E12F6800B9E27D /* animal08.png in Resources */,
+				B74343DE20EA03D70037A13F /* setting.png in Resources */,
 				B7486BDC20E3E93F00B9E27D /* animal39.png in Resources */,
 				B7486BD220E378C700B9E27D /* fav02.png in Resources */,
 				B7486BAB20E1347100B9E27D /* animal15.png in Resources */,
