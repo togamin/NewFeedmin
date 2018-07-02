@@ -204,7 +204,8 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         
         self.currentString = ""
         //print(elementName)//タグすべてプリント
-        if elementName == "item"{
+        if elementName == "item" || elementName == "entry"{
+            print(elementName)
             self.item = Item()//タグ名がitemのときのみ、記事を入れる箱を作成
         }
     }
@@ -223,17 +224,19 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
             self.item?.link = currentString
         case "pubDate":
             self.item?.pubDate = pubDate(pubDate: currentString)
-        case "dc:date":
+        case "dc:date","updated":
             
             let dateFormatter = DateFormatter()
             dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale?
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
             let getDate = dateFormatter.date(from: currentString)
             self.item?.pubDate = getDate
+            print(self.item?.pubDate)
             
-        case "description":
+        case "description","summary":
             self.item?.description = currentString
-        case "item": self.items.append(self.item!)
+            print(self.item?.description)
+        case "item","entry": self.items.append(self.item!)
         default :break
         }
     }

@@ -212,7 +212,7 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
         if self.endFunc == false{
             self.currentString = ""
             //print(elementName)//タグすべてプリント
-            if elementName == "item"{
+            if elementName == "item" || elementName == "entry"{
                 self.item = Item()//タグ名がitemのときのみ、記事を入れる箱を作成
             }
         }
@@ -238,15 +238,15 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
                 }
             case "pubDate":
                 self.item?.pubDate = pubDate(pubDate: currentString)
-            case "dc:date":
+            case "dc:date","updated":
                 let dateFormatter = DateFormatter()
                 dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale?
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                 let getDate = dateFormatter.date(from: currentString)
                 self.item?.pubDate = getDate
-            case "description":
+            case "description","summary":
                 self.item?.description = currentString
-            case "item": self.items.append(self.item!)
+            case "item","entry": self.items.append(self.item!)
             default :break
             }
         }
