@@ -137,6 +137,9 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
                 }
             }
             self.indicator.stopAnimating()
+            let alert = UIAlertController(title: "サイト登録完了しました.", message:nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+            present(alert,animated: true,completion: {()->Void in print("表示されたよん")})
         }
     }
     
@@ -163,7 +166,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
                
                 //json["results"][i]["feedId"].stringValueの結果の最初の部分「feed/」を省く処理を入れる
                 var feedIDnew:String = json["results"][i]["feedId"].stringValue
-                feedIDnew = feedIDnew.replacingOccurrences(of:"feed/", with:"")
+                feedIDnew = feedIDnew.replacingOccurrences(of:"feed/http", with:"http")
                 
                 self.searchResultList.append(searchResult(title:json["results"][i]["title"].stringValue,feedID:feedIDnew))
             }
