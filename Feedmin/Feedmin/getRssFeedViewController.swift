@@ -26,6 +26,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     @IBOutlet weak var searchBar: UISearchBar!
     //インジケーター
     var indicator: UIActivityIndicatorView!
+    var indicatorView:UIView = UIView()
     
     //RSS解析用
     var parser:XMLParser!//parser:構文解析
@@ -53,48 +54,47 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         self.searchBar.placeholder = "Keyword,URL,Feedを入力してください"
         
         
-        // インジケータの設定.表示されない.
+        // インジケータの設定.
         //インジケーターを載せるView
-        var indicatorView:UIView = UIView()
-        indicatorView.frame = CGRect(x: (self.view.bounds.width-70)/2, y: (self.view.bounds.height-70)/2, width: 70, height: 70)
+        self.indicatorView.frame = CGRect(x: (self.view.bounds.width-50)/2, y: (self.view.bounds.height-50)/2, width: 50, height: 50)
         self.view.addSubview(indicatorView)
-        indicatorView.backgroundColor = UIColor(red: 0, green: 0.02, blue: 0.06, alpha: 0.3)
-        indicatorView.layer.cornerRadius = 15
+        self.indicatorView.backgroundColor = UIColor(red: 0, green: 0.02, blue: 0.06, alpha: 0.3)
+        self.indicatorView.layer.cornerRadius = 15
+        self.indicatorView.isHidden = true
         
         
-        self.indicator = UIActivityIndicatorView()
+        self.indicator = UIActivityIndicatorView(frame: CGRect(x: (indicatorView.bounds.width-100)/2, y: (indicatorView.bounds.height-100)/2, width: 100, height: 100))
+        
         self.indicator.center = indicatorView.center// 表示位置
-        self.indicator.color = UIColor.green// 色の設定
-        //self.indicator.hidesWhenStopped = true// アニメーション停止と同時に隠す設定
-        indicatorView.addSubview(self.indicator)// 画面に追加
-        indicatorView.bringSubview(toFront: self.indicator)// 最前面に移動
-        //self.indicator.stopAnimating()//self.indicator.startAnimating()
+        self.indicator.color = UIColor(red: 0, green: 0.02, blue: 0.06, alpha: 0.9)// 色の設定
+        self.indicator.hidesWhenStopped = true// アニメーション停止と同時に隠す設定
+        self.view.addSubview(self.indicator)// 画面に追加
+        self.view.bringSubview(toFront: self.indicator)// 最前面に移動
         
-        // アニメーション開始
-        print("アニメーション開始")
-        self.indicator.startAnimating()
-        
-        // 3秒後にアニメーションを停止させる
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-            self.indicator.stopAnimating()
-            print("アニメーション終了")
-        })
-        
-        
-        
-        
+    
         
     }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+
+    }
+    
+    
     //Searchボタンが押された時に呼ばれる
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
+        self.indicatorView.isHidden = false
+        self.indicator.startAnimating()
         print("テスト検索文字:\(self.searchBar.text!)")
         self.searchFeed(query:self.searchBar.text!,resultNum:20)
-        self.rssResultTableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.rssResultTableView.reloadData()
+            self.indicator.stopAnimating()
+            self.indicatorView.isHidden = true
+        }
     }
 
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResultList.count
@@ -114,7 +114,10 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         print(indexPath.row)
         //alertを作る
         let alert = UIAlertController(title: "サイトURLの登録", message: "このサイトを登録しますか?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "登録", style: .default, handler: {action in getInfo()}))
+        alert.addAction(UIAlertAction(title: "登録", style: .default, handler: {action in
+            getInfo()
+            
+        }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {action in print("キャンセル")}))
         
         // テキストフィールドを追加
@@ -133,6 +136,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         //登録したURLからRSSデータを取得.
         func getInfo(){
             print("URL取得します")
+            self.indicatorView.isHidden = false
             self.indicator.startAnimating()
             self.tempTitle = alert.textFields![0].text!
             self.tempURL = alert.textFields![1].text!
@@ -150,17 +154,28 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
                 //サイト情報をCoreDataに保存
                 writeSiteInfo(siteID:siteInfoList.count,siteTitle:self.tempTitle,siteURL:self.tempURL,siteBool: true)
                 for i in 0..<self.items.count{
+                    
+                
                     self.items[i].thumbImageData = getImageData(code: self.items[i].description)
+                    
+                    //万が一nilが入っていた場合
+                    if self.items[i].thumbImageData == nil{
+                        self.items[i].thumbImageData = UIImageJPEGRepresentation(UIImage(named:"default01.png")!, 1.0)! as NSData//圧縮率
+                    }
                     
                     //CoreDataに記事情報を保存
                     
                     writeArticleInfo(siteID:siteInfoList.count,articleTitle:self.items[i].title,updateDate:self.items[i].pubDate!,articleURL:self.items[i].link,thumbImageData:self.items[i].thumbImageData,fav:false,read:false)
                 }
             }
-            self.indicator.stopAnimating()
-            let alert = UIAlertController(title: "サイト登録完了しました.", message:nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
-            present(alert,animated: true,completion: {()->Void in print("表示されたよん")})
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.indicator.stopAnimating()
+                self.indicatorView.isHidden = true
+            
+                let alert = UIAlertController(title: "サイト登録完了しました.", message:nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+                self.present(alert,animated: true,completion: {()->Void in print("表示されたよん")})
+            }
         }
     }
     
@@ -188,6 +203,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
                 //json["results"][i]["feedId"].stringValueの結果の最初の部分「feed/」を省く処理を入れる
                 var feedIDnew:String = json["results"][i]["feedId"].stringValue
                 feedIDnew = feedIDnew.replacingOccurrences(of:"feed/http", with:"http")
+                feedIDnew = feedIDnew.replacingOccurrences(of:"/feed", with:"/rss")
                 
                 self.searchResultList.append(searchResult(title:json["results"][i]["title"].stringValue,feedID:feedIDnew))
             }
@@ -236,8 +252,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     
     //タグで囲まれた内容が見つかるたびに呼び出されるメソッド。
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        
-        if self.tagName == "title"{
+        if self.tagName == "title" || self.tagName == "description"{
             self.currentString += string
         }else {
             self.currentString = string
@@ -266,7 +281,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
             
         case "description","summary":
             self.item?.description = currentString
-            //print(self.item?.description)
+            //print("テスト:\(currentString)")
         case "item","entry": self.items.append(self.item!)
         default :break
         }

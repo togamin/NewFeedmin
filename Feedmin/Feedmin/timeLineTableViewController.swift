@@ -221,12 +221,10 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
     
     //タグで囲まれた内容が見つかるたびに呼び出されるメソッド。
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        if self.endFunc == false{
-            if self.tagName == "title"{
-                self.currentString += string
-            }else {
-                self.currentString = string
-            }
+        if self.tagName == "title" || self.tagName == "description"{
+            self.currentString += string
+        }else {
+            self.currentString = string
         }
     }
     

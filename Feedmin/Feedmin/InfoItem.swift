@@ -128,12 +128,45 @@ func getImageData(code:String)->NSData!{
         matches2.forEach { (match) -> () in
             thumbImageURL = (str2 as NSString).substring(with: match.range(at: 1))
         }
+        
+    }else{
+        thumbImageURL = getImageDataHatena(string:code)
+        print("テストはてなnil?:\(thumbImageURL)")
+    }
+    if thumbImageURL == nil{
+        thumbImageData = UIImageJPEGRepresentation(UIImage(named:"default01.png")!, 1.0)! as NSData//圧縮率
+        print("テスト:デフォルト画像を設定します")
+    }else{
         let url = NSURL(string:thumbImageURL!)
         thumbImageData = NSData(contentsOf: url! as URL)
-    }else if str2 == nil{
-        thumbImageData = UIImageJPEGRepresentation(UIImage(named:"default01.png")!, 1.0)! as NSData//圧縮率
     }
-    
     //print("画像のURL(getImageURL):\(thumbImageURL!)")
     return thumbImageData
+}
+
+//はてなブログ用アイキャッチ画像のURLを取得.descriptionの中の最初の画像を取得.
+func getImageDataHatena(string:String)->String?{
+    var strHatena:String!
+    var hatenaImageList:[String] = []
+    var thumbImageURL:String!
+    var thumbImageData:NSData!
+    //jpg,png両方に対応できるようにする。
+    let pattern = "https://cdn-ak.f.st-hatena.com/images/fotolife(.*)&quot; alt="
+    let regex = try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
+    let matches = regex.matches(in: string, options: [], range: NSMakeRange(0, string.characters.count))
+    matches.forEach { (match) -> () in
+        //strHatena = (string as NSString).substring(with: match.range(at: 1))
+        hatenaImageList.append((string as NSString).substring(with: match.range(at: 1)))
+        print("テストhatenaImageList:\(hatenaImageList)")
+    }
+    
+    //jpg,png両方に対応できるようにする。
+    if hatenaImageList.count != 0{
+        thumbImageURL = "https://cdn-ak.f.st-hatena.com/images/fotolife" + hatenaImageList[0]
+        print("テストhatenaImageList[0]:\(hatenaImageList[0])")
+    }else{
+        thumbImageURL = nil
+    }
+    print("テストthumbImageURL:\(thumbImageURL)")
+    return thumbImageURL
 }
