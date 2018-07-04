@@ -123,7 +123,14 @@ func getImageData(code:String)->NSData!{
     //str2には[<img]~[/>]までの文字が入る.なければ[nil]
     //print("str2:\(str2)")
     
-    var str2:String! = imageList[0]
+    var str2:String!
+    print(imageList)
+    if imageList != []{
+        str2 = imageList[0]
+    }else{
+        str2 = nil
+    }
+    
     
     if str2 != nil{
         //imgタグの中のURLの部分のみを取得
