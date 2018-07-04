@@ -39,6 +39,9 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     var tempTitle:String!
     var tempURL:String!
     
+    //マルチスレッド用
+    let queue:DispatchQueue = DispatchQueue(label: "com.togamin.queue")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,6 +141,8 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
             print("URL取得します")
             self.indicatorView.isHidden = false
             self.indicator.startAnimating()
+            
+            
             self.tempTitle = alert.textFields![0].text!
             self.tempURL = alert.textFields![1].text!
             //self.tempURL = "https://togamin.com/feed/"
@@ -145,7 +150,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
             
             //itemsに何も入っていなければAlert
             //機能していないなぜ
-            if items.count == 0{
+                if items.count == 0{
                 //alertを作る
                 let alert = UIAlertController(title: "対応していないURLです.", message:nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
@@ -172,10 +177,12 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
                 self.indicator.stopAnimating()
                 self.indicatorView.isHidden = true
             
+            
                 let alert = UIAlertController(title: "サイト登録完了しました.", message:nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
                 self.present(alert,animated: true,completion: {()->Void in print("表示されたよん")})
             }
+            
         }
     }
     
@@ -252,8 +259,10 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     
     //タグで囲まれた内容が見つかるたびに呼び出されるメソッド。
     func parser(_ parser: XMLParser, foundCharacters string: String) {
+        //print(self.tagName,string)
         if self.tagName == "title" || self.tagName == "description"{
             self.currentString += string
+            //print("string\(string)")
         }else {
             self.currentString = string
         }
@@ -281,7 +290,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
             
         case "description","summary":
             self.item?.description = currentString
-            //print("テスト:\(currentString)")
+            //print("テストdescription:\(currentString)")
         case "item","entry": self.items.append(self.item!)
         default :break
         }

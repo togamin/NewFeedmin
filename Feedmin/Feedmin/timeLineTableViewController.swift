@@ -185,7 +185,12 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
                 
                 newArticleInfo.thumbImageData = getImageData(code: newArticleInfo.description)
                 
-               print(newArticleInfo.pubDate)
+                //万が一nilが入っていた場合
+                if newArticleInfo.thumbImageData == nil{
+                    newArticleInfo.thumbImageData = UIImageJPEGRepresentation(UIImage(named:"default01.png")!, 1.0)! as NSData//圧縮率
+                }
+                
+               //print(newArticleInfo.pubDate)
                 writeArticleInfo(siteID:siteInfo.siteID,articleTitle:newArticleInfo.title,updateDate:newArticleInfo.pubDate!,articleURL:newArticleInfo.link,thumbImageData:newArticleInfo.thumbImageData,fav:false,read:false)
             }
             self.endFunc = false

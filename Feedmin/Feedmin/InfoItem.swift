@@ -96,8 +96,9 @@ func getImageData(code:String)->NSData!{
     var result:UIImage!
     var thumbImageURL:String!
     var thumbImageData:NSData!
+    var imageList:[String] = []
     
-    let pattern1 = "<img(.*)/>"
+    let pattern1 = "<img(.*)>"
     let pattern2 = "src=\"(.*?)\""
     //(.*)の部分を抜き出す.
     
@@ -113,13 +114,16 @@ func getImageData(code:String)->NSData!{
     
     let matches1 = regex1.matches(in: str1, options: [], range: NSMakeRange(0, str1.characters.count))
     
-    var str2:String!
+    
     
     matches1.forEach { (match) -> () in
-        str2 = (str1 as NSString).substring(with: match.range(at: 1))
+        //str2 = (str1 as NSString).substring(with: match.range(at: 1))
+        imageList.append((str1 as NSString).substring(with: match.range(at: 1)))
     }
     //str2には[<img]~[/>]までの文字が入る.なければ[nil]
     //print("str2:\(str2)")
+    
+    var str2:String! = imageList[0]
     
     if str2 != nil{
         //imgタグの中のURLの部分のみを取得
@@ -127,11 +131,12 @@ func getImageData(code:String)->NSData!{
         
         matches2.forEach { (match) -> () in
             thumbImageURL = (str2 as NSString).substring(with: match.range(at: 1))
+            
         }
-        
+        print("テストデフォ?:\(thumbImageURL)")
     }else{
         thumbImageURL = getImageDataHatena(string:code)
-        print("テストはてなnil?:\(thumbImageURL)")
+        print("テストはてなアイキャッチ?:\(thumbImageURL)")
     }
     if thumbImageURL == nil{
         thumbImageData = UIImageJPEGRepresentation(UIImage(named:"default01.png")!, 1.0)! as NSData//圧縮率
@@ -170,3 +175,7 @@ func getImageDataHatena(string:String)->String?{
     print("テストthumbImageURL:\(thumbImageURL)")
     return thumbImageURL
 }
+
+
+
+
