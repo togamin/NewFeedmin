@@ -97,6 +97,7 @@ func getImageData(code:String)->NSData!{
     var thumbImageURL:String!
     var thumbImageData:NSData!
     var imageList:[String] = []
+    var thumbImageURLList:[String] = []
     
     let pattern1 = "<img(.*)>"
     let pattern2 = "src=\"(.*?)\""
@@ -122,9 +123,9 @@ func getImageData(code:String)->NSData!{
     }
     //str2には[<img]~[/>]までの文字が入る.なければ[nil]
     //print("str2:\(str2)")
+    //print("テストimageList\(imageList)")
     
     var str2:String!
-    print(imageList)
     if imageList != []{
         str2 = imageList[0]
     }else{
@@ -137,17 +138,17 @@ func getImageData(code:String)->NSData!{
         let matches2 = regex2.matches(in: str2!, options: [], range: NSMakeRange(0, str2.characters.count))
         
         matches2.forEach { (match) -> () in
-            thumbImageURL = (str2 as NSString).substring(with: match.range(at: 1))
-            
+            thumbImageURLList.append((str2 as NSString).substring(with: match.range(at: 1)))
         }
-        print("テストデフォ?:\(thumbImageURL)")
+        thumbImageURL = thumbImageURLList[0]
+        //print("テストデフォ?:\(thumbImageURL)")
     }else{
         thumbImageURL = getImageDataHatena(string:code)
-        print("テストはてなアイキャッチ?:\(thumbImageURL)")
+        //print("テストはてなアイキャッチ?:\(thumbImageURL)")
     }
     if thumbImageURL == nil{
         thumbImageData = UIImageJPEGRepresentation(UIImage(named:"default01.png")!, 1.0)! as NSData//圧縮率
-        print("テスト:デフォルト画像を設定します")
+        //print("テスト:デフォルト画像を設定します")
     }else{
         let url = NSURL(string:thumbImageURL!)
         thumbImageData = NSData(contentsOf: url! as URL)
@@ -179,7 +180,7 @@ func getImageDataHatena(string:String)->String?{
     }else{
         thumbImageURL = nil
     }
-    print("テストthumbImageURL:\(thumbImageURL)")
+    //print("テストthumbImageURL:\(thumbImageURL)")
     return thumbImageURL
 }
 
