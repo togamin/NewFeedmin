@@ -217,6 +217,7 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
     func parser(_ parser: XMLParser,didStartElement elementName:String,namespaceURI:String?,qualifiedName qName:String?,attributes attributeDict:[String:String]) {
         if self.endFunc == false{
             self.currentString = ""
+            self.tagName = elementName
             //print(elementName)//タグすべてプリント
             if elementName == "item" || elementName == "entry"{
                 self.item = Item()//タグ名がitemのときのみ、記事を入れる箱を作成

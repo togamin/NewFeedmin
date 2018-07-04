@@ -70,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMLParserDelegate {
             for newArticleInfo in self.items{
                 notification(title:siteInfo.siteTitle,message:newArticleInfo.title)
                 newArticleInfo.thumbImageData = getImageData(code: newArticleInfo.description)
+                
                 //万が一nilが入っていた場合
                 if newArticleInfo.thumbImageData == nil{
                     newArticleInfo.thumbImageData = UIImageJPEGRepresentation(UIImage(named:"default01.png")!, 1.0)! as NSData//圧縮率
@@ -98,6 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMLParserDelegate {
     func parser(_ parser: XMLParser,didStartElement elementName:String,namespaceURI:String?,qualifiedName qName:String?,attributes attributeDict:[String:String]) {
         if self.endFunc == false{
             self.currentString = ""
+            self.tagName = elementName
             //print(elementName)//タグすべてプリント
             if elementName == "item" || elementName == "entry"{
                 self.item = Item()//タグ名がitemのときのみ、記事を入れる箱を作成
