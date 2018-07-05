@@ -24,6 +24,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     var searchResultList:[searchResult] = []
     @IBOutlet weak var rssResultTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    
     //インジケーター
     var indicator: UIActivityIndicatorView!
     var indicatorView:UIView = UIView()
@@ -46,7 +47,6 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         
         //tableView
         self.rssResultTableView.delegate = self
@@ -91,8 +91,8 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         self.indicator.startAnimating()
         print("テスト検索文字:\(self.searchBar.text!)")
         self.searchFeed(query:self.searchBar.text!,resultNum:20)
+        self.rssResultTableView.reloadData()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.rssResultTableView.reloadData()
             self.indicator.stopAnimating()
             self.indicatorView.isHidden = true
         }
@@ -117,8 +117,12 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         print(indexPath.row)
         //alertを作る
         let alert = UIAlertController(title: "サイトURLの登録", message: "このサイトを登録しますか?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "登録", style: .default, handler: {action in
-            getInfo()
+        alert.addAction(UIAlertAction(title: "登録", style: .default, handler: {(action: UIAlertAction!) -> Void in
+            self.indicatorView.isHidden = false
+            self.indicator.startAnimating()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                getInfo()
+            }
             
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {action in print("キャンセル")}))
@@ -139,8 +143,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         //登録したURLからRSSデータを取得.
         func getInfo(){
             print("URL取得します")
-            self.indicatorView.isHidden = false
-            self.indicator.startAnimating()
+            
             
             
             self.tempTitle = alert.textFields![0].text!
@@ -157,7 +160,9 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
                 present(alert,animated: true,completion: {()->Void in print("表示されたよん")})//completionは動作完了時に発動。
             }else{
                 //サイト情報をCoreDataに保存
-                writeSiteInfo(siteID:siteInfoList.count,siteTitle:self.tempTitle,siteURL:self.tempURL,siteBool: true)
+                    siteInfoList = readSiteInfo()
+                    print("テスト\(siteInfoList.count)")
+                    writeSiteInfo(siteID:siteInfoList.count,siteTitle:self.tempTitle,siteURL:self.tempURL,siteBool: true)
                 for i in 0..<self.items.count{
                     
                 
@@ -173,16 +178,12 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
                     writeArticleInfo(siteID:siteInfoList.count,articleTitle:self.items[i].title,updateDate:self.items[i].pubDate!,articleURL:self.items[i].link,thumbImageData:self.items[i].thumbImageData,fav:false,read:false)
                 }
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.indicator.stopAnimating()
-                self.indicatorView.isHidden = true
+            self.indicator.stopAnimating()
+            self.indicatorView.isHidden = true
             
-            
-                let alert = UIAlertController(title: "サイト登録完了しました.", message:nil, preferredStyle: .alert)
+            let alert = UIAlertController(title: "サイト登録完了しました.", message:nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
-                self.present(alert,animated: true,completion: {()->Void in print("表示されたよん")})
-            }
-            
+            present(alert,animated: true,completion: {()->Void in print("表示されたよん")})
         }
     }
     
@@ -198,7 +199,6 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         //print("テスト(サーチFeed):\(encodeurl)")
         let url = NSURL(string: encodeurl)!
         let request = URLRequest(url: url as URL)
-        
         
         let task = URLSession.shared.dataTask(with: request) {
             (data:Data?,response:URLResponse?,error:Error?) in

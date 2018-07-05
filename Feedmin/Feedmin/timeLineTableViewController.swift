@@ -39,7 +39,7 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
         //deleteAllSiteInfo()
         
         //UserDefaultについて
-        var myDefault = UserDefaults.standard
+        let myDefault = UserDefaults.standard
         if myDefault.object(forKey: "animalNum") != nil {
             animalNum = myDefault.object(forKey: "animalNum") as! Int
         }
@@ -135,7 +135,7 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
         
         cell.articleTitle.text = self.articleInfoList[indexPath.row].articleTitle
         cell.cellLink = self.articleInfoList[indexPath.row].articleURL
-        cell.thumbView.image = UIImage(data:self.articleInfoList[indexPath.row].thumbImageData! as! Data)
+        cell.thumbView.image = UIImage(data:self.articleInfoList[indexPath.row].thumbImageData! as Data)
         cell.currentLike = self.articleInfoList[indexPath.row].fav
         if (self.articleInfoList[indexPath.row].fav)!{
             cell.favButton.setImage(UIImage(named:"fav01"), for: .normal)

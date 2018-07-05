@@ -78,7 +78,7 @@ class favTableViewController: UITableViewController {
         cell.siteTitle.text = self.siteInfoList[(articleInfoList[indexPath.row].siteID)!].siteTitle
         cell.articleTitle.text = self.articleInfoList[indexPath.row].articleTitle
         cell.cellLink = self.articleInfoList[indexPath.row].articleURL
-        cell.thumbView.image = UIImage(data:self.articleInfoList[indexPath.row].thumbImageData! as! Data)
+        cell.thumbView.image = UIImage(data:self.articleInfoList[indexPath.row].thumbImageData! as Data)
         cell.currentLike = self.articleInfoList[indexPath.row].fav
         if (self.articleInfoList[indexPath.row].fav)!{
             cell.favButton.setImage(UIImage(named:"fav01"), for: .normal)
