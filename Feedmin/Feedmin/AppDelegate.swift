@@ -52,8 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMLParserDelegate {
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         //バックグラウンドで実行する処理
         //notification(title:"テスト1",message:"テスト1")
-        var myDefault = UserDefaults.standard
-        var notify:Bool = myDefault.object(forKey: "notificationSwitch")! as! Bool
+        let myDefault = UserDefaults.standard
+        let notify:Bool = myDefault.object(forKey: "notificationSwitch")! as! Bool
         if notify == nil || true{
             self.backGroundFetchRssUpdate()
         }

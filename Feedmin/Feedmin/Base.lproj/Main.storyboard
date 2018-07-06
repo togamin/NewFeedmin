@@ -579,6 +579,9 @@
                             <outlet property="delegate" destination="22I-w0-BAc" id="E54-Vm-7bZ"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="articleNumTableView" destination="ew4-ud-n7Z" id="Ypd-uf-Om6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qdn-vH-dB8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -43,9 +43,6 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
         if myDefault.object(forKey: "animalNum") != nil {
             animalNum = myDefault.object(forKey: "animalNum") as! Int
         }
-        if myDefault.object(forKey: "articleNum") != nil {
-            articleNum = myDefault.object(forKey: "articleNum") as! Int
-        }
         
         
         //site情報読み込み.siteBoolがtrueのものだけ

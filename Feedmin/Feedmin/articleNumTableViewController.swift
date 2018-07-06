@@ -11,11 +11,22 @@ import UIKit
 
 var articleNum:Int! = 20//UserDefaultに登録.20は初期値.
 
+
 class articleNumTableViewController: UITableViewController {
 
+    @IBOutlet var articleNumTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //UserDefaultについて
+        let myDefault = UserDefaults.standard
+        if myDefault.object(forKey: "articleNum") != nil {
+            articleNum = myDefault.object(forKey: "articleNum") as! Int
+        }
+    }
+    //画面が表示されるたびに呼ばれる
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +42,16 @@ class articleNumTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "articleNumCell", for: indexPath)
         cell.textLabel?.text = "最新\((indexPath.row+1)*10)記事表示"
+        
+        if indexPath.row == articleNum/10 - 1{
+            //チェックマークを入れる
+            cell.accessoryType = .checkmark
+        }else{
+            cell.accessoryType = .none
+        }
+        
+        
+        
         return cell
     }
     //セルをタップしたら発動する処理
@@ -40,8 +61,10 @@ class articleNumTableViewController: UITableViewController {
         // UserDefaultに反映
         var myDefault = UserDefaults.standard
         myDefault.set((indexPath.row+1)*10, forKey: "articleNum")
-        articleNum = (indexPath.row+1)*10
+        articleNum = myDefault.object(forKey: "articleNum") as! Int
         print(articleNum)
+        
+        self.articleNumTableView.reloadData()
         
         //チェックマークを入れる
         cell?.accessoryType = .checkmark

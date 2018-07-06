@@ -94,7 +94,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         self.searchFeed(query:self.searchBar.text!,resultNum:20)
         self.rssResultTableView.reloadData()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.indicator.stopAnimating()
             self.indicatorView.isHidden = true
         }
