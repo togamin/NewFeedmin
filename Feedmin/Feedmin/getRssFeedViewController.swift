@@ -35,6 +35,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     var item:Item?
     var currentString = ""
     var tagName:String! = ""
+    var perseFin:Bool = false
     
     //一時的に保存するための変数
     var tempTitle:String!
@@ -184,6 +185,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
                     writeArticleInfo(siteID:siteInfoList.count,articleTitle:self.items[i].title,updateDate:self.items[i].pubDate!,articleURL:self.items[i].link,thumbImageData:self.items[i].thumbImageData,fav:false,read:false)
                 }
             }
+            self.perseFin = false
             self.indicator.stopAnimating()
             self.indicatorView.isHidden = true
             
@@ -253,12 +255,14 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     
     //開始タグが見つかるたびに毎回呼び出される関数
     func parser(_ parser: XMLParser,didStartElement elementName:String,namespaceURI:String?,qualifiedName qName:String?,attributes attributeDict:[String:String]) {
-        
-        self.currentString = ""
-        self.tagName = elementName
-        //print(elementName)//タグすべてプリント
-        if elementName == "item" || elementName == "entry"{
-            self.item = Item()//タグ名がitemのときのみ、記事を入れる箱を作成
+        //itemsの中身が20記事以上なら飛ばす。読み込みを早くするため。
+        if self.perseFin == false{
+            self.currentString = ""
+            self.tagName = elementName
+            //print(elementName)//タグすべてプリント
+            if elementName == "item" || elementName == "entry"{
+                self.item = Item()//タグ名がitemのときのみ、記事を入れる箱を作成
+            }
         }
     }
     
@@ -266,39 +270,47 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     //タグで囲まれた内容が見つかるたびに呼び出されるメソッド。
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         //print(self.tagName,string)
-        if self.tagName == "title" || self.tagName == "description"{
-            self.currentString += string
-            //print("string\(string)")
-        }else {
-            self.currentString = string
+        if self.perseFin == false{
+            if self.tagName == "title" || self.tagName == "description"{
+                self.currentString += string
+                //print("string\(string)")
+            }else {
+                self.currentString = string
+            }
         }
         //print("テストstring:\(string)")
     }
     
     //終了タグが見つかるたびに呼び出されるメソッド。
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        switch elementName {
-        case "title":
-            self.item?.title = currentString
-            //print("テストtitle:\(self.item?.title)")
-        case "link":
-            self.item?.link = currentString
-        case "pubDate":
-            self.item?.pubDate = pubDate(pubDate: currentString)
-        case "dc:date","updated":
+        if self.perseFin == false{
+            switch elementName {
+            case "title":
+                self.item?.title = currentString
+                //print("テストtitle:\(self.item?.title)")
+            case "link":
+                self.item?.link = currentString
+            case "pubDate":
+                self.item?.pubDate = pubDate(pubDate: currentString)
+            case "dc:date","updated":
             
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale?
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-            let getDate = dateFormatter.date(from: currentString)
-            self.item?.pubDate = getDate
-            //print(self.item?.pubDate)
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale?
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                let getDate = dateFormatter.date(from: currentString)
+                self.item?.pubDate = getDate
+                //print(self.item?.pubDate)
             
-        case "description","summary":
-            self.item?.description = currentString
-            //print("テストdescription:\(currentString)")
-        case "item","entry": self.items.append(self.item!)
-        default :break
+            case "description","summary":
+                self.item?.description = currentString
+                //print("テストdescription:\(currentString)")
+            case "item","entry":
+                self.items.append(self.item!)
+                if self.items.count == 20{
+                    self.perseFin = true
+                }
+            default :break
+            }
         }
     }
     /*RSS解析---------------------------------------------------*/

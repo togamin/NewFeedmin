@@ -11,7 +11,7 @@ import UIKit
 class favTableViewController: UITableViewController {
 
     @IBOutlet var favTableView: UITableView!
-    var siteInfoList:[siteInfo]!
+    //var siteInfoList:[siteInfo]!
     var articleInfoList:[articleInfo]!
     
     //マルチスレッド用
@@ -20,7 +20,7 @@ class favTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //site情報読み込み
-        self.siteInfoList = readSiteInfo()
+        siteInfoList = readSiteInfo()
         //お気に入り記事情報読み込み
         self.articleInfoList = readFav()
         
@@ -50,6 +50,8 @@ class favTableViewController: UITableViewController {
     
     //画面が表示されるたびに呼ばれる
     override func viewWillAppear(_ animated: Bool) {
+        //site情報読み込み
+        siteInfoList = readSiteInfo()
         self.articleInfoList = readFav()
         self.favTableView.reloadData()
     }
@@ -75,7 +77,7 @@ class favTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as! mainCellView
 
-        cell.siteTitle.text = self.siteInfoList[(articleInfoList[indexPath.row].siteID)!].siteTitle
+        cell.siteTitle.text = siteInfoList[(articleInfoList[indexPath.row].siteID)!]?.siteTitle
         cell.articleTitle.text = self.articleInfoList[indexPath.row].articleTitle
         cell.cellLink = self.articleInfoList[indexPath.row].articleURL
         cell.thumbView.image = UIImage(data:self.articleInfoList[indexPath.row].thumbImageData! as Data)
