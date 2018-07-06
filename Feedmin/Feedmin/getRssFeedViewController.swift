@@ -95,7 +95,13 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.indicator.stopAnimating()
             self.indicatorView.isHidden = true
+            if self.searchResultList.count == 0{
+                let alert = UIAlertController(title: "検索結果なし.", message:nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+                self.present(alert,animated: true,completion: {()->Void in print("表示されたよん")})
+            }
         }
+        
     }
 
     
@@ -120,7 +126,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         alert.addAction(UIAlertAction(title: "登録", style: .default, handler: {(action: UIAlertAction!) -> Void in
             self.indicatorView.isHidden = false
             self.indicator.startAnimating()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
                 getInfo()
             }
             
