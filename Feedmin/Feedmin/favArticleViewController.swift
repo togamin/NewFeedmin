@@ -30,6 +30,10 @@ class favArticleViewController: UIViewController {
     
     @IBAction func favArticleShare(_ sender: UIBarButtonItem) {
         let controller = UIActivityViewController(activityItems: [URL(string: self.link)], applicationActivities:nil)
+        
+        //iPadでエラーが出ないようにする
+        controller.popoverPresentationController?.sourceView = self.view
+        
         self.present(controller, animated: true,completion:nil)
     }
     

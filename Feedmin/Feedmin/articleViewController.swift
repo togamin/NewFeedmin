@@ -31,6 +31,10 @@ class articleViewController: UIViewController {
 
     @IBAction func articleShare(_ sender: UIBarButtonItem) {
         let controller = UIActivityViewController(activityItems: [URL(string:self.link)], applicationActivities:nil)
+        
+        //iPadでエラーが出ないようにする
+        controller.popoverPresentationController?.sourceView = self.view
+        
         self.present(controller, animated: true,completion:nil)
     }
     
