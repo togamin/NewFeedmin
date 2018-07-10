@@ -27,8 +27,9 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
     //trueになった後のタグは解析しない
     var endFunc:Bool = false
     
-    //マルチスレッド用
+    //マルチスレッド用.以下2つの違いを調べる必要あり。
     let queue:DispatchQueue = DispatchQueue(label: "com.togamin.queue")
+    //let queue:DispatchQueue = DispatchQueue.main
     
     
     override func viewDidLoad() {

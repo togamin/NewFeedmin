@@ -53,8 +53,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMLParserDelegate {
         //バックグラウンドで実行する処理
         //notification(title:"テスト1",message:"テスト1")
         let myDefault = UserDefaults.standard
-        let notify:Bool = myDefault.object(forKey: "notificationSwitch")! as! Bool
-        if notify == nil || true{
+        var notify:Bool = true
+        
+        if UserDefaults.standard.object(forKey: "notificationSwitch") != nil {
+            notify = myDefault.object(forKey: "notificationSwitch")! as! Bool
+        }
+        
+        print("notify:\(notify)")
+        if notify == true{
+            //notification(title:"テスト3",message:"テスト3")
             self.backGroundFetchRssUpdate()
         }
         //notification(title:"テスト2",message:"テスト2")

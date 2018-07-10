@@ -34,6 +34,7 @@ class SettingTableTableViewController: UITableViewController {
         var myDefault = UserDefaults.standard
         // UserDefaultにデータを書き込む
         myDefault.set(notificationSwitch.isOn, forKey: "notificationSwitch")
+        print(notificationSwitch.isOn)
     }
     
 

@@ -42,7 +42,9 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     var tempURL:String!
     
     //マルチスレッド用
+    //2つの違いを調べる
     let queue:DispatchQueue = DispatchQueue(label: "com.togamin.queue")
+    let queueMain:DispatchQueue = DispatchQueue.main
     
     
     override func viewDidLoad() {
@@ -227,6 +229,10 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
             }
         }
         task.resume()
+        
+        
+        
+        
     }
     
     /*RSS解析---------------------------------------------------*/
