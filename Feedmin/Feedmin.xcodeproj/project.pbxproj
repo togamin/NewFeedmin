@@ -100,6 +100,17 @@
 		B7486C1F20E4FE0100B9E27D /* animal51.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486C1920E4FDFF00B9E27D /* animal51.png */; };
 		B7486C2020E4FE0100B9E27D /* animal52.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486C1A20E4FDFF00B9E27D /* animal52.png */; };
 		B7486C2D20E7A49C00B9E27D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7486C2C20E7A49B00B9E27D /* SwiftyJSON.swift */; };
+		B7A0089B20F4E142003ECA14 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A0089A20F4E141003ECA14 /* GoogleMobileAds.framework */; };
+		B7A008A020F4EB4F003ECA14 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A0089F20F4EB4F003ECA14 /* AdSupport.framework */; };
+		B7A008A220F4EB66003ECA14 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008A120F4EB66003ECA14 /* AudioToolbox.framework */; };
+		B7A008A420F4EB70003ECA14 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008A320F4EB70003ECA14 /* AVFoundation.framework */; };
+		B7A008A620F4EB7E003ECA14 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008A520F4EB7E003ECA14 /* CoreGraphics.framework */; };
+		B7A008A820F4EB93003ECA14 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008A720F4EB93003ECA14 /* CoreTelephony.framework */; };
+		B7A008AB20F4EBA7003ECA14 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008A920F4EBA6003ECA14 /* EventKit.framework */; };
+		B7A008AC20F4EBA7003ECA14 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008AA20F4EBA7003ECA14 /* EventKitUI.framework */; };
+		B7A008AE20F4EBB7003ECA14 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008AD20F4EBB7003ECA14 /* MessageUI.framework */; };
+		B7A008B020F4EBC4003ECA14 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008AF20F4EBC4003ECA14 /* StoreKit.framework */; };
+		B7A008B220F4EBCF003ECA14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008B120F4EBCF003ECA14 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -198,6 +209,17 @@
 		B7486C1920E4FDFF00B9E27D /* animal51.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal51.png; sourceTree = "<group>"; };
 		B7486C1A20E4FDFF00B9E27D /* animal52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal52.png; sourceTree = "<group>"; };
 		B7486C2C20E7A49B00B9E27D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		B7A0089A20F4E141003ECA14 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		B7A0089F20F4EB4F003ECA14 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		B7A008A120F4EB66003ECA14 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B7A008A320F4EB70003ECA14 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B7A008A520F4EB7E003ECA14 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B7A008A720F4EB93003ECA14 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		B7A008A920F4EBA6003ECA14 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		B7A008AA20F4EBA7003ECA14 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		B7A008AD20F4EBB7003ECA14 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		B7A008AF20F4EBC4003ECA14 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		B7A008B120F4EBCF003ECA14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +227,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7A008B220F4EBCF003ECA14 /* SystemConfiguration.framework in Frameworks */,
+				B7A008B020F4EBC4003ECA14 /* StoreKit.framework in Frameworks */,
+				B7A008AE20F4EBB7003ECA14 /* MessageUI.framework in Frameworks */,
+				B7A008AB20F4EBA7003ECA14 /* EventKit.framework in Frameworks */,
+				B7A008AC20F4EBA7003ECA14 /* EventKitUI.framework in Frameworks */,
+				B7A008A820F4EB93003ECA14 /* CoreTelephony.framework in Frameworks */,
+				B7A008A620F4EB7E003ECA14 /* CoreGraphics.framework in Frameworks */,
+				B7A008A420F4EB70003ECA14 /* AVFoundation.framework in Frameworks */,
+				B7A008A220F4EB66003ECA14 /* AudioToolbox.framework in Frameworks */,
+				B7A008A020F4EB4F003ECA14 /* AdSupport.framework in Frameworks */,
+				B7A0089B20F4E142003ECA14 /* GoogleMobileAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,9 +247,11 @@
 		B700E97820DB5BBD0084FFD6 = {
 			isa = PBXGroup;
 			children = (
+				B7A0089A20F4E141003ECA14 /* GoogleMobileAds.framework */,
 				B700E98320DB5BBD0084FFD6 /* Feedmin */,
 				B700E98220DB5BBD0084FFD6 /* Products */,
 				B700E9A920DBB4D40084FFD6 /* images */,
+				B7A0089E20F4EB4E003ECA14 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -334,6 +369,23 @@
 				B7486BAC20E13DF800B9E27D /* animal34.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		B7A0089E20F4EB4E003ECA14 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7A008B120F4EBCF003ECA14 /* SystemConfiguration.framework */,
+				B7A008AF20F4EBC4003ECA14 /* StoreKit.framework */,
+				B7A008AD20F4EBB7003ECA14 /* MessageUI.framework */,
+				B7A008A920F4EBA6003ECA14 /* EventKit.framework */,
+				B7A008AA20F4EBA7003ECA14 /* EventKitUI.framework */,
+				B7A008A720F4EB93003ECA14 /* CoreTelephony.framework */,
+				B7A008A520F4EB7E003ECA14 /* CoreGraphics.framework */,
+				B7A008A320F4EB70003ECA14 /* AVFoundation.framework */,
+				B7A008A120F4EB66003ECA14 /* AudioToolbox.framework */,
+				B7A0089F20F4EB4F003ECA14 /* AdSupport.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -648,6 +700,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3647679NTF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Feedmin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -670,6 +726,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3647679NTF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Feedmin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

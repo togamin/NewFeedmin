@@ -8,12 +8,21 @@
 
 import UIKit
 import WebKit
+import GoogleMobileAds
 
-class favArticleViewController: UIViewController {
+class favArticleViewController: UIViewController,GADBannerViewDelegate {
 
     @IBOutlet weak var favWebView: WKWebView!
     @IBOutlet weak var favProgressView: UIProgressView!
     var link:String!
+    
+    // AdMob(アドセンス)
+    let AdMobID = "ca-app-pub-6754000737510695/2034002134"
+    let TestID = "ca-app-pub-3940256099942544/2934735716" // for test
+    // Your TestDevice ID
+    let DEVICE_ID = "FOSFMRTB216QH9IIKCG5RMUOI"
+    let AdMobTest:Bool = false
+    let SimulatorTest:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +35,44 @@ class favArticleViewController: UIViewController {
             let request = URLRequest(url:url)
             self.favWebView.load(request)
         }
+        
+        
+        //広告の表示
+        
+        print("広告コード開始")
+        var admobView: GADBannerView = GADBannerView()
+        admobView = GADBannerView(adSize:kGADAdSizeBanner)
+        admobView.frame.origin = CGPoint(x: 0, y: self.favWebView.frame.size.height - admobView.frame.height - 49)
+        admobView.frame.size = CGSize(width: self.favWebView.frame.width, height: admobView.frame.height)
+        
+        admobView.adUnitID = AdMobID
+        
+        if AdMobTest {
+            admobView.adUnitID  = TestID
+        }
+        else{
+            admobView.adUnitID  = AdMobID
+        }
+        
+        
+        admobView.delegate = self
+        admobView.rootViewController = self
+        let admobRequest:GADRequest = GADRequest()
+        
+        if AdMobTest {
+            if SimulatorTest {
+                admobRequest.testDevices = [kGADSimulatorID]
+            }
+            else {
+                admobRequest.testDevices = [DEVICE_ID]
+            }
+        }
+        
+        admobView.load(admobRequest)
+        self.favWebView.addSubview(admobView)
+        print("広告コード終了")
+        
+        
     }
     
     @IBAction func favArticleShare(_ sender: UIBarButtonItem) {

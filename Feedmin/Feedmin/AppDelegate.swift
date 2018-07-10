@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,XMLParserDelegate {
@@ -32,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMLParserDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // Initialize Google Mobile Ads SDK, application IDを設定
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-6754000737510695/2034002134")
         
         // このアプリで通知（Local Notification）を使用する許可を
         // ユーザーに求めるためのコード
