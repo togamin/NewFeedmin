@@ -52,7 +52,7 @@ class SettingTableTableViewController: UITableViewController {
         case 1: // 「通知」のセルの数
             return 1
         case 2: // 「その他」のセルの数
-            return 1
+            return 2
         default:
             return 0
         }

@@ -95,12 +95,6 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
         print("テスト検索文字:\(self.searchBar.text!)")
         self.searchFeed(query:self.searchBar.text!,resultNum:20)
         self.rssResultTableView.reloadData()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.indicator.stopAnimating()
-            self.indicatorView.isHidden = true
-        }
-        
     }
 
     
@@ -221,7 +215,11 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
                 self.searchResultList.append(searchResult(title:json["results"][i]["title"].stringValue,feedID:feedIDnew))
             }
             //print("テスト[rssInfoList]:\(self.searchResultList)")
-            self.rssResultTableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                self.rssResultTableView.reloadData()
+                self.indicator.stopAnimating()
+                self.indicatorView.isHidden = true
+            }
             if self.searchResultList.count == 0{
                 let alert = UIAlertController(title: "検索結果なし.", message:nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
