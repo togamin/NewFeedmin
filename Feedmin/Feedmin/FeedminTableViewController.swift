@@ -85,13 +85,13 @@ class FeedminTableViewController: UITableViewController {
         let controller = segue.destination as! FeedminViewController
         
         if indexPath?.section == 0{
-            controller.title = "準備中0"
+            controller.title = "ブロガーにおすすめ！RSSリーダーアプリ「Feedmin」とは！？"
             controller.FeedminLink = ""
         }else if indexPath?.section == 1{
             controller.title = "準備中1"
             controller.FeedminLink = ""
         }else if indexPath?.section == 2{
-            controller.title = "準備中2"
+            controller.title = "RSSフィードに画像情報を入れる方法について。「Feedmin」にアイキャッチ画像を表示させるには??"
             controller.FeedminLink = ""
         }
     }
