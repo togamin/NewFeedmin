@@ -516,6 +516,33 @@ func updateRead(articleURL:String,bool:Bool){
         print("error:updateupdateRead",error)
     }
 }
+//siteInfoのサイトタイトルの更新
+func updateSiteTitle(siteID:Int,title:String){
+    //AppDelegateを使う用意をしておく
+    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    //Entityを操作するためのオブジェクトを作成
+    let viewContext = appDelegate.persistentContainer.viewContext
+    //どのエンティティからdataを取得してくるかの設定
+    let query:NSFetchRequest<SiteInfo> = SiteInfo.fetchRequest()
+    let namePredicte = NSPredicate(format: "siteID = %d",siteID)
+    query.predicate = namePredicte
+    do{
+        //絞り込んだデータを一括取得
+        let fetchResults = try! viewContext.fetch(query)
+        for result in fetchResults{
+            result.setValue(title,forKey:"siteTitle")
+            //変更した記事のタイトルと変更後の状態の表示
+            //print("[updateSiteTitle]\(result.value(forKey:"siteTitle")! as! String)")
+            do{
+                //レコード(行)の即時保存
+                try viewContext.save()
+            }catch{
+            }
+        }
+    }catch{
+        print("error:updateSiteTitle",error)
+    }
+}
 
 //指定したIDの未読記事のみ取り出し.
 func readRead(siteID:Int)->[articleInfo]{

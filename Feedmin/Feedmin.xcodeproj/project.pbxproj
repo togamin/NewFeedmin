@@ -111,6 +111,7 @@
 		B7A008AE20F4EBB7003ECA14 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008AD20F4EBB7003ECA14 /* MessageUI.framework */; };
 		B7A008B020F4EBC4003ECA14 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008AF20F4EBC4003ECA14 /* StoreKit.framework */; };
 		B7A008B220F4EBCF003ECA14 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008B120F4EBCF003ECA14 /* SystemConfiguration.framework */; };
+		B7A008B420F61BCD003ECA14 /* EditSiteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A008B320F61BCD003ECA14 /* EditSiteTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -220,6 +221,7 @@
 		B7A008AD20F4EBB7003ECA14 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B7A008AF20F4EBC4003ECA14 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B7A008B120F4EBCF003ECA14 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		B7A008B320F61BCD003ECA14 /* EditSiteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSiteTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +288,7 @@
 				B74343DB20E919FC0037A13F /* FeedminViewController.swift */,
 				B700E9A720DBB45A0084FFD6 /* mainCellView.swift */,
 				B700E99D20DB6D620084FFD6 /* seturlTableViewController.swift */,
+				B7A008B320F61BCD003ECA14 /* EditSiteTableViewController.swift */,
 				B700E99F20DB6FB00084FFD6 /* InfoItem.swift */,
 				B700E9A320DB87480084FFD6 /* coreData.swift */,
 				B700E99B20DB62770084FFD6 /* SettingTableTableViewController.swift */,
@@ -543,6 +546,7 @@
 				B700E9A420DB87480084FFD6 /* coreData.swift in Sources */,
 				B700E99C20DB62770084FFD6 /* SettingTableTableViewController.swift in Sources */,
 				B700E9A820DBB45A0084FFD6 /* mainCellView.swift in Sources */,
+				B7A008B420F61BCD003ECA14 /* EditSiteTableViewController.swift in Sources */,
 				B74343D020E8FF0B0037A13F /* togaminViewController.swift in Sources */,
 				B7486B8520E0BC0800B9E27D /* animalCollectionViewController.swift in Sources */,
 				B700E9BD20DBDC480084FFD6 /* favTableViewController.swift in Sources */,

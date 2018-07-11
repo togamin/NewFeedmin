@@ -82,14 +82,32 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
                 self.present(alert,animated: true,completion: {()->Void in print("URL削除時のエラー")})
             }
         }
-//        let editSite: UITableViewRowAction = UITableViewRowAction(style: .normal, title: "編集"){ (action, index) -> Void in
-//            print("編集")
-//
-//        }
         deleteSite.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0.6)
-        //editSite.backgroundColor = UIColor(red: 0, green: 0.8, blue: 0.5, alpha: 0.6)
         return [deleteSite]
     }
+    
+    //セルをタップしたら発動する処理
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goEditSite",sender:nil)
+    }
+    //画面遷移時に呼び出される
+    override func prepare(for segue:UIStoryboardSegue,sender:Any?){
+        print("画面遷移中")
+        if let indexPath = self.urlTableView.indexPathForSelectedRow{
+            
+            //遷移先のViewControllerを格納
+            let controller = segue.destination as! EditSiteTableViewController
+            
+            print(siteInfoList[indexPath.row]?.siteTitle)
+            
+            //遷移先の変数に代入
+            controller.siteTitle = siteInfoList[indexPath.row]?.siteTitle
+            controller.siteID = siteInfoList[indexPath.row]?.siteID
+        }
+    }
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

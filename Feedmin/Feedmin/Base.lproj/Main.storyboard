@@ -268,7 +268,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qsa-nj-wFk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2351.25" y="3655.9859154929577"/>
+            <point key="canvasLocation" x="-534" y="4049"/>
         </scene>
         <!--Feedmin-->
         <scene sceneID="ggW-YT-9f1">
@@ -316,7 +316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gE8-je-gzF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3135" y="3655.9859154929577"/>
+            <point key="canvasLocation" x="249" y="4049"/>
         </scene>
         <!--とがみんブログ-->
         <scene sceneID="624-OM-uiU">
@@ -369,7 +369,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OcY-ZA-PnH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2771" y="2928"/>
+            <point key="canvasLocation" x="1214" y="4082"/>
         </scene>
         <!--登録サイト一覧-->
         <scene sceneID="epi-vh-tOb">
@@ -420,6 +420,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="urlTableView" destination="9RY-Ic-ZeW" id="QzW-4T-n3F"/>
+                        <segue destination="l29-2S-HIL" kind="show" identifier="goEditSite" id="6jf-Bd-Aad"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DoJ-pk-ucM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -435,14 +436,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="UPl-Av-E09">
-                                <rect key="frame" x="0.0" y="120" width="320" height="448"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchRSSCell" textLabel="yu7-MU-fzu" detailTextLabel="o0R-Sg-CM8" style="IBUITableViewCellStyleSubtitle" id="vF5-76-L6y">
-                                        <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vF5-76-L6y" id="EyW-Ek-b0d">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yu7-MU-fzu">
@@ -479,9 +480,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="UPl-Av-E09" secondAttribute="bottom" id="Kgu-l9-Pk5"/>
-                            <constraint firstAttribute="trailing" secondItem="UPl-Av-E09" secondAttribute="trailing" id="L63-QF-18O"/>
+                            <constraint firstItem="2Rl-fE-xR9" firstAttribute="bottom" secondItem="UPl-Av-E09" secondAttribute="bottom" id="4kj-Yi-V3N"/>
+                            <constraint firstItem="2Rl-fE-xR9" firstAttribute="trailing" secondItem="UPl-Av-E09" secondAttribute="trailing" id="6wE-f6-3ei"/>
                             <constraint firstItem="UPl-Av-E09" firstAttribute="leading" secondItem="6iK-qL-PH2" secondAttribute="leading" id="Mpn-O4-znb"/>
+                            <constraint firstItem="UPl-Av-E09" firstAttribute="leading" secondItem="2Rl-fE-xR9" secondAttribute="leading" id="ahd-hV-g0P"/>
                             <constraint firstItem="UPl-Av-E09" firstAttribute="top" secondItem="2Rl-fE-xR9" secondAttribute="top" constant="100" id="yiY-HQ-2e8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Rl-fE-xR9"/>
@@ -510,7 +512,59 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1310.625" y="1480.9859154929577"/>
+            <point key="canvasLocation" x="1545" y="2444"/>
+        </scene>
+        <!--Edit Site Table View Controller-->
+        <scene sceneID="IL0-ZY-PgW">
+            <objects>
+                <tableViewController id="l29-2S-HIL" customClass="EditSiteTableViewController" customModule="Feedmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="ag3-KY-dFR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="サイトタイトルの変更" id="H7e-3E-aaZ">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditCell" id="c82-Ji-nMY">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c82-Ji-nMY" id="brj-Of-nRq">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="サイトタイトルを入力してください." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NpV-3z-9JS">
+                                                    <rect key="frame" x="1" y="1" width="373" height="41.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="nKE-4J-zeF"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="NpV-3z-9JS" firstAttribute="leading" secondItem="brj-Of-nRq" secondAttribute="leading" constant="1" id="JaO-e9-OOk"/>
+                                                <constraint firstAttribute="trailing" secondItem="NpV-3z-9JS" secondAttribute="trailing" constant="1" id="JyT-hT-0bI"/>
+                                                <constraint firstItem="NpV-3z-9JS" firstAttribute="top" secondItem="brj-Of-nRq" secondAttribute="top" constant="1" id="rTS-A4-oZI"/>
+                                                <constraint firstAttribute="bottom" secondItem="NpV-3z-9JS" secondAttribute="bottom" constant="1" id="sZC-Ev-5KA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="l29-2S-HIL" id="dc8-n0-IPG"/>
+                            <outlet property="delegate" destination="l29-2S-HIL" id="6DR-2x-KuJ"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="EditTitle" destination="NpV-3z-9JS" id="syB-RT-tM3"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fdz-wn-caK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1261.5999999999999" y="1482.9085457271365"/>
         </scene>
         <!--アイコン選択-->
         <scene sceneID="YeJ-zN-72s">
@@ -553,7 +607,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LqC-dk-gPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2111" y="1786"/>
+            <point key="canvasLocation" x="724" y="2850"/>
         </scene>
         <!--Article Num Table View Controller-->
         <scene sceneID="oBA-tF-VM3">
@@ -584,7 +638,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qdn-vH-dB8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2773" y="2243"/>
+            <point key="canvasLocation" x="2044" y="3784"/>
         </scene>
         <!--My Tab View Controller-->
         <scene sceneID="IvL-XC-S3E">
@@ -869,6 +923,6 @@
         <image name="setting" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uyS-g3-NCE"/>
+        <segue reference="HN1-xS-5Yl"/>
     </inferredMetricsTieBreakers>
 </document>
