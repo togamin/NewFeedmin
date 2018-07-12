@@ -40,8 +40,8 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
         super.viewDidLoad()
         
         //Info全削除
-        deleteAllArticleInfo()
-        deleteAllSiteInfo()
+        //deleteAllArticleInfo()
+        //deleteAllSiteInfo()
         
         // インジケータの設定.
         //インジケーターを載せるView.
