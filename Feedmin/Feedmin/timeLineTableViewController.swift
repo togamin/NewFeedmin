@@ -27,17 +27,85 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
     //trueになった後のタグは解析しない
     var endFunc:Bool = false
     
-    //マルチスレッド用.以下2つの違いを調べる必要あり。
+    //マルチスレッド用.
     let queue:DispatchQueue = DispatchQueue(label: "com.togamin.queue")
-    //let queue:DispatchQueue = DispatchQueue.main
+    
+    
+    //インジケーター
+    var indicator: UIActivityIndicatorView!
+    var indicatorView:UIView = UIView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Info全削除
-        //deleteAllArticleInfo()
-        //deleteAllSiteInfo()
+        deleteAllArticleInfo()
+        deleteAllSiteInfo()
+        
+        // インジケータの設定.
+        //インジケーターを載せるView.
+        self.indicatorView.frame = CGRect(x: (self.view.bounds.width-50)/2, y: (self.view.bounds.height - 150)/2, width: 50, height: 50)
+        self.view.addSubview(indicatorView)
+        self.indicatorView.backgroundColor = UIColor(red: 0, green: 0.02, blue: 0.06, alpha: 0.3)
+        self.indicatorView.layer.cornerRadius = 15
+        self.indicatorView.isHidden = true
+        
+        
+        self.indicator = UIActivityIndicatorView(frame: CGRect(x: (indicatorView.bounds.width-100)/2, y: (indicatorView.bounds.height-100)/2, width: 100, height: 100))
+        
+        self.indicator.center = indicatorView.center// 表示位置
+        self.indicator.color = UIColor(red: 0, green: 0.02, blue: 0.06, alpha: 0.9)// 色の設定
+        self.indicator.hidesWhenStopped = true// アニメーション停止と同時に隠す設定
+        self.view.addSubview(self.indicator)// 画面に追加
+        self.view.bringSubview(toFront: self.indicator)// 最前面に移動
+        
+         
+        //デフォルトでとがみんブログ表示
+        siteInfoList = readSiteInfo()
+        if self.siteInfoList.count == 0{
+            self.indicatorView.isHidden = false
+            self.indicator.startAnimating()
+            writeSiteInfo(siteID:0,siteTitle:"とがみんブログ",siteURL:"https://togamin.com/rss",siteBool:true)
+            print("テスト:defoultサイトの読み込み")
+            let dispatchGroup = DispatchGroup()
+            let dispatchQueue = DispatchQueue(label: "queue", attributes: .concurrent)
+            
+            dispatchGroup.enter()
+            dispatchQueue.async(group: dispatchGroup){
+                
+                self.startDownload(siteURL:"https://togamin.com/rss")
+                for newArticleInfo in self.items{
+                    
+                    newArticleInfo.thumbImageData = getImageData(code: newArticleInfo.description)
+                    
+                    //万が一nilが入っていた場合
+                    if newArticleInfo.thumbImageData == nil{
+                        newArticleInfo.thumbImageData = UIImageJPEGRepresentation(UIImage(named:"default01.png")!, 1.0)! as NSData//圧縮率
+                    }
+                    //print(newArticleInfo.pubDate)
+                    writeArticleInfo(siteID:0,articleTitle:newArticleInfo.title,updateDate:newArticleInfo.pubDate!,articleURL:newArticleInfo.link,thumbImageData:newArticleInfo.thumbImageData,fav:false,read:false)
+                }
+                //記事再読み込み
+                self.articleInfoList = readArticleInfo()
+                //テーブルを再読み込みする。
+                print("テスト:非同期の処理終了")
+                dispatchGroup.leave()
+            }
+            // 全ての非同期処理完了後にメインスレッドで処理
+            dispatchGroup.notify(queue: .main) {
+                print("テスト:All Process Done!")
+                //記事再読み込み
+                //self.articleInfoList = readArticleInfo()
+                self.timeLineTableView.reloadData()
+                self.indicator.stopAnimating()
+                self.indicatorView.isHidden = true
+            }
+        }
+        
+        
+        
+        
         
         //UserDefaultについて
         let myDefault = UserDefaults.standard
@@ -80,6 +148,7 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
     
     //画面が表示されるたびに呼ばれる
     override func viewWillAppear(_ animated: Bool) {
+        print("テスト:viewWillAppear")
         //site情報読み込み.siteBoolがtrueのものだけ
         self.siteInfoList = getTrueSiteInfo()
         self.siteTrueIDList = []

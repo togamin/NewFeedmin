@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,XMLParserDelegate {
         //notification(title:"テスト1",message:"テスト1")
         let myDefault = UserDefaults.standard
         var notify:Bool = true
-        
+        myDefault.register(defaults: ["notificationSwitch" : true])
         if UserDefaults.standard.object(forKey: "notificationSwitch") != nil {
             notify = myDefault.object(forKey: "notificationSwitch")! as! Bool
         }

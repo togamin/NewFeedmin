@@ -42,10 +42,10 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bvh-im-mzQ">
-                    <rect key="frame" x="8" y="8" width="140" height="18"/>
+                    <rect key="frame" x="8" y="8" width="160" height="18"/>
                     <color key="backgroundColor" red="0.0031218486359209587" green="0.045935083393593319" blue="0.23725015862944165" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="140" id="1eG-LE-b22"/>
+                        <constraint firstAttribute="width" constant="160" id="M8R-V4-DdU"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
