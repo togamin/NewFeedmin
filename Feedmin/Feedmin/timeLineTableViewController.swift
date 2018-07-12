@@ -167,7 +167,10 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
     
     //テーブルビュー引っ張り時の呼び出しメソッド
     @objc func relode(_ sender: UIRefreshControl){
-        queue.async {() -> Void in
+        let dispatchGroup = DispatchGroup()
+        let dispatchQueue = DispatchQueue(label: "queue", attributes: .concurrent)
+        dispatchGroup.enter()
+        dispatchQueue.async(group: dispatchGroup){
             print("再読み込み")
             //新着記事を取得し、CoreDataに代入.
             self.rssUpdate()
@@ -179,6 +182,9 @@ class timeLineTableViewController: UITableViewController,XMLParserDelegate,UIVie
             }
             //記事再読み込み
             self.articleInfoList = selectReadArticle(siteIDList:self.siteTrueIDList)
+            dispatchGroup.leave()
+        }
+        dispatchGroup.notify(queue: .main) {
             //テーブルを再読み込みする。
             self.timeLineTableView.reloadData()
             //読込中の表示を消す。
