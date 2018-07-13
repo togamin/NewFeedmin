@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,9 +23,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="PVP-MZ-Tpl" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="CqU-Dy-FQv"/>
                             <constraint firstItem="PVP-MZ-Tpl" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="JHr-To-m74"/>
                             <constraint firstItem="PVP-MZ-Tpl" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="PGL-bk-wRa"/>
+                            <constraint firstItem="PVP-MZ-Tpl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="WrV-Ka-aKc"/>
+                            <constraint firstItem="PVP-MZ-Tpl" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="YeT-Zt-cen"/>
                             <constraint firstItem="PVP-MZ-Tpl" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="dhn-IH-Pan"/>
+                            <constraint firstItem="PVP-MZ-Tpl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jZv-R6-nIh"/>
                             <constraint firstAttribute="trailing" secondItem="PVP-MZ-Tpl" secondAttribute="trailing" id="wZO-fA-dnh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
