@@ -42,22 +42,22 @@ class articleViewController: UIViewController,GADBannerViewDelegate {
         //広告の表示
         
         print("広告コード開始")
-        admobView = GADBannerView(adSize:kGADAdSizeBanner)
+        self.admobView = GADBannerView(adSize:kGADAdSizeBanner)
         
-        admobView.frame.size = CGSize(width: self.articleWebView.frame.width, height: admobView.frame.height)
+        self.admobView.frame.size = CGSize(width: self.articleWebView.frame.width, height: self.admobView.frame.height)
         
-        admobView.adUnitID = AdMobID
+        self.admobView.adUnitID = AdMobID
         
         if AdMobTest {
-            admobView.adUnitID  = TestID
+            self.admobView.adUnitID  = TestID
         }
         else{
-            admobView.adUnitID  = AdMobID
+            self.admobView.adUnitID  = AdMobID
         }
         
         
-        admobView.delegate = self
-        admobView.rootViewController = self
+        self.admobView.delegate = self
+        self.admobView.rootViewController = self
         let admobRequest:GADRequest = GADRequest()
         
         if AdMobTest {
@@ -68,7 +68,7 @@ class articleViewController: UIViewController,GADBannerViewDelegate {
                 admobRequest.testDevices = [DEVICE_ID]
             }
         }
-        admobView.load(admobRequest)
+        self.admobView.load(admobRequest)
         self.articleWebView.addSubview(admobView)
         print("広告コード終了")
 
