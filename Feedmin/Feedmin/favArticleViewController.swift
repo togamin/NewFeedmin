@@ -23,6 +23,8 @@ class favArticleViewController: UIViewController,GADBannerViewDelegate {
     let DEVICE_ID = "FOSFMRTB216QH9IIKCG5RMUOI"
     let AdMobTest:Bool = false
     let SimulatorTest:Bool = false
+    var admobView: GADBannerView = GADBannerView()
+    var tabbarheight:CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +40,9 @@ class favArticleViewController: UIViewController,GADBannerViewDelegate {
         
         
         //広告の表示
-        
         print("広告コード開始")
-        var admobView: GADBannerView = GADBannerView()
         admobView = GADBannerView(adSize:kGADAdSizeBanner)
-        admobView.frame.origin = CGPoint(x: 0, y: self.favWebView.frame.size.height - admobView.frame.height - 49)
+        
         admobView.frame.size = CGSize(width: self.favWebView.frame.width, height: admobView.frame.height)
         
         admobView.adUnitID = AdMobID
@@ -53,7 +53,6 @@ class favArticleViewController: UIViewController,GADBannerViewDelegate {
         else{
             admobView.adUnitID  = AdMobID
         }
-        
         
         admobView.delegate = self
         admobView.rootViewController = self
@@ -74,6 +73,12 @@ class favArticleViewController: UIViewController,GADBannerViewDelegate {
         
         
     }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.tabbarheight = tabBarController?.tabBar.frame.size.height
+        self.admobView.frame.origin = CGPoint(x: 0, y: self.favWebView.frame.size.height - self.admobView.frame.height - tabbarheight!)
+    }
+    
     
     @IBAction func favArticleShare(_ sender: UIBarButtonItem) {
         let controller = UIActivityViewController(activityItems: [URL(string: self.link)], applicationActivities:nil)

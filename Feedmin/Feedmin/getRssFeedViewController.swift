@@ -172,7 +172,13 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
                         self.items[i].thumbImageData = UIImageJPEGRepresentation(UIImage(named:"default01.png")!, 1.0)! as NSData//圧縮率
                     }
                     
+                    
                     //CoreDataに記事情報を保存
+                    print("テスト:\(siteInfoList.count)")
+                    print("テスト:\(self.items[i].title)")
+                    print("テスト:\(self.items[i].pubDate)")
+                    print("テスト:\(self.items[i].link)")
+                    print("テスト:\(self.items[i].title)")
                     
                     writeArticleInfo(siteID:siteInfoList.count,articleTitle:self.items[i].title,updateDate:self.items[i].pubDate!,articleURL:self.items[i].link,thumbImageData:self.items[i].thumbImageData,fav:false,read:false)
                 }
@@ -260,6 +266,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     
     //開始タグが見つかるたびに毎回呼び出される関数
     func parser(_ parser: XMLParser,didStartElement elementName:String,namespaceURI:String?,qualifiedName qName:String?,attributes attributeDict:[String:String]) {
+        //print("開始タグ",elementName)
         //itemsの中身が20記事以上なら飛ばす。読み込みを早くするため。
         if self.perseFin == false{
             self.currentString = ""
@@ -276,9 +283,9 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         //print(self.tagName,string)
         if self.perseFin == false{
-            if self.tagName == "title" || self.tagName == "description"{
+            if self.tagName == "title" || self.tagName == "description" || self.tagName == "pubDate"{
                 self.currentString += string
-                //print("string\(string)")
+                print("テストstring\(string)")
             }else {
                 self.currentString = string
             }
@@ -288,6 +295,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     
     //終了タグが見つかるたびに呼び出されるメソッド。
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        //print("終了タグ",elementName)
         if self.perseFin == false{
             switch elementName {
             case "title":
@@ -296,6 +304,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
             case "link":
                 self.item?.link = currentString
             case "pubDate":
+                print("テスト日時",currentString)
                 self.item?.pubDate = pubDate(pubDate: currentString)
             case "dc:date","updated":
             
