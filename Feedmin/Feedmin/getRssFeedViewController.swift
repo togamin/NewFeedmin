@@ -152,11 +152,11 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
             
             //itemsに何も入っていなければAlert
             //機能していないなぜ
-                if items.count == 0{
+            if items.count == 0{
                 //alertを作る
                 let alert = UIAlertController(title: "対応していないURLです.", message:nil, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
-                present(alert,animated: true,completion: {()->Void in print("表示されたよん")})//completionは動作完了時に発動。
+                present(alert,animated: true,completion: {()->Void in print("itemの中身ないよん")})//completionは動作完了時に発動。
             }else{
                 //サイト情報をCoreDataに保存
                     siteInfoList = readSiteInfo()
@@ -174,11 +174,11 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
                     
                     
                     //CoreDataに記事情報を保存
-                    print("テスト:\(siteInfoList.count)")
-                    print("テスト:\(self.items[i].title)")
-                    print("テスト:\(self.items[i].pubDate)")
-                    print("テスト:\(self.items[i].link)")
-                    print("テスト:\(self.items[i].title)")
+                    //print("テスト:\(siteInfoList.count)")
+                    //print("テスト:\(self.items[i].title)")
+                    //print("テスト:\(self.items[i].pubDate)")
+                    //print("テスト:\(self.items[i].link)")
+                    //print("テスト:\(self.items[i].title)")
                     
                     writeArticleInfo(siteID:siteInfoList.count,articleTitle:self.items[i].title,updateDate:self.items[i].pubDate!,articleURL:self.items[i].link,thumbImageData:self.items[i].thumbImageData,fav:false,read:false)
                 }
@@ -266,7 +266,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     
     //開始タグが見つかるたびに毎回呼び出される関数
     func parser(_ parser: XMLParser,didStartElement elementName:String,namespaceURI:String?,qualifiedName qName:String?,attributes attributeDict:[String:String]) {
-        //print("開始タグ",elementName)
+        //print("テスト[開始タグ]:",elementName)
         //itemsの中身が20記事以上なら飛ばす。読み込みを早くするため。
         if self.perseFin == false{
             self.currentString = ""
@@ -281,21 +281,21 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
     
     //タグで囲まれた内容が見つかるたびに呼び出されるメソッド。
     func parser(_ parser: XMLParser, foundCharacters string: String) {
-        //print(self.tagName,string)
+        //print("テスト[tagName]",self.tagName)
         if self.perseFin == false{
             if self.tagName == "title" || self.tagName == "description" || self.tagName == "pubDate"{
                 self.currentString += string
-                print("テストstring\(string)")
+                //print("テスト[タグの中身]:\(string)")
             }else {
                 self.currentString = string
+                //print("テスト[タグの中身2]:\(string)")
             }
         }
-        //print("テストstring:\(string)")
     }
     
     //終了タグが見つかるたびに呼び出されるメソッド。
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        //print("終了タグ",elementName)
+        //print("テスト[終了タグ]:",elementName)
         if self.perseFin == false{
             switch elementName {
             case "title":
@@ -304,7 +304,7 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
             case "link":
                 self.item?.link = currentString
             case "pubDate":
-                print("テスト日時",currentString)
+                //print("テスト日時",currentString)
                 self.item?.pubDate = pubDate(pubDate: currentString)
             case "dc:date","updated":
             
