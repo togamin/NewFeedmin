@@ -31,6 +31,10 @@
 		B700E9C920DD025F0084FFD6 /* SelectSiteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700E9C820DD025F0084FFD6 /* SelectSiteTableViewController.swift */; };
 		B700E9CB20DD1DE60084FFD6 /* selectSiteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B700E9CA20DD1DE60084FFD6 /* selectSiteCell.xib */; };
 		B700E9CD20DD1FA90084FFD6 /* selectSiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700E9CC20DD1FA90084FFD6 /* selectSiteCell.swift */; };
+		B73C98E120FD733600DB3A9B /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B73C98E020FD733500DB3A9B /* GoogleMobileAds.framework */; };
+		B73C98E52105A99600DB3A9B /* TimeLine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B73C98E42105A99600DB3A9B /* TimeLine.storyboard */; };
+		B73C98E72105A9BE00DB3A9B /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B73C98E62105A9BE00DB3A9B /* Favorite.storyboard */; };
+		B73C98E92105A9E400DB3A9B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B73C98E82105A9E400DB3A9B /* Setting.storyboard */; };
 		B74343CE20E8C45B0037A13F /* getRssFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74343CD20E8C45A0037A13F /* getRssFeedViewController.swift */; };
 		B74343D020E8FF0B0037A13F /* togaminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74343CF20E8FF0B0037A13F /* togaminViewController.swift */; };
 		B74343D220E908410037A13F /* FeedminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74343D120E908410037A13F /* FeedminTableViewController.swift */; };
@@ -100,7 +104,6 @@
 		B7486C1F20E4FE0100B9E27D /* animal51.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486C1920E4FDFF00B9E27D /* animal51.png */; };
 		B7486C2020E4FE0100B9E27D /* animal52.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486C1A20E4FDFF00B9E27D /* animal52.png */; };
 		B7486C2D20E7A49C00B9E27D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7486C2C20E7A49B00B9E27D /* SwiftyJSON.swift */; };
-		B7A0089B20F4E142003ECA14 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A0089A20F4E141003ECA14 /* GoogleMobileAds.framework */; };
 		B7A008A020F4EB4F003ECA14 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A0089F20F4EB4F003ECA14 /* AdSupport.framework */; };
 		B7A008A220F4EB66003ECA14 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008A120F4EB66003ECA14 /* AudioToolbox.framework */; };
 		B7A008A420F4EB70003ECA14 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008A320F4EB70003ECA14 /* AVFoundation.framework */; };
@@ -141,6 +144,10 @@
 		B700E9C820DD025F0084FFD6 /* SelectSiteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSiteTableViewController.swift; sourceTree = "<group>"; };
 		B700E9CA20DD1DE60084FFD6 /* selectSiteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = selectSiteCell.xib; sourceTree = "<group>"; };
 		B700E9CC20DD1FA90084FFD6 /* selectSiteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectSiteCell.swift; sourceTree = "<group>"; };
+		B73C98E020FD733500DB3A9B /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../GoogleMobileAdsSdkiOS-7.31.0/GoogleMobileAds.framework"; sourceTree = "<group>"; };
+		B73C98E42105A99600DB3A9B /* TimeLine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeLine.storyboard; sourceTree = "<group>"; };
+		B73C98E62105A9BE00DB3A9B /* Favorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
+		B73C98E82105A9E400DB3A9B /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		B74343CD20E8C45A0037A13F /* getRssFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getRssFeedViewController.swift; sourceTree = "<group>"; };
 		B74343CF20E8FF0B0037A13F /* togaminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = togaminViewController.swift; sourceTree = "<group>"; };
 		B74343D120E908410037A13F /* FeedminTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedminTableViewController.swift; sourceTree = "<group>"; };
@@ -210,7 +217,6 @@
 		B7486C1920E4FDFF00B9E27D /* animal51.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal51.png; sourceTree = "<group>"; };
 		B7486C1A20E4FDFF00B9E27D /* animal52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal52.png; sourceTree = "<group>"; };
 		B7486C2C20E7A49B00B9E27D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		B7A0089A20F4E141003ECA14 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		B7A0089F20F4EB4F003ECA14 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		B7A008A120F4EB66003ECA14 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B7A008A320F4EB70003ECA14 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -235,11 +241,11 @@
 				B7A008AB20F4EBA7003ECA14 /* EventKit.framework in Frameworks */,
 				B7A008AC20F4EBA7003ECA14 /* EventKitUI.framework in Frameworks */,
 				B7A008A820F4EB93003ECA14 /* CoreTelephony.framework in Frameworks */,
+				B73C98E120FD733600DB3A9B /* GoogleMobileAds.framework in Frameworks */,
 				B7A008A620F4EB7E003ECA14 /* CoreGraphics.framework in Frameworks */,
 				B7A008A420F4EB70003ECA14 /* AVFoundation.framework in Frameworks */,
 				B7A008A220F4EB66003ECA14 /* AudioToolbox.framework in Frameworks */,
 				B7A008A020F4EB4F003ECA14 /* AdSupport.framework in Frameworks */,
-				B7A0089B20F4E142003ECA14 /* GoogleMobileAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +255,7 @@
 		B700E97820DB5BBD0084FFD6 = {
 			isa = PBXGroup;
 			children = (
-				B7A0089A20F4E141003ECA14 /* GoogleMobileAds.framework */,
+				B73C98E020FD733500DB3A9B /* GoogleMobileAds.framework */,
 				B700E98320DB5BBD0084FFD6 /* Feedmin */,
 				B700E98220DB5BBD0084FFD6 /* Products */,
 				B700E9A920DBB4D40084FFD6 /* images */,
@@ -268,6 +274,10 @@
 		B700E98320DB5BBD0084FFD6 /* Feedmin */ = {
 			isa = PBXGroup;
 			children = (
+				B700E98820DB5BBD0084FFD6 /* Main.storyboard */,
+				B73C98E42105A99600DB3A9B /* TimeLine.storyboard */,
+				B73C98E62105A9BE00DB3A9B /* Favorite.storyboard */,
+				B73C98E82105A9E400DB3A9B /* Setting.storyboard */,
 				B74343CD20E8C45A0037A13F /* getRssFeedViewController.swift */,
 				B700E98420DB5BBD0084FFD6 /* AppDelegate.swift */,
 				B700E9B420DBC00E0084FFD6 /* timeLineTableViewController.swift */,
@@ -276,7 +286,6 @@
 				B700E9CA20DD1DE60084FFD6 /* selectSiteCell.xib */,
 				B700E9CC20DD1FA90084FFD6 /* selectSiteCell.swift */,
 				B700E9C820DD025F0084FFD6 /* SelectSiteTableViewController.swift */,
-				B700E98820DB5BBD0084FFD6 /* Main.storyboard */,
 				B74343CF20E8FF0B0037A13F /* togaminViewController.swift */,
 				B700E9BE20DBE4130084FFD6 /* favArticleViewController.swift */,
 				B700E9BC20DBDC480084FFD6 /* favTableViewController.swift */,
@@ -480,6 +489,7 @@
 				B7486B8B20E0D46D00B9E27D /* animal03.png in Resources */,
 				B7486C1B20E4FE0100B9E27D /* animal54.png in Resources */,
 				B7486BDF20E3E93F00B9E27D /* animal37.png in Resources */,
+				B73C98E72105A9BE00DB3A9B /* Favorite.storyboard in Resources */,
 				B700E9C520DCD7290084FFD6 /* menuIco60.png in Resources */,
 				B7486BBE20E13DFD00B9E27D /* animal34.png in Resources */,
 				B7486C1D20E4FE0100B9E27D /* animal55.png in Resources */,
@@ -487,6 +497,7 @@
 				B7486BDE20E3E93F00B9E27D /* animal38.png in Resources */,
 				B7486BA620E1347100B9E27D /* animal16.png in Resources */,
 				B7486BC420E13DFD00B9E27D /* animal17.png in Resources */,
+				B73C98E52105A99600DB3A9B /* TimeLine.storyboard in Resources */,
 				B74343D420E910860037A13F /* FeedminCell.xib in Resources */,
 				B7486BC820E13DFD00B9E27D /* animal29.png in Resources */,
 				B7486BD320E378C700B9E27D /* fav01.png in Resources */,
@@ -514,6 +525,7 @@
 				B7486BDD20E3E93F00B9E27D /* animal40.png in Resources */,
 				B7486B9120E0D65000B9E27D /* animal06.png in Resources */,
 				B7486BDB20E3E93F00B9E27D /* animal35.png in Resources */,
+				B73C98E92105A9E400DB3A9B /* Setting.storyboard in Resources */,
 				B7486BCD20E13DFD00B9E27D /* animal25.png in Resources */,
 				B700E9AB20DBB4D40084FFD6 /* default01.png in Resources */,
 				B7486BA720E1347100B9E27D /* animal13.png in Resources */,
@@ -707,6 +719,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Feedmin",
 				);
 				INFOPLIST_FILE = Feedmin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -733,6 +746,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Feedmin",
 				);
 				INFOPLIST_FILE = Feedmin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
