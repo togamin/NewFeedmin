@@ -39,11 +39,13 @@ class favArticleViewController: UIViewController,GADBannerViewDelegate {
         }
         
         
-        //広告の表示
-        print("広告コード開始")
-        self.admobView = GADBannerView(adSize:kGADAdSizeBanner)
+        //スクリーンサイズの取得
+        let myBoundSize: CGSize = UIScreen.main.bounds.size
         
-        self.admobView.frame.size = CGSize(width: self.favWebView.frame.width, height: self.admobView.frame.height)
+        let customAdSize = GADAdSizeFromCGSize(CGSize(width: myBoundSize.width, height: 60))
+        self.admobView = GADBannerView(adSize:customAdSize)
+        
+        self.admobView.frame.size = CGSize(width: myBoundSize.width, height: self.admobView.frame.height)
         
         self.admobView.adUnitID = AdMobID
         
