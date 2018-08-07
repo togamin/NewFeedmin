@@ -150,7 +150,8 @@ func getImageData(code:String)->NSData!{
         thumbImageData = UIImageJPEGRepresentation(UIImage(named:"default01.png")!, 1.0)! as NSData//圧縮率
         //print("テスト:デフォルト画像を設定します")
     }else{
-        let url = NSURL(string:thumbImageURL!)
+        let url = NSURL(string:thumbImageURL.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)!)
+        
         thumbImageData = NSData(contentsOf: url! as URL)
     }
     //print("画像のURL(getImageURL):\(thumbImageURL!)")
