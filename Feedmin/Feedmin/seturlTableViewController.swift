@@ -103,6 +103,7 @@ class seturlTableViewController: UITableViewController,XMLParserDelegate {
             //遷移先の変数に代入
             controller.siteTitle = siteInfoList[indexPath.row]?.siteTitle
             controller.siteID = siteInfoList[indexPath.row]?.siteID
+            controller.siteURL = siteInfoList[indexPath.row]?.siteURL
         }
     }
     

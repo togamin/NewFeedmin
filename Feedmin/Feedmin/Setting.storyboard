@@ -557,6 +557,45 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="RSS URL" id="4J5-15-AwE">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EditCell" id="eul-Gh-qco">
+                                        <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eul-Gh-qco" id="wIW-NT-baV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="atd-WU-FX8">
+                                                    <rect key="frame" x="1" y="1" width="373" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="D9Y-36-ZCo"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="RSS  URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FcB-KE-Hts">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="FcB-KE-Hts" secondAttribute="bottom" id="4Dj-5W-X2I"/>
+                                                <constraint firstItem="atd-WU-FX8" firstAttribute="leading" secondItem="wIW-NT-baV" secondAttribute="leading" constant="1" id="MgK-Ob-0h8"/>
+                                                <constraint firstAttribute="trailing" secondItem="FcB-KE-Hts" secondAttribute="trailing" id="VOi-2C-IMu"/>
+                                                <constraint firstAttribute="bottom" secondItem="atd-WU-FX8" secondAttribute="bottom" constant="1" id="WxX-fM-zRX"/>
+                                                <constraint firstAttribute="trailing" secondItem="atd-WU-FX8" secondAttribute="trailing" constant="1" id="Z1d-xr-0NA"/>
+                                                <constraint firstItem="atd-WU-FX8" firstAttribute="top" secondItem="wIW-NT-baV" secondAttribute="top" constant="1" id="e44-nP-BFY"/>
+                                                <constraint firstItem="FcB-KE-Hts" firstAttribute="leading" secondItem="wIW-NT-baV" secondAttribute="leading" id="mxK-ij-0hq"/>
+                                                <constraint firstItem="FcB-KE-Hts" firstAttribute="top" secondItem="wIW-NT-baV" secondAttribute="top" id="tDc-PC-1oS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="QVk-Y9-J5K" id="MAd-5J-OSB"/>
@@ -565,6 +604,7 @@
                     </tableView>
                     <connections>
                         <outlet property="EditTitle" destination="MHw-Fi-EYc" id="06s-dg-5Ox"/>
+                        <outlet property="siteURLField" destination="FcB-KE-Hts" id="1zD-GC-wdY"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ITG-ye-Ghh" userLabel="First Responder" sceneMemberID="firstResponder"/>

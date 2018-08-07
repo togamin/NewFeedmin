@@ -11,12 +11,16 @@ import UIKit
 class EditSiteTableViewController: UITableViewController,UITextFieldDelegate {
 
     @IBOutlet weak var EditTitle: UITextField!
+    @IBOutlet weak var siteURLField: UITextField!
     var siteTitle:String!
     var siteID:Int!
+    var siteURL:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.EditTitle.text = siteTitle
+        self.siteURLField.text = siteURL
+        //self.siteURLField.isEnabled = false
         self.EditTitle.delegate = self
     }
     //画面タップでキーボード直す
