@@ -102,6 +102,15 @@
 		B7486C1F20E4FE0100B9E27D /* animal51.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486C1920E4FDFF00B9E27D /* animal51.png */; };
 		B7486C2020E4FE0100B9E27D /* animal52.png in Resources */ = {isa = PBXBuildFile; fileRef = B7486C1A20E4FDFF00B9E27D /* animal52.png */; };
 		B7486C2D20E7A49C00B9E27D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7486C2C20E7A49B00B9E27D /* SwiftyJSON.swift */; };
+		B76CB6E4211E579200EA3C36 /* plant04.png in Resources */ = {isa = PBXBuildFile; fileRef = B76CB6DB211E578B00EA3C36 /* plant04.png */; };
+		B76CB6E5211E579200EA3C36 /* plant02.png in Resources */ = {isa = PBXBuildFile; fileRef = B76CB6DC211E578C00EA3C36 /* plant02.png */; };
+		B76CB6E6211E579200EA3C36 /* plant07.png in Resources */ = {isa = PBXBuildFile; fileRef = B76CB6DD211E578D00EA3C36 /* plant07.png */; };
+		B76CB6E7211E579200EA3C36 /* plant09.png in Resources */ = {isa = PBXBuildFile; fileRef = B76CB6DE211E578D00EA3C36 /* plant09.png */; };
+		B76CB6E8211E579200EA3C36 /* plant05.png in Resources */ = {isa = PBXBuildFile; fileRef = B76CB6DF211E578E00EA3C36 /* plant05.png */; };
+		B76CB6E9211E579200EA3C36 /* plant06.png in Resources */ = {isa = PBXBuildFile; fileRef = B76CB6E0211E578F00EA3C36 /* plant06.png */; };
+		B76CB6EA211E579200EA3C36 /* plant01.png in Resources */ = {isa = PBXBuildFile; fileRef = B76CB6E1211E578F00EA3C36 /* plant01.png */; };
+		B76CB6EB211E579200EA3C36 /* plant08.png in Resources */ = {isa = PBXBuildFile; fileRef = B76CB6E2211E579000EA3C36 /* plant08.png */; };
+		B76CB6EC211E579200EA3C36 /* plant03.png in Resources */ = {isa = PBXBuildFile; fileRef = B76CB6E3211E579100EA3C36 /* plant03.png */; };
 		B7A008A020F4EB4F003ECA14 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A0089F20F4EB4F003ECA14 /* AdSupport.framework */; };
 		B7A008A220F4EB66003ECA14 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008A120F4EB66003ECA14 /* AudioToolbox.framework */; };
 		B7A008A420F4EB70003ECA14 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008A320F4EB70003ECA14 /* AVFoundation.framework */; };
@@ -213,6 +222,15 @@
 		B7486C1920E4FDFF00B9E27D /* animal51.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal51.png; sourceTree = "<group>"; };
 		B7486C1A20E4FDFF00B9E27D /* animal52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = animal52.png; sourceTree = "<group>"; };
 		B7486C2C20E7A49B00B9E27D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		B76CB6DB211E578B00EA3C36 /* plant04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plant04.png; sourceTree = "<group>"; };
+		B76CB6DC211E578C00EA3C36 /* plant02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plant02.png; sourceTree = "<group>"; };
+		B76CB6DD211E578D00EA3C36 /* plant07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plant07.png; sourceTree = "<group>"; };
+		B76CB6DE211E578D00EA3C36 /* plant09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plant09.png; sourceTree = "<group>"; };
+		B76CB6DF211E578E00EA3C36 /* plant05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plant05.png; sourceTree = "<group>"; };
+		B76CB6E0211E578F00EA3C36 /* plant06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plant06.png; sourceTree = "<group>"; };
+		B76CB6E1211E578F00EA3C36 /* plant01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plant01.png; sourceTree = "<group>"; };
+		B76CB6E2211E579000EA3C36 /* plant08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plant08.png; sourceTree = "<group>"; };
+		B76CB6E3211E579100EA3C36 /* plant03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plant03.png; sourceTree = "<group>"; };
 		B7A0089F20F4EB4F003ECA14 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		B7A008A120F4EB66003ECA14 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B7A008A320F4EB70003ECA14 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -373,6 +391,15 @@
 				B7486BB420E13DFA00B9E27D /* animal32.png */,
 				B7486BBA20E13DFB00B9E27D /* animal33.png */,
 				B7486BAC20E13DF800B9E27D /* animal34.png */,
+				B76CB6E1211E578F00EA3C36 /* plant01.png */,
+				B76CB6DC211E578C00EA3C36 /* plant02.png */,
+				B76CB6E3211E579100EA3C36 /* plant03.png */,
+				B76CB6DB211E578B00EA3C36 /* plant04.png */,
+				B76CB6DF211E578E00EA3C36 /* plant05.png */,
+				B76CB6E0211E578F00EA3C36 /* plant06.png */,
+				B76CB6DD211E578D00EA3C36 /* plant07.png */,
+				B76CB6E2211E579000EA3C36 /* plant08.png */,
+				B76CB6DE211E578D00EA3C36 /* plant09.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -464,6 +491,7 @@
 				B700E9C320DCD6200084FFD6 /* menuIco38.png in Resources */,
 				B7486BCB20E13DFD00B9E27D /* animal18.png in Resources */,
 				B7486BE620E3ED4B00B9E27D /* animal41.png in Resources */,
+				B76CB6EB211E579200EA3C36 /* plant08.png in Resources */,
 				B7486BC620E13DFD00B9E27D /* animal32.png in Resources */,
 				B7486BCC20E13DFD00B9E27D /* animal33.png in Resources */,
 				B7486B9320E0D6D900B9E27D /* animal07.png in Resources */,
@@ -472,12 +500,14 @@
 				B7486BE920E3ED4B00B9E27D /* animal45.png in Resources */,
 				B7486B8F20E0D56500B9E27D /* animal05.png in Resources */,
 				B700E9A620DBB3E10084FFD6 /* mainCellView.xib in Resources */,
+				B76CB6E4211E579200EA3C36 /* plant04.png in Resources */,
 				B7486BE520E3ED4B00B9E27D /* animal44.png in Resources */,
 				B74343D820E911410037A13F /* feedmin01.png in Resources */,
 				B7486BE720E3ED4B00B9E27D /* animal42.png in Resources */,
 				B7486C1320E4E34E00B9E27D /* animal50.png in Resources */,
 				B7486BC920E13DFD00B9E27D /* animal30.png in Resources */,
 				B7486C0C20E4E34100B9E27D /* animal46.png in Resources */,
+				B76CB6E8211E579200EA3C36 /* plant05.png in Resources */,
 				B7486B8B20E0D46D00B9E27D /* animal03.png in Resources */,
 				B7486C1B20E4FE0100B9E27D /* animal54.png in Resources */,
 				B7486BDF20E3E93F00B9E27D /* animal37.png in Resources */,
@@ -496,10 +526,12 @@
 				B700E98F20DB5BC70084FFD6 /* Assets.xcassets in Resources */,
 				B74343D920E911410037A13F /* feedmin03.png in Resources */,
 				B7486BE820E3ED4B00B9E27D /* animal43.png in Resources */,
+				B76CB6E6211E579200EA3C36 /* plant07.png in Resources */,
 				B7486BAA20E1347100B9E27D /* animal14.png in Resources */,
 				B700E9CB20DD1DE60084FFD6 /* selectSiteCell.xib in Resources */,
 				B74343DA20E911410037A13F /* feedmin02.png in Resources */,
 				B7486BCE20E13DFD00B9E27D /* animal27.png in Resources */,
+				B76CB6EA211E579200EA3C36 /* plant01.png in Resources */,
 				B7486BDA20E3E93F00B9E27D /* animal36.png in Resources */,
 				B7486BC020E13DFD00B9E27D /* animal23.png in Resources */,
 				B700E98A20DB5BBD0084FFD6 /* Main.storyboard in Resources */,
@@ -511,6 +543,7 @@
 				B7486BCF20E13DFD00B9E27D /* animal31.png in Resources */,
 				B7486C1E20E4FE0100B9E27D /* animal53.png in Resources */,
 				B7486BA920E1347100B9E27D /* animal11.png in Resources */,
+				B76CB6E5211E579200EA3C36 /* plant02.png in Resources */,
 				B7486B9720E12E2600B9E27D /* animal02.png in Resources */,
 				B7486C1F20E4FE0100B9E27D /* animal51.png in Resources */,
 				B7486C2020E4FE0100B9E27D /* animal52.png in Resources */,
@@ -525,11 +558,14 @@
 				B7486BC120E13DFD00B9E27D /* animal22.png in Resources */,
 				B7486B9B20E1307400B9E27D /* animal09.png in Resources */,
 				B7486BC320E13DFD00B9E27D /* animal24.png in Resources */,
+				B76CB6EC211E579200EA3C36 /* plant03.png in Resources */,
 				B7486B9920E12F6800B9E27D /* animal08.png in Resources */,
 				B74343DE20EA03D70037A13F /* setting.png in Resources */,
 				B7486BDC20E3E93F00B9E27D /* animal39.png in Resources */,
 				B7486BD220E378C700B9E27D /* fav02.png in Resources */,
 				B7486BAB20E1347100B9E27D /* animal15.png in Resources */,
+				B76CB6E9211E579200EA3C36 /* plant06.png in Resources */,
+				B76CB6E7211E579200EA3C36 /* plant09.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
