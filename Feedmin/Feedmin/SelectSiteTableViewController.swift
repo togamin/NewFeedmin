@@ -58,6 +58,26 @@ class SelectSiteTableViewController: UITableViewController {
         return cell
     }
     
+    //セルをタップしたら発動する処理
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToBlog",sender:nil)
+    }
+    //画面遷移時に呼び出される
+    override func prepare(for segue:UIStoryboardSegue,sender:Any?){
+        print("画面遷移中")
+        if let indexPath = self.selectSitecellTableView.indexPathForSelectedRow{
+            
+            let siteID = self.siteInfoList[indexPath.row].siteID
+            let title = self.siteInfoList[indexPath.row].siteTitle
+        
+            //遷移先のViewControllerを格納
+            let controller = segue.destination as! IndividualBlogTableViewController
+            //遷移先の変数に代入
+            controller.title = title
+            controller.siteID = siteID
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         

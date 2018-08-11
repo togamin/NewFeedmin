@@ -111,6 +111,8 @@
 		B76CB6EA211E579200EA3C36 /* plant01.png in Resources */ = {isa = PBXBuildFile; fileRef = B76CB6E1211E578F00EA3C36 /* plant01.png */; };
 		B76CB6EB211E579200EA3C36 /* plant08.png in Resources */ = {isa = PBXBuildFile; fileRef = B76CB6E2211E579000EA3C36 /* plant08.png */; };
 		B76CB6EC211E579200EA3C36 /* plant03.png in Resources */ = {isa = PBXBuildFile; fileRef = B76CB6E3211E579100EA3C36 /* plant03.png */; };
+		B76CB6EE211E5F1600EA3C36 /* IndividualBlogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76CB6ED211E5F1600EA3C36 /* IndividualBlogTableViewController.swift */; };
+		B76CB6F0211E668700EA3C36 /* IndividualArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76CB6EF211E668700EA3C36 /* IndividualArticleViewController.swift */; };
 		B7A008A020F4EB4F003ECA14 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A0089F20F4EB4F003ECA14 /* AdSupport.framework */; };
 		B7A008A220F4EB66003ECA14 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008A120F4EB66003ECA14 /* AudioToolbox.framework */; };
 		B7A008A420F4EB70003ECA14 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A008A320F4EB70003ECA14 /* AVFoundation.framework */; };
@@ -231,6 +233,8 @@
 		B76CB6E1211E578F00EA3C36 /* plant01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plant01.png; sourceTree = "<group>"; };
 		B76CB6E2211E579000EA3C36 /* plant08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plant08.png; sourceTree = "<group>"; };
 		B76CB6E3211E579100EA3C36 /* plant03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plant03.png; sourceTree = "<group>"; };
+		B76CB6ED211E5F1600EA3C36 /* IndividualBlogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualBlogTableViewController.swift; sourceTree = "<group>"; };
+		B76CB6EF211E668700EA3C36 /* IndividualArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualArticleViewController.swift; sourceTree = "<group>"; };
 		B7A0089F20F4EB4F003ECA14 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		B7A008A120F4EB66003ECA14 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B7A008A320F4EB70003ECA14 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -290,11 +294,13 @@
 			children = (
 				B700E98820DB5BBD0084FFD6 /* Main.storyboard */,
 				B73C98E42105A99600DB3A9B /* TimeLine.storyboard */,
+				B76CB6EF211E668700EA3C36 /* IndividualArticleViewController.swift */,
 				B73C98E62105A9BE00DB3A9B /* Favorite.storyboard */,
 				B73C98E82105A9E400DB3A9B /* Setting.storyboard */,
 				B74343CD20E8C45A0037A13F /* getRssFeedViewController.swift */,
 				B700E98420DB5BBD0084FFD6 /* AppDelegate.swift */,
 				B700E9B420DBC00E0084FFD6 /* timeLineTableViewController.swift */,
+				B76CB6ED211E5F1600EA3C36 /* IndividualBlogTableViewController.swift */,
 				B7486B9420E0F82700B9E27D /* articleNumTableViewController.swift */,
 				B7486B8420E0BC0800B9E27D /* animalCollectionViewController.swift */,
 				B700E9CA20DD1DE60084FFD6 /* selectSiteCell.xib */,
@@ -592,9 +598,11 @@
 				B700E9BD20DBDC480084FFD6 /* favTableViewController.swift in Sources */,
 				B700E9BB20DBD8250084FFD6 /* myTabViewController.swift in Sources */,
 				B700E98520DB5BBD0084FFD6 /* AppDelegate.swift in Sources */,
+				B76CB6EE211E5F1600EA3C36 /* IndividualBlogTableViewController.swift in Sources */,
 				B700E9BF20DBE4130084FFD6 /* favArticleViewController.swift in Sources */,
 				B700E98D20DB5BBD0084FFD6 /* Feedmin.xcdatamodeld in Sources */,
 				B7486C2D20E7A49C00B9E27D /* SwiftyJSON.swift in Sources */,
+				B76CB6F0211E668700EA3C36 /* IndividualArticleViewController.swift in Sources */,
 				B74343CE20E8C45B0037A13F /* getRssFeedViewController.swift in Sources */,
 				B700E9C920DD025F0084FFD6 /* SelectSiteTableViewController.swift in Sources */,
 				B700E9B520DBC00E0084FFD6 /* timeLineTableViewController.swift in Sources */,
