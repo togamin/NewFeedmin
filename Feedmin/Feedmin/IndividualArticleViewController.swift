@@ -15,6 +15,8 @@ class IndividualArticleViewController: UIViewController,GADBannerViewDelegate {
     @IBOutlet weak var progresss: UIProgressView!
     @IBOutlet weak var IndividualArticleWebView: WKWebView!
     var link:String!
+    // Shareボタン
+    var shareBtn: UIBarButtonItem!
     
     // AdMob(アドセンス)
     let AdMobID = "ca-app-pub-6754000737510695/2034002134"
@@ -28,6 +30,10 @@ class IndividualArticleViewController: UIViewController,GADBannerViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // shareBtnを設置
+        self.shareBtn = UIBarButtonItem(barButtonSystemItem: .action, target: self, action:"articleShare")
+        self.navigationItem.rightBarButtonItem = self.shareBtn
 
         //監視の設定(progressView)
         self.IndividualArticleWebView.addObserver(self, forKeyPath: "loading", options: .new, context: nil)
@@ -98,6 +104,15 @@ class IndividualArticleViewController: UIViewController,GADBannerViewDelegate {
                 self.progresss.setProgress(0.0, animated: false)
             }
         }
+    }
+    
+    @objc func articleShare(sender: Any) {
+        let controller = UIActivityViewController(activityItems: [URL(string: self.link)], applicationActivities:nil)
+        
+        //iPadでエラーが出ないようにする
+        controller.popoverPresentationController?.sourceView = self.view
+        
+        self.present(controller, animated: true,completion:nil)
     }
 
     override func didReceiveMemoryWarning() {
