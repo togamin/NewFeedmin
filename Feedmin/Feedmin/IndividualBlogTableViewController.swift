@@ -31,6 +31,13 @@ class IndividualBlogTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         
     }
+    //画面が表示されるたびに呼ばれる
+    override func viewWillAppear(_ animated: Bool) {
+        //記事再読み込み
+        self.articleList = selectReadArticle(siteIDList: [self.siteID])
+        //テーブルを再読み込みする。
+        self.IndividualBlogTableView.reloadData()
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
@@ -40,7 +47,7 @@ class IndividualBlogTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as! mainCellView
-        
+        cell.siteTitle.text = readSelectSiteInfo(siteID: self.articleList[indexPath.row].siteID!)
         cell.articleTitle.text = self.articleList[indexPath.row].articleTitle
         cell.cellLink = self.articleList[indexPath.row].articleURL
         cell.thumbView.image = UIImage(data:self.articleList[indexPath.row].thumbImageData! as Data)

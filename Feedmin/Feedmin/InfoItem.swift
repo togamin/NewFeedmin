@@ -26,7 +26,7 @@ class Item {
     var read:Bool = false
 }
 
-//CoreDataからサイト情報を格納するための構造体
+
 struct siteInfo{
     var siteID:Int!
     var siteTitle:String!

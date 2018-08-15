@@ -33,6 +33,12 @@ class SelectSiteTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
+    //画面が表示されるたびに呼ばれる
+    override func viewWillAppear(_ animated: Bool) {
+        //site情報読み込み
+        self.siteInfoList = readSiteInfo()
+        self.selectSitecellTableView.reloadData()
+    }
 
     //行数を決める
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
