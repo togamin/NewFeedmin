@@ -33,6 +33,7 @@ class IndividualArticleViewController: UIViewController,GADBannerViewDelegate {
         
         // shareBtnを設置
         self.shareBtn = UIBarButtonItem(barButtonSystemItem: .action, target: self, action:"articleShare")
+        
         self.navigationItem.rightBarButtonItem = self.shareBtn
 
         //監視の設定(progressView)
@@ -106,7 +107,7 @@ class IndividualArticleViewController: UIViewController,GADBannerViewDelegate {
         }
     }
     
-    @objc func articleShare(sender: Any) {
+    @objc func articleShare() {
         let controller = UIActivityViewController(activityItems: [URL(string: self.link)], applicationActivities:nil)
         
         //iPadでエラーが出ないようにする
