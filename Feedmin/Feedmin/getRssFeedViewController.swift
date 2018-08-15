@@ -144,7 +144,6 @@ class getRssFeedViewController: UIViewController ,UITableViewDelegate, UITableVi
             print("URL取得します")
             
             
-            
             self.tempTitle = alert.textFields![0].text!
             self.tempURL = alert.textFields![1].text!
             //self.tempURL = "https://togamin.com/feed/"

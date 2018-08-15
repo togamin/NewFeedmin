@@ -46,7 +46,6 @@ class IndividualArticleViewController: UIViewController,GADBannerViewDelegate {
         }
         
         //広告の表示
-        
         print("広告コード開始")
         //スクリーンサイズの取得
         let myBoundSize: CGSize = UIScreen.main.bounds.size
